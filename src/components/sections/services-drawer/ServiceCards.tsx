@@ -1,7 +1,6 @@
 import { serviceCards } from '@/datas/servicescards';
 import { useDrawerKeyboardClose } from '@/hooks/useDrawerKeyboardClose';
 import { useState } from 'react';
-import { BackgroundElements } from './BackgroundElement';
 import { SectionHeader } from './SectionHeader';
 import { ServiceCard } from './ServiceCard';
 import { ServicesDrawer } from './ServiceDrawer';
@@ -13,13 +12,14 @@ export const ServiceCards = () => {
   useDrawerKeyboardClose(isOpen, setIsOpen);
 
   return (
-    <div
-      className="relative flex w-full flex-col items-center justify-center overflow-hidden bg-gray-950 py-16 text-gray-100 xl:py-[5vh]"
-      id="services"
-    >
-      <BackgroundElements />
+    <div className="relative w-full bg-gray-950 py-16 text-gray-100 xl:py-[5vh]" id="services">
+      {/* Fondo simplificado sin SVG */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-[20%] -right-[20%] h-[60vh] w-[60vh] rounded-full bg-indigo-900/20 blur-[80px]"></div>
+        <div className="absolute -bottom-[15%] -left-[15%] h-[50vh] w-[50vh] rounded-full bg-teal-900/20 blur-[80px]"></div>
+      </div>
 
-      <div className="relative z-10 w-full px-4">
+      <div className="relative z-10 px-4">
         <SectionHeader
           title="Nuestros Servicios"
           description="Descubre cómo podemos transformar tus espacios con nuestros servicios profesionales."
@@ -27,7 +27,7 @@ export const ServiceCards = () => {
 
         <div className="mx-auto grid w-full max-w-[90%] grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 2xl:gap-[1vw]">
           {visibleCards.map((card, index) => (
-            <ServiceCard key={index} card={card} index={index} />
+            <ServiceCard key={card.title || index} card={card} index={index} />
           ))}
         </div>
 
