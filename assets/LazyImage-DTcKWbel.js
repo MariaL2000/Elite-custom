@@ -1,0 +1,1 @@
+import{r as e,j as i}from"./index-BamJDRDY.js";const l=e.forwardRef(({onLoad:t,...a},s)=>{const[o,n]=e.useState(!1),r=d=>{n(!0),t&&t(d)};return i.jsx("img",{ref:s,loading:"lazy",decoding:"async",onLoad:r,style:{opacity:o?1:0,transition:"opacity 0.3s ease-in-out",...a.style},...a})});export{l as default};
