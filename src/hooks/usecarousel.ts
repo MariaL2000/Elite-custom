@@ -7,7 +7,6 @@ export function useCarousel() {
   const [count, setCount] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  // Set up the carousel API
   useEffect(() => {
     if (!api) return;
 
@@ -23,14 +22,13 @@ export function useCarousel() {
     };
   }, [api]);
 
-  // Auto-play functionality
   useEffect(() => {
     let interval: NodeJS.Timeout;
 
     if (isPlaying && api) {
       interval = setInterval(() => {
         api.scrollNext();
-      }, 5000);
+      }, 5000); // Cambia cada 5 segundos
     }
 
     return () => clearInterval(interval);
