@@ -1,5 +1,6 @@
+import { Data } from '@/datas/carousel';
 import { AnimatePresence, motion } from 'motion/react';
-import { Data } from '../../datas/carousel';
+
 import { useState } from 'react';
 
 interface Props {

@@ -40,7 +40,7 @@ export const GalleryGrid = ({ images, sectionTitle }: Props) => {
                   opacity: 0,
                   transition: 'opacity 0.5s ease-in-out',
                 }}
-                onLoad={e => {
+                onLoad={(e: React.SyntheticEvent<HTMLImageElement>) => {
                   e.currentTarget.style.opacity = '1';
                 }}
               />

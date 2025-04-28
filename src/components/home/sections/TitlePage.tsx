@@ -70,7 +70,7 @@ export const TitlePage = () => {
             <Button
               variant="default"
               size="lg"
-              className="group relative overflow-hidden bg-gradient-to-r from-indigo-500 via-teal-500 to-indigo-500 px-10 py-6 font-medium text-white shadow-lg shadow-indigo-500/30 transition-all duration-100 hover:shadow-[0_0_15px_-3px_rgba(99,102,241,0.7)] hover:shadow-indigo-500/60 xl:py-[1.5vh]"
+              className="group relative overflow-hidden bg-gradient-to-r from-indigo-500 via-teal-500 to-indigo-500 px-10 py-6 font-medium text-white shadow-lg shadow-indigo-500/30 transition-all duration-100 hover:shadow-[0_0_15px_-3px_rgba(99,102,241,0.7)] hover:shadow-indigo-500/60 xl:rounded-[0.3vw] xl:py-[3vh]"
             >
               <span className="relative z-10 flex items-center gap-2 text-xl xl:text-[1.2vw]">
                 <Link to={`${BASE_URL}contact`}>Get a quote</Link>

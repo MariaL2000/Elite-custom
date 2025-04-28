@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Play, Pause, ChevronLeft, ChevronRight } from 'lucide-react';
-import { VideoSlide } from '../../datas/carousel-video';
+import { VideoSlide } from '@/datas/carousel-video';
 
 export const VideoCarousel = ({ slides }: { slides: VideoSlide[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
