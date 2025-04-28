@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { Home, Menu, X, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { URLS } from '@/config';
+import { ModeToggle } from '../buttons/ModleToggle';
 
 export const NavBar = ({ ref }: React.RefAttributes<HTMLElement>) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,21 +28,16 @@ export const NavBar = ({ ref }: React.RefAttributes<HTMLElement>) => {
       className={cn(
         'relative z-10 flex w-full items-center justify-between gap-8 px-4 py-3 transition-all duration-300 md:justify-start md:px-8 md:py-4 xl:gap-16 xl:px-[2vw] xl:py-[1vw]',
         scrolled
-          ? 'bg-gray-900/95 shadow-lg backdrop-blur-md'
-          : 'bg-gradient-to-r from-gray-900 to-gray-800'
+          ? 'bg-background/95 shadow-lg backdrop-blur-md dark:bg-gray-900/95'
+          : 'bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800'
       )}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="flex items-center gap-2">
-        <div className="rounded-lg bg-gradient-to-br from-indigo-500 to-teal-500 p-2">
-          <Home className="h-5 w-5 text-white md:h-6 md:w-6 xl:h-[1.2vw] xl:w-[1.2vw]" />
-        </div>
-      </div>
-
       {/* Desktop Navigation */}
-      <div className="hidden md:flex md:items-center md:gap-6 xl:gap-8">
+
+      <div className="hidden md:flex md:items-center md:gap-6 xl:gap-[1vw]">
         {URLS.map(({ name, path }) => (
           <NavLink
             key={name}
@@ -49,8 +45,8 @@ export const NavBar = ({ ref }: React.RefAttributes<HTMLElement>) => {
             className={({ isActive }) =>
               cn(
                 'group relative px-3 py-2 text-sm font-medium transition-colors md:text-base xl:text-[1vw]',
-                'hover:text-teal-400',
-                isActive ? 'text-teal-400' : 'text-gray-300'
+                'hover:text-teal-600 dark:hover:text-teal-400',
+                isActive ? 'text-teal-600 dark:text-teal-400' : 'text-gray-700 dark:text-gray-300'
               )
             }
           >
@@ -76,7 +72,7 @@ export const NavBar = ({ ref }: React.RefAttributes<HTMLElement>) => {
       <Button
         variant="ghost"
         size="icon"
-        className="text-gray-100 hover:bg-gray-800/50 md:hidden"
+        className="text-gray-700 hover:bg-gray-200/50 md:hidden dark:text-gray-300 dark:hover:bg-gray-800/50"
         onClick={toggleMenu}
       >
         {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -86,7 +82,7 @@ export const NavBar = ({ ref }: React.RefAttributes<HTMLElement>) => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="absolute top-full right-0 left-0 z-50 flex flex-col border-t border-gray-700/50 bg-gray-900/95 shadow-lg backdrop-blur-md md:hidden"
+            className="absolute top-full right-0 left-0 z-50 flex flex-col border-t border-gray-200 shadow-lg md:hidden dark:border-gray-700"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -99,19 +95,22 @@ export const NavBar = ({ ref }: React.RefAttributes<HTMLElement>) => {
                 onClick={() => setIsMenuOpen(false)}
                 className={({ isActive }) =>
                   cn(
-                    'flex items-center justify-between border-b border-gray-800/30 px-6 py-4 text-base font-medium transition-colors',
-                    'hover:bg-gray-800/50',
-                    isActive ? 'bg-gray-800/30 text-teal-400' : 'text-gray-300'
+                    'flex items-center justify-between border-b border-gray-200 px-6 py-4 text-base font-medium transition-colors dark:border-gray-700',
+                    'hover:bg-gray-100 dark:hover:bg-gray-800',
+                    isActive
+                      ? 'bg-gray-100 text-teal-600 dark:bg-gray-800 dark:text-teal-400'
+                      : 'bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-300'
                   )
                 }
               >
                 {name}
-                <ChevronRight className="h-4 w-4 opacity-70" />
+                <ChevronRight className="size-4 opacity-70" />
               </NavLink>
             ))}
           </motion.div>
         )}
       </AnimatePresence>
+      <ModeToggle />
     </motion.nav>
   );
 };

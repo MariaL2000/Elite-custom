@@ -68,6 +68,7 @@ body {
     --breakpoint-8xl: 512rem;
     /* 8192px ÷ 16px = 512rem */
 
+
     --radius-sm: calc(var(--radius) - 4px);
     --radius-md: calc(var(--radius) - 2px);
     --radius-lg: var(--radius);
@@ -291,4 +292,12 @@ button,
 /* Transiciones suaves */
 .resizable-transition {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+
+@media (max-height: 700px) {
+    .short\:top-0 {
+        top: 0 !important;
+    }
 }

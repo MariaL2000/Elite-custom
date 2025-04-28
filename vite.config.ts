@@ -15,4 +15,13 @@ export default defineConfig({
   build: {
     chunkSizeWarningLimit: 1000,
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://localhost:8001',
+        changeOrigin: true,
+        secure: false, // Ignora errores de certificado en desarrollo
+      },
+    },
+  },
 });

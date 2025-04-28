@@ -7,8 +7,9 @@ interface URLS {
 export const URLS: URLS[] = [
   { name: 'Home', path: `${BASE_URL}` },
   { name: 'About', path: `${BASE_URL}about` },
-  { name: 'Services', path: `${BASE_URL}services` },
+  { name: 'Gallery', path: `${BASE_URL}gallery` },
+
   { name: 'Contact', path: `${BASE_URL}contact` },
 ];
 
-export const URLS_Footer: URLS[] = [...URLS, { name: 'Gallery', path: `${BASE_URL}gallery` }];
+export const URL_API = 'https://localhost:8001/';

@@ -32,3 +32,54 @@ export const galleryItems = [
       'From concept to completion, we handle every aspect of your kitchen transformation, delivering stunning results that exceed expectations.',
   },
 ];
+
+export const galleryData = [
+  {
+    id: 'cocina',
+    title: 'Cocinas',
+    images: [
+      'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=800',
+      'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=800',
+      'https://images.unsplash.com/photo-1583845112203-29329902330b?w=800',
+      'https://images.unsplash.com/photo-1600566752227-8f3b9a6f9323?w=800',
+      'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800',
+      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800',
+      'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?w=800',
+      'https://images.unsplash.com/photo-1600607687933-ce8bb6d11ffa?w=800',
+      'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800',
+      'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?w=800',
+    ],
+  },
+  {
+    id: 'bathrooms',
+    title: 'Baños',
+    images: [
+      'https://images.unsplash.com/photo-1639450703841-81c23d0a2af0?w=800',
+      'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800',
+      'https://images.unsplash.com/photo-1600607687933-ce8bb6d11ffa?w=800',
+      'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?w=800',
+      'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800',
+      'https://images.unsplash.com/photo-1600566752227-8f3b9a6f9323?w=800',
+      'https://images.unsplash.com/photo-1583845112203-29329902330b?w=800',
+      'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=800',
+      'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=800',
+      'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800',
+    ],
+  },
+  {
+    id: 'sala',
+    title: 'Salas',
+    images: [
+      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800',
+      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800',
+      'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800',
+      'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800',
+      'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800',
+      'https://images.unsplash.com/photo-1583845112203-29329902330b?w=800',
+      'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=800',
+      'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=800',
+      'https://images.unsplash.com/photo-1600566752227-8f3b9a6f9323?w=800',
+      'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800',
+    ],
+  },
+];

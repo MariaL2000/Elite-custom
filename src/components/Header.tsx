@@ -12,7 +12,6 @@ export const Header = () => {
     rootMargin: '0px',
   });
 
-  // Check if the original navbar is visible in the viewport
   const isNavBarVisible = entry?.isIntersecting;
 
   return (
@@ -26,7 +25,7 @@ export const Header = () => {
 export const NewNavBar = () => {
   return (
     <motion.nav
-      className="fixed top-0 right-0 left-0 z-50 flex w-full items-center justify-between border-b border-gray-800/50 bg-gray-900/80 px-6 py-3 shadow-lg backdrop-blur-md md:px-[2rem]"
+      className="border-border/50 bg-background/80 fixed top-0 right-0 left-0 z-50 flex w-full items-center justify-between border-b px-6 py-3 shadow-lg backdrop-blur-md md:px-[2rem] dark:bg-gray-900/80"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
@@ -39,9 +38,9 @@ export const NewNavBar = () => {
       </div>
       <Button
         variant={'default'}
-        className="3xl:p-7 size-fit bg-gradient-to-r from-indigo-600 to-teal-600 shadow-md transition-all duration-300 hover:from-indigo-500 hover:to-teal-500 hover:shadow-teal-500/20"
+        className="3xl:p-7 size-fit bg-gradient-to-r from-indigo-600 to-teal-600 px-6 py-2 text-white shadow-md transition-all duration-300 hover:from-indigo-500 hover:to-teal-500 hover:shadow-teal-500/20 dark:from-indigo-700 dark:to-teal-700"
       >
-        <Link className="3xl:text-5xl font-medium" to={`${BASE_URL}contact`}>
+        <Link className="3xl:text-5xl font-medium dark:text-white" to={`${BASE_URL}contact`}>
           Get quote
         </Link>
       </Button>
