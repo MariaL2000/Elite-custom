@@ -6,9 +6,10 @@ import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 interface Props {
   section?: string;
   arrow: 'left' | 'right';
+  text: string;
 }
 
-export const ButtonGalleryLink = ({ section, arrow }: Props) => {
+export const ButtonGalleryLink = ({ section, arrow, text }: Props) => {
   return (
     <Link to={`${BASE_URL}gallery${section ? '/' + section : ''}`}>
       <Button
@@ -20,7 +21,7 @@ export const ButtonGalleryLink = ({ section, arrow }: Props) => {
         {arrow == 'left' && (
           <ArrowLeftIcon className="mr-2 size-4 transition-transform group-hover:translate-x-1 xl:mr-[0.5vw] xl:size-[1vw]" />
         )}
-        Ver más
+        {text}
         {arrow == 'right' && (
           <ArrowRightIcon className="ml-2 size-4 transition-transform group-hover:translate-x-1 xl:ml-[0.5vw] xl:size-[1vw]" />
         )}

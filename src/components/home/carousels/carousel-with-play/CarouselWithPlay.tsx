@@ -28,7 +28,7 @@ export const CarouselWithPlay = () => {
       </Carousel>
 
       {/* Controles en la parte inferior */}
-      <div className="absolute right-0 bottom-8 left-0 z-20 flex justify-center">
+      <div className="absolute right-0 bottom-[8rem] left-0 z-20 flex justify-center">
         <CarouselControls
           current={current}
           count={count}

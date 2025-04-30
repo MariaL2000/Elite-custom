@@ -1,12 +1,12 @@
-'use client';
-
+import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
+import * as z from 'zod';
 import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -14,47 +14,42 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { SendIcon } from 'lucide-react';
+import { StarRating } from './StarRating';
+
 import { motion } from 'motion/react';
+import { SendIcon } from 'lucide-react';
 
 const formSchema = z.object({
-  name: z
-    .string()
-    .min(3, { message: 'Name must be at least 3 characters' })
-    .max(20, { message: 'Name cannot exceed 20 characters' }),
-  email: z.string().email({ message: 'Please enter a valid email' }),
-  phone: z
-    .number({
-      invalid_type_error: 'Phone must be a number',
-      required_error: 'Phone is required',
-    })
-    .min(100000000, { message: 'Phone must have at least 9 digits' })
-    .max(999999999999, { message: 'Phone cannot exceed 12 digits' }),
-  address: z
-    .string()
-    .min(5, { message: 'Address must be at least 5 characters' })
-    .max(100, { message: 'Address cannot exceed 100 characters' }),
-  project_details: z
-    .string()
-    .min(10, { message: 'Details must be at least 10 characters' })
-    .max(150, { message: 'Details cannot exceed 150 characters' }),
+  name: z.string().min(2, {
+    message: 'Name must be at least 2 characters.',
+  }),
+  thoughts: z.string().min(5, {
+    message: 'Please share your thoughts (minimum 5 characters).',
+  }),
+  suggestions: z.string().optional(),
+  rating: z.number().min(1, {
+    message: 'Please select a rating.',
+  }),
 });
 
-export const FormContact = () => {
+export function ReviewForm() {
+  const [rating, setRating] = useState(0);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
-      email: '',
-      phone: undefined,
-      address: '',
-      project_details: '',
+      thoughts: '',
+      suggestions: '',
+      rating: 0,
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    // Aquí puedes agregar la lógica para enviar el formulario
+
+    form.reset();
+    setRating(0);
   }
 
   return (
@@ -63,12 +58,12 @@ export const FormContact = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.8, type: 'spring' }}
-      className="w-full rounded-lg bg-white p-6 shadow-md xl:p-[2vw] xl:shadow-2xl dark:bg-gray-800"
+      className="w-full rounded-lg bg-white p-6 shadow-md xl:w-[60%] xl:p-[2vw] xl:shadow-2xl dark:bg-gray-800"
     >
-      <h2 className="mb-[3vh] text-center text-2xl font-bold xl:text-[2vw]">Contacto</h2>
+      <h2 className="mb-6 text-center text-2xl font-bold xl:text-[2vw]">Leave a Review</h2>
+
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-[2vh] xl:space-y-[1.5vh]">
-          {/* Campo Nombre */}
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <FormField
             control={form.control}
             name="name"
@@ -80,10 +75,10 @@ export const FormContact = () => {
                 viewport={{ once: true }}
               >
                 <FormItem>
-                  <FormLabel className="text-lg xl:text-[1.2vw]">Nombre completo</FormLabel>
+                  <FormLabel className="text-lg xl:text-[1.2vw]">Name</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Ingresa tu nombre"
+                      placeholder="Your name"
                       {...field}
                       className="h-[8vh] text-[3.5vw] xl:h-[5vh] xl:text-[1vw]"
                     />
@@ -94,10 +89,9 @@ export const FormContact = () => {
             )}
           />
 
-          {/* Campo Email */}
           <FormField
             control={form.control}
-            name="email"
+            name="thoughts"
             render={({ field }) => (
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -106,12 +100,12 @@ export const FormContact = () => {
                 viewport={{ once: true }}
               >
                 <FormItem>
-                  <FormLabel className="text-lg xl:text-[1.2vw]">Email</FormLabel>
+                  <FormLabel className="text-lg xl:text-[1.2vw]">What do you think?</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder="tu@email.com"
+                    <Textarea
+                      placeholder="Share your thoughts"
+                      className="min-h-[20vh] text-[3.5vw] xl:min-h-[15vh] xl:text-[1vw]"
                       {...field}
-                      className="h-[8vh] text-[3.5vw] xl:h-[5vh] xl:text-[1vw]"
                     />
                   </FormControl>
                   <FormMessage className="text-xs xl:text-[1.1vw]" />
@@ -120,10 +114,9 @@ export const FormContact = () => {
             )}
           />
 
-          {/* Campo Teléfono */}
           <FormField
             control={form.control}
-            name="phone"
+            name="suggestions"
             render={({ field }) => (
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -132,26 +125,23 @@ export const FormContact = () => {
                 viewport={{ once: true }}
               >
                 <FormItem>
-                  <FormLabel className="text-lg xl:text-[1.2vw]">Teléfono</FormLabel>
+                  <FormLabel className="text-lg xl:text-[1.2vw]">Any suggestions?</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder="Ej: 987654321"
-                      type="number"
+                    <Textarea
+                      placeholder="Share your suggestions (optional)"
+                      className="min-h-[20vh] text-[3.5vw] xl:min-h-[15vh] xl:text-[1vw]"
                       {...field}
-                      onChange={e => field.onChange(Number(e.target.value))}
-                      className="h-[8vh] text-[3.5vw] xl:h-[5vh] xl:text-[1vw]"
                     />
                   </FormControl>
-                  <FormMessage className="text-xs xl:text-[1.1vw]" />
+                  <FormMessage />
                 </FormItem>
               </motion.div>
             )}
           />
 
-          {/* Campo Dirección */}
           <FormField
             control={form.control}
-            name="address"
+            name="rating"
             render={({ field }) => (
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -160,50 +150,27 @@ export const FormContact = () => {
                 viewport={{ once: true }}
               >
                 <FormItem>
-                  <FormLabel className="text-lg xl:text-[1.2vw]">Dirección</FormLabel>
+                  <FormLabel className="text-lg xl:text-[1.2vw]">Rating</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder="Ingresa tu dirección"
-                      {...field}
-                      className="h-[8vh] text-[3.5vw] xl:h-[5vh] xl:text-[1vw]"
-                    />
+                    <div>
+                      <StarRating
+                        rating={rating}
+                        setRating={value => {
+                          setRating(value);
+                          field.onChange(value);
+                        }}
+                      />
+                    </div>
                   </FormControl>
+                  <FormDescription className="text-lg xl:text-[1.2vw]">
+                    How would you rate your experience?
+                  </FormDescription>
                   <FormMessage className="text-xs xl:text-[1.1vw]" />
                 </FormItem>
               </motion.div>
             )}
           />
 
-          {/* Campo Detalles del Proyecto */}
-          <FormField
-            control={form.control}
-            name="project_details"
-            render={({ field }) => (
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.6 }}
-                viewport={{ once: true }}
-              >
-                <FormItem>
-                  <FormLabel className="text-lg xl:text-[1.2vw]">Detalles del proyecto</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder="Describe tu proyecto (máx. 150 caracteres)"
-                      {...field}
-                      className="min-h-[20vh] text-[3.5vw] xl:min-h-[15vh] xl:text-[1vw]"
-                    />
-                  </FormControl>
-                  <div className="flex items-center justify-between">
-                    <FormMessage className="text-xs xl:text-[1.1vw]" />
-                    <span className="text-muted-foreground text-[3vw] xl:text-[0.9vw]">
-                      {field.value.length}/150
-                    </span>
-                  </div>
-                </FormItem>
-              </motion.div>
-            )}
-          />
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -211,7 +178,7 @@ export const FormContact = () => {
             viewport={{ once: true }}
           >
             <Button type="submit" className="h-[8vh] w-full text-xl xl:h-[6vh] xl:text-[1.5vw]">
-              Enviar
+              Submit review
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{ repeat: Infinity, duration: 2 }}
@@ -224,4 +191,4 @@ export const FormContact = () => {
       </Form>
     </motion.div>
   );
-};
+}

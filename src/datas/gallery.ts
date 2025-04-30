@@ -35,8 +35,8 @@ export const galleryItems = [
 
 export const galleryData = [
   {
-    id: 'cocina',
-    title: 'Cocinas',
+    id: 'kitchens',
+    title: 'Kitchens',
     images: [
       'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=800',
       'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=800',
@@ -52,7 +52,7 @@ export const galleryData = [
   },
   {
     id: 'bathrooms',
-    title: 'Baños',
+    title: 'bathrooms',
     images: [
       'https://images.unsplash.com/photo-1639450703841-81c23d0a2af0?w=800',
       'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800',
@@ -67,8 +67,8 @@ export const galleryData = [
     ],
   },
   {
-    id: 'sala',
-    title: 'Salas',
+    id: 'hall',
+    title: 'Halls',
     images: [
       'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800',
       'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800',

@@ -6,6 +6,7 @@ import { AboutPage, ContactPage, HomePage } from './pages';
 import { GalleryPage } from './pages/GalleryPage';
 import { GallerySectionPage } from './pages/GalleryDetailSection';
 import GalleryLayout from './layouts/GalleryLayout';
+import ReviewPage from './pages/ReviewPage';
 
 const BASE_URL = import.meta.env.BASE_URL;
 
@@ -23,6 +24,7 @@ const App = () => {
               <Route path={`${BASE_URL}gallery`} element={<GalleryPage />} />
               <Route path={`${BASE_URL}gallery/:section`} element={<GallerySectionPage />} />
             </Route>
+            <Route path={`${BASE_URL}review`} element={<ReviewPage />} />
           </Route>
           <Route path={`${BASE_URL}*`} element={<NotFound />} />
         </Routes>

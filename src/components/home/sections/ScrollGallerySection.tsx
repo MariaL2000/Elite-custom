@@ -48,9 +48,12 @@ export const ScrollGallerySection = ({ items }: ScrollGalleryProps) => {
         className="sticky top-0 left-0 h-screen w-full overflow-hidden"
         style={safariStyles}
       >
-        <div className="flex h-full w-full flex-col md:flex-row">
+        <div className="flex size-full flex-col md:flex-row">
           {/* Image Container - Simplificado */}
-          <div className="relative h-1/2 w-full md:h-full md:w-3/5" style={safariStyles}>
+          <div
+            className="relative flex h-1/2 w-full items-center md:h-full md:w-3/5"
+            style={safariStyles}
+          >
             {items.map((item, index) => (
               <motion.div
                 key={`image-${index}`}
@@ -62,11 +65,11 @@ export const ScrollGallerySection = ({ items }: ScrollGalleryProps) => {
                 }}
                 transition={{ duration: 0.7 }}
               >
-                <Suspense fallback={<Skeleton className="h-full w-full" />}>
+                <Suspense fallback={<Skeleton className="size-full" />}>
                   <LazyImage
                     src={item.imageUrl}
                     alt={item.alt}
-                    className="h-[80vh] w-full object-cover"
+                    className="size-full object-cover md:h-[80vh]"
                   />
                 </Suspense>
               </motion.div>
@@ -75,7 +78,7 @@ export const ScrollGallerySection = ({ items }: ScrollGalleryProps) => {
 
           {/* Text Container */}
           <div
-            className="flex h-1/2 w-full items-center justify-center p-6 md:h-full md:w-2/5 md:p-8 xl:p-[2vw]"
+            className="flex w-full items-center justify-center p-6 md:h-full md:w-2/5 md:p-8"
             style={safariStyles}
           >
             <AnimatePresence mode="wait">

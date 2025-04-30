@@ -1,11 +1,8 @@
-import { motion } from 'motion/react';
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
-import { useMemo } from 'react';
-import { BASE_URL } from '@/config';
-
-import useWindowScreen from '@/hooks/useWindowScreen';
 import { Logo } from '@/components/Logo';
+import useWindowScreen from '@/hooks/useWindowScreen';
+import { motion } from 'motion/react';
+import { useMemo } from 'react';
+import { ButtonGetQuote } from './ButtonGetQuote';
 
 export const TitlePage = () => {
   const isMac = useWindowScreen();
@@ -67,19 +64,7 @@ export const TitlePage = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Button
-              variant="default"
-              size="lg"
-              className="group relative overflow-hidden bg-gradient-to-r from-indigo-500 via-teal-500 to-indigo-500 px-10 py-6 font-medium text-white shadow-lg shadow-indigo-500/30 transition-all duration-100 hover:shadow-[0_0_15px_-3px_rgba(99,102,241,0.7)] hover:shadow-indigo-500/60 xl:rounded-[0.3vw] xl:py-[3vh]"
-            >
-              <span className="relative z-10 flex items-center gap-2 text-xl xl:text-[1.2vw]">
-                <Link to={`${BASE_URL}contact`}>Get a quote</Link>
-                <span className="transition-transform duration-100 group-hover:translate-x-1 group-hover:scale-110">
-                  →
-                </span>
-              </span>
-              <span className="absolute inset-0 bg-white opacity-0 transition-opacity duration-100 group-hover:opacity-[0.12]"></span>
-            </Button>
+            <ButtonGetQuote />
           </motion.div>
         </motion.div>
 

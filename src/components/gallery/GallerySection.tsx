@@ -21,7 +21,7 @@ export const GallerySection = () => {
         >
           <div className="mb-8 flex items-center justify-between">
             <h2 className="text-3xl font-bold xl:text-[2vw]">{section.title}</h2>
-            <ButtonGalleryLink section={section.id} arrow="right" />
+            <ButtonGalleryLink section={section.id} arrow="right" text="View more" />
           </div>
 
           <GalleryGrid images={section.images.slice(0, 3)} sectionTitle={section.title} />

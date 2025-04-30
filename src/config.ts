@@ -10,6 +10,7 @@ export const URLS: URLS[] = [
   { name: 'Gallery', path: `${BASE_URL}gallery` },
 
   { name: 'Contact', path: `${BASE_URL}contact` },
+  { name: 'Review', path: `${BASE_URL}review` },
 ];
 
 export const URL_API = 'https://localhost:8001/';

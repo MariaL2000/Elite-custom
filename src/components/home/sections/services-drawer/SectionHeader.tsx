@@ -17,6 +17,6 @@ export const SectionHeader = ({ title, description }: SectionHeaderProps) => (
       {title}
     </h2>
     <div className="mx-auto mb-4 h-1 w-24 bg-gradient-to-r from-indigo-500 via-teal-500 to-indigo-500"></div>
-    <p className="mx-auto max-w-[25vw] xl:text-[1.2vw]">{description}</p>
+    <p className="mx-auto xl:max-w-[25vw] xl:text-[1.2vw]">{description}</p>
   </motion.div>
 );

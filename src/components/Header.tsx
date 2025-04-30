@@ -1,9 +1,7 @@
 import { NavBar } from './navbar/NavBar';
 import { motion, AnimatePresence } from 'motion/react';
-import { Button } from './ui/button';
-import { Link } from 'react-router-dom';
 import { useIntersectionObserver } from '@uidotdev/usehooks';
-import { BASE_URL } from '@/config';
+import { ButtonGetQuote } from './home/sections/ButtonGetQuote';
 
 export const Header = () => {
   const [ref, entry] = useIntersectionObserver({
@@ -36,14 +34,7 @@ export const NewNavBar = () => {
           Brand
         </h2>
       </div>
-      <Button
-        variant={'default'}
-        className="3xl:p-7 size-fit bg-gradient-to-r from-indigo-600 to-teal-600 px-6 py-2 text-white shadow-md transition-all duration-300 hover:from-indigo-500 hover:to-teal-500 hover:shadow-teal-500/20 dark:from-indigo-700 dark:to-teal-700"
-      >
-        <Link className="3xl:text-5xl font-medium dark:text-white" to={`${BASE_URL}contact`}>
-          Get quote
-        </Link>
-      </Button>
+      <ButtonGetQuote />
     </motion.nav>
   );
 };

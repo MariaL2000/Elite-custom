@@ -47,7 +47,14 @@ export function CarouselContainer({
   return (
     <div className="relative my-[5%] w-full overflow-hidden py-12" style={carouselStyles}>
       {title && (
-        <h1 className="my-[2%] bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-center text-4xl font-bold text-transparent drop-shadow-sm xl:text-[3vw]">
+        <h1
+          className="my-[2%] bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-center text-3xl font-bold text-transparent xl:text-[2.5vw] dark:from-slate-200 dark:to-slate-400"
+          style={{
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            textShadow: '0 1px 2px rgba(15, 23, 42, 0.2)',
+          }}
+        >
           {title}
         </h1>
       )}

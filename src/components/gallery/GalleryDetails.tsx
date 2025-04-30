@@ -18,7 +18,7 @@ export const GalleryDetail = () => {
     <div>
       <div className="mb-8 flex items-center justify-between">
         <h1 className="text-3xl font-bold xl:text-[2vw]">{currentSection.title}</h1>
-        <ButtonGalleryLink arrow="left" />
+        <ButtonGalleryLink arrow="left" text="Back to gallery" />
       </div>
 
       <GalleryGrid images={currentSection.images} sectionTitle={currentSection.title} />

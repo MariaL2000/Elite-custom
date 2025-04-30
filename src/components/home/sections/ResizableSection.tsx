@@ -68,16 +68,25 @@ export const ResizableSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="mb-4 bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-3xl font-bold text-transparent md:text-4xl xl:text-[2.5vw]"
+          className="mb-4 bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-3xl font-bold text-transparent md:text-4xl xl:text-[2.5vw] dark:from-slate-200 dark:to-slate-400"
+          style={{
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            textShadow: '0 1px 2px rgba(15, 23, 42, 0.15)',
+          }}
         >
           Compare Our Stunning Designs
         </motion.h2>
+
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mx-auto max-w-md text-slate-600 md:text-lg xl:max-w-[40vw] xl:text-[1.1vw]"
+          className="mx-auto max-w-md text-slate-600 md:text-lg xl:max-w-[40vw] xl:text-[1.1vw] dark:text-slate-300"
+          style={{
+            WebkitFontSmoothing: 'antialiased',
+          }}
         >
           Drag the divider to explore and compare our beautiful designs. Each side showcases our
           premium craftsmanship and attention to detail.
@@ -135,7 +144,7 @@ export const ResizableSection = () => {
                       src={panel.image}
                       alt={panel.title}
                       onLoad={() => handleImageLoad(index)}
-                      className={`size-full object-cover transition-transform duration-700 ${activePanel === index ? 'scale-105' : 'scale-100'}`}
+                      className={`aspect-auto size-full object-cover transition-transform duration-700 ${activePanel === index ? 'scale-105' : 'scale-100'}`}
                       style={panelStyles}
                     />
                   </Suspense>
