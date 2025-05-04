@@ -39,9 +39,9 @@ export function ReviewForm() {
   const { mutate, isPending } = useMutation({
     mutationFn: (data: ReviewType) =>
       toastPromise(submitReview(data), {
-        loading: 'Enviando tu mensaje...',
-        success: res => res.message || 'Mensaje enviado con éxito.',
-        error: err => err.message || 'Error al enviar el formulario.',
+        loading: 'Sending your comment...',
+        success: res => res.message || 'comment sent successfully.',
+        error: err => err.message || 'Error submitting form.',
       }),
   });
   function onSubmit(values: ReviewType) {

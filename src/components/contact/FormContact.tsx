@@ -33,9 +33,9 @@ export const FormContact = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: (data: ContactType) =>
       toastPromise(submitContact(data), {
-        loading: 'Enviando tu mensaje...',
-        success: res => res.message || 'Mensaje enviado con éxito.',
-        error: err => err.message || 'Error al enviar el formulario.',
+        loading: 'Sending your message...',
+        success: res => res.message || 'Message sent successfully.',
+        error: err => err.message || 'Error submitting form.',
       }),
   });
   function onSubmit(values: ContactType) {

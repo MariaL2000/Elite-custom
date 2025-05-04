@@ -16,9 +16,9 @@ export const ConfirmButtons: React.FC<ConfirmButtonsProps> = ({ orderId }) => {
   const { mutate, isPending } = useMutation({
     mutationFn: (action: Action) =>
       toastPromise(handleConfirm(action, orderId), {
-        loading: 'Enviando tu respuesta...',
-        success: res => res.message || 'Respuesta enviada con éxito.',
-        error: err => err.message || 'Error al enviar la respuesta.',
+        loading: 'Sending your response...',
+        success: res => res.message || 'Response sent successfully.',
+        error: err => err.message || 'Error sending response.',
       }),
   });
 
