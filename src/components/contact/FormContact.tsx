@@ -1,8 +1,6 @@
-'use client';
-
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
+
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -16,33 +14,14 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { SendIcon } from 'lucide-react';
 import { motion } from 'motion/react';
-
-const formSchema = z.object({
-  name: z
-    .string()
-    .min(3, { message: 'Name must be at least 3 characters' })
-    .max(20, { message: 'Name cannot exceed 20 characters' }),
-  email: z.string().email({ message: 'Please enter a valid email' }),
-  phone: z
-    .number({
-      invalid_type_error: 'Phone must be a number',
-      required_error: 'Phone is required',
-    })
-    .min(100000000, { message: 'Phone must have at least 9 digits' })
-    .max(999999999999, { message: 'Phone cannot exceed 12 digits' }),
-  address: z
-    .string()
-    .min(5, { message: 'Address must be at least 5 characters' })
-    .max(100, { message: 'Address cannot exceed 100 characters' }),
-  project_details: z
-    .string()
-    .min(10, { message: 'Details must be at least 10 characters' })
-    .max(150, { message: 'Details cannot exceed 150 characters' }),
-});
+import { ContactSchema, ContactType } from '@/schemas/contact.schema';
+import { toastPromise } from '../ui/toast-promise';
+import { submitContact } from '@/api/submitContact';
+import { useMutation } from '@tanstack/react-query';
 
 export const FormContact = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<ContactType>({
+    resolver: zodResolver(ContactSchema),
     defaultValues: {
       name: '',
       email: '',
@@ -51,10 +30,20 @@ export const FormContact = () => {
       project_details: '',
     },
   });
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    // Aquí puedes agregar la lógica para enviar el formulario
+  const { mutate, isPending } = useMutation({
+    mutationFn: (data: ContactType) =>
+      toastPromise(submitContact(data), {
+        loading: 'Enviando tu mensaje...',
+        success: res => res.message || 'Mensaje enviado con éxito.',
+        error: err => err.message || 'Error al enviar el formulario.',
+      }),
+  });
+  function onSubmit(values: ContactType) {
+    mutate(values, {
+      onSuccess: () => {
+        form.reset();
+      },
+    });
   }
 
   return (
@@ -210,8 +199,12 @@ export const FormContact = () => {
             transition={{ delay: 0.7 }}
             viewport={{ once: true }}
           >
-            <Button type="submit" className="h-[8vh] w-full text-xl xl:h-[6vh] xl:text-[1.5vw]">
-              Enviar
+            <Button
+              type="submit"
+              disabled={isPending}
+              className="h-[8vh] w-full text-xl xl:h-[6vh] xl:text-[1.5vw]"
+            >
+              {isPending ? 'Enviando...' : 'Enviar'}
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{ repeat: Infinity, duration: 2 }}

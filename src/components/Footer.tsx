@@ -24,7 +24,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative overflow-hidden bg-blue-100/90 px-4 py-12 backdrop-blur-sm md:px-6 md:py-16 xl:mt-[5%] xl:py-[4vw] dark:bg-gray-950/90">
+    <footer className="relative overflow-hidden bg-blue-100/90 px-4 py-12 backdrop-blur-sm md:px-6 md:py-16 xl:py-[4vw] dark:bg-gray-950/90">
       {/* Fondo decorativo */}
       <div className="absolute -top-12 -right-12 h-24 w-24 rounded-full bg-gradient-to-r from-indigo-500/20 to-teal-500/20 blur-2xl xl:-top-[5vw] xl:-right-[5vw] xl:h-[10vw] xl:w-[10vw] xl:blur-[2vw] dark:from-indigo-500/20 dark:to-teal-500/20"></div>
       <div className="absolute -bottom-8 -left-8 h-20 w-20 rounded-full bg-gradient-to-r from-indigo-500/10 to-teal-500/10 blur-lg xl:-bottom-[3vw] xl:-left-[3vw] xl:h-[8vw] xl:w-[8vw] xl:blur-[1.5vw] dark:from-indigo-500/10 dark:to-teal-500/10"></div>

@@ -1,42 +1,50 @@
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import { useCarousel } from '@/hooks/usecarousel';
+import { useScrollBasedMovement } from '@/hooks/useScrollBasedMovement';
 import { CarouselControls } from './CarouselControls';
 import { CarouselSlide } from './CarouselSlide';
 import { slides } from '@/datas/carousel';
 
 export const CarouselWithPlay = () => {
-  const { current, count, isPlaying, togglePlayPause, goToSlide, setApi } = useCarousel();
+  const { move, containerRef, elementRef } = useScrollBasedMovement<HTMLDivElement, HTMLDivElement>(
+    {
+      multiplier: 4,
+      padding: -5, // Set padding to 0 to prevent overflow
+    }
+  );
+
+  const { setApi, current, count, isPlaying, togglePlayPause, goToSlide } = useCarousel();
 
   return (
-    <div className="relative h-[90vh] w-full overflow-hidden sm:h-[75vh] md:h-[80vh]">
+    <div
+      ref={containerRef}
+      className="relative h-[90vh] w-full overflow-hidden sm:h-[75vh] md:h-[80vh]"
+    >
       <Carousel
+        setApi={setApi}
+        className="size-full"
         opts={{
           loop: true,
           align: 'center',
-          duration: 20, // Ajusta la velocidad de transición
         }}
-        setApi={setApi}
-        className="h-full"
       >
         <CarouselContent className="h-full">
           {slides.map((slide, index) => (
             <CarouselItem key={index} className="h-full">
-              <CarouselSlide imageUrl={slide.imageUrl} title={slide.title} priority={index === 0} />
+              <CarouselSlide imageUrl={slide.imageUrl} title={slide.title} priority />
             </CarouselItem>
           ))}
         </CarouselContent>
       </Carousel>
-
-      {/* Controles en la parte inferior */}
-      <div className="absolute right-0 bottom-[8rem] left-0 z-20 flex justify-center">
-        <CarouselControls
-          current={current}
-          count={count}
-          isPlaying={isPlaying}
-          togglePlayPause={togglePlayPause}
-          goToSlide={goToSlide}
-        />
-      </div>
+      <CarouselControls
+        ref={elementRef}
+        move={move}
+        current={current}
+        count={count}
+        isPlaying={isPlaying}
+        togglePlayPause={togglePlayPause}
+        goToSlide={goToSlide}
+      />
     </div>
   );
 };

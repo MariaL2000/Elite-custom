@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import * as z from 'zod';
+
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -18,25 +18,16 @@ import { StarRating } from './StarRating';
 
 import { motion } from 'motion/react';
 import { SendIcon } from 'lucide-react';
-
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: 'Name must be at least 2 characters.',
-  }),
-  thoughts: z.string().min(5, {
-    message: 'Please share your thoughts (minimum 5 characters).',
-  }),
-  suggestions: z.string().optional(),
-  rating: z.number().min(1, {
-    message: 'Please select a rating.',
-  }),
-});
+import { ReviewSchema, ReviewType } from '@/schemas/review.schema';
+import { submitReview } from '@/api/submitReview';
+import { useMutation } from '@tanstack/react-query';
+import { toastPromise } from '../ui/toast-promise';
 
 export function ReviewForm() {
   const [rating, setRating] = useState(0);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<ReviewType>({
+    resolver: zodResolver(ReviewSchema),
     defaultValues: {
       name: '',
       thoughts: '',
@@ -45,11 +36,20 @@ export function ReviewForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-
-    form.reset();
-    setRating(0);
+  const { mutate, isPending } = useMutation({
+    mutationFn: (data: ReviewType) =>
+      toastPromise(submitReview(data), {
+        loading: 'Enviando tu mensaje...',
+        success: res => res.message || 'Mensaje enviado con éxito.',
+        error: err => err.message || 'Error al enviar el formulario.',
+      }),
+  });
+  function onSubmit(values: ReviewType) {
+    mutate(values, {
+      onSuccess: () => {
+        form.reset();
+      },
+    });
   }
 
   return (
@@ -177,8 +177,12 @@ export function ReviewForm() {
             transition={{ delay: 0.7 }}
             viewport={{ once: true }}
           >
-            <Button type="submit" className="h-[8vh] w-full text-xl xl:h-[6vh] xl:text-[1.5vw]">
-              Submit review
+            <Button
+              type="submit"
+              disabled={isPending}
+              className="h-[8vh] w-full text-xl xl:h-[6vh] xl:text-[1.5vw]"
+            >
+              {isPending ? 'Enviando...' : 'Enviar'}
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{ repeat: Infinity, duration: 2 }}
