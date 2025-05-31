@@ -1,4 +1,5 @@
 import { Data } from '@/datas/carousel';
+import { SearchIcon } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 
 import { useState } from 'react';
@@ -97,12 +98,11 @@ const CardCarousel = ({ data, isIOS }: Props) => {
         >
           {!isOpen && (
             <motion.span
-              className="text-xl text-slate-700 xl:text-[1.3vw]"
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
             >
-              🔍
+              <SearchIcon className="size-6 text-slate-950 xl:size-[1.5vw]" />
             </motion.span>
           )}
         </motion.div>

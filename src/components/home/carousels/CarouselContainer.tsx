@@ -88,11 +88,13 @@ export function CarouselContainer({
         </CarouselContent>
 
         <CarouselPrevious
-          className="-translate-x-2 scale-[1.5] border-0 bg-white/80 shadow-md"
+          size="icon"
+          className="-translate-x-2 scale-[1.5] border-0 bg-white/80 shadow-md xl:p-[0.8vw]"
           onClick={() => api?.scrollPrev()}
         />
         <CarouselNext
-          className="translate-x-2 scale-[1.5] border-0 bg-white/80 shadow-md"
+          size="icon"
+          className="translate-x-2 scale-[1.5] border-0 bg-white/80 shadow-md xl:p-[0.8vw]"
           onClick={() => api?.scrollNext()}
         />
       </Carousel>
