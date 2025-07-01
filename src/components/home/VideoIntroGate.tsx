@@ -45,16 +45,15 @@ export const VideoIntroGate = () => {
   return (
     <>
       {!showIntro && (
-        <div className="fixed top-[0.75rem] right-[4rem] z-40 flex justify-end lg:top-[1.6%] lg:right-[5vw]">
-          <Button
-            onClick={handleReplayIntro}
-            variant="outline"
-            className="px-[1.2vw] py-[0.5vw] lg:text-[0.9vw] 2xl:py-[1vw] 2xl:text-[1vw]"
-          >
-            Watch Intro
-          </Button>
-        </div>
+        <Button
+          onClick={handleReplayIntro}
+          variant="outline"
+          className="px-[1.2vw] py-[0.5vw] lg:text-[0.9vw] 2xl:py-[1vw] 2xl:text-[1vw]"
+        >
+          Watch Intro
+        </Button>
       )}
+
       {showIntro && (
         <div
           className={`fixed inset-0 z-50 bg-black transition-opacity duration-700 ${

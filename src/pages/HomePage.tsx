@@ -12,12 +12,10 @@ import {
   VideoScrollSection,
 } from '@/components/home/sections';
 import { MaterialSelectorSection } from '@/components/home/sections/material-selector/MaterialSelectorSection';
-import { VideoIntroGate } from '@/components/home/VideoIntroGate';
 
 export const HomePage = () => {
   return (
     <div className="w-full">
-      <VideoIntroGate />
       <TitlePage />
       <div>
         <CarouselWithPlay />
