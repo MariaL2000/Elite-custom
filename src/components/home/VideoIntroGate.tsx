@@ -51,7 +51,7 @@ export const VideoIntroGate = () => {
             variant="outline"
             className="px-[1.2vw] py-[0.5vw] lg:text-[0.9vw] 2xl:py-[1vw] 2xl:text-[1vw]"
           >
-            Ver introducción
+            Watch Intro
           </Button>
         </div>
       )}
@@ -81,7 +81,7 @@ export const VideoIntroGate = () => {
               onClick={handleSkip}
               className="bg-black/60 text-white hover:bg-black/70 2xl:p-[1vw] 2xl:text-[1.5vw]"
             >
-              Saltar introducción
+              Skip Intro
             </Button>
           </div>
         </div>

@@ -31,28 +31,28 @@ export const VideoScrollSection = () => {
   const textItems: TextItem[] = [
     {
       id: 1,
-      title: 'Primer mensaje',
-      description: 'Descubre el inicio de nuestra historia.',
+      title: 'First Message',
+      description: 'Discover the beginning of our story.',
     },
     {
       id: 2,
-      title: 'Segundo mensaje',
-      description: 'Explorando nuevas posibilidades juntos.',
+      title: 'Second Message',
+      description: 'Exploring new possibilities together.',
     },
     {
       id: 3,
-      title: 'Tercer mensaje',
-      description: 'Innovación en cada detalle.',
+      title: 'Third Message',
+      description: 'Innovation in every detail.',
     },
     {
       id: 4,
-      title: 'Cuarto mensaje',
-      description: 'Construyendo el futuro hoy.',
+      title: 'Fourth Message',
+      description: 'Building the future today.',
     },
     {
       id: 5,
-      title: 'Quinto mensaje',
-      description: 'Excelencia en cada proyecto.',
+      title: 'Fifth Message',
+      description: 'Excellence in every project.',
     },
   ];
 
