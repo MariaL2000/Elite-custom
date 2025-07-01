@@ -13,4 +13,4 @@ export const URLS: URLS[] = [
   { name: 'Review', path: `${BASE_URL}review` },
 ];
 
-export const URL_API = 'https://backendelite.onrender.com/api';
+export const URL_API = 'https://backendelite1.onrender.com/api';

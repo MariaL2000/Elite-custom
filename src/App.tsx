@@ -8,12 +8,14 @@ import { GallerySectionPage } from './pages/GalleryDetailSection';
 import GalleryLayout from './layouts/GalleryLayout';
 import ReviewPage from './pages/ReviewPage';
 import { ConfirmPage } from './pages/ConfirmPage';
+import ScrollToTop from './components/ScrollToTop';
 
 const BASE_URL = import.meta.env.BASE_URL;
 
 const App = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="text-gray-900 duration-1000 dark:bg-slate-950 dark:text-gray-100">
         <Routes>
           <Route element={<Main />}>
