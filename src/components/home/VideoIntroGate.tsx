@@ -71,7 +71,7 @@ export const VideoIntroGate = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: 'easeOut' }}
           >
-            <source src={`${BASE_URL}videos/elite.mp4`} type="video/mp4" />
+            <source src={`${BASE_URL}videos/intro.mp4`} type="video/mp4" />
           </motion.video>
 
           <div className="absolute right-6 bottom-6 z-50">
