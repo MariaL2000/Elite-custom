@@ -1,5 +1,4 @@
 import { CompanyHero } from '@/components/about/CompanyHero';
-import { LeadershipSection } from '@/components/about/LeadershipSection';
 import { ValuesSection } from '@/components/about/ValuesSection';
 import { motion } from 'motion/react';
 
@@ -13,7 +12,7 @@ export const AboutPage = () => {
     >
       <CompanyHero />
       <ValuesSection />
-      <LeadershipSection />
+      
     </motion.div>
   );
 };
