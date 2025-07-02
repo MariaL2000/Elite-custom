@@ -18,7 +18,6 @@ export const MaterialSelectorSection = () => {
     setLoadedImages(prev => ({ ...prev, [id]: true }));
   };
 
-  // Estilos específicos para iOS/Safari
   const safariStyles: React.CSSProperties =
     isIOS || isSafari
       ? {
@@ -31,7 +30,6 @@ export const MaterialSelectorSection = () => {
   return (
     <section className="relative w-full py-12 md:py-16 xl:py-[8vh]" style={safariStyles}>
       <div className="mx-auto w-full px-4 md:px-6 xl:px-[2vw]">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -40,10 +38,8 @@ export const MaterialSelectorSection = () => {
           className="mb-12 text-center md:mb-16 xl:mb-[4vh]"
           style={safariStyles}
         >
-          <h2 className="font-satisfy text-3xl font-bold md:text-4xl xl:text-[2.5vw]">
-            <span className="bg-gradient-to-r from-indigo-400 via-teal-400 to-indigo-400 bg-clip-text text-transparent">
-              Choose Your Perfect Material
-            </span>
+          <h2 className="text-3xl font-bold md:text-4xl xl:text-[2.5vw]">
+            Choose Your Perfect Material
           </h2>
           <div
             className="mx-auto mb-4 h-1 w-24 bg-gradient-to-r from-indigo-500 via-teal-500 to-indigo-500 md:mb-6 xl:mb-[1vh] xl:h-[0.2vh] xl:w-[6vw]"

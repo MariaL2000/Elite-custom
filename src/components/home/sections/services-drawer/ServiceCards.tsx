@@ -15,7 +15,7 @@ export const ServiceCards = () => {
     <div className="relative w-full py-16 xl:py-[5vh]" id="services">
       <div className="relative z-10 px-4">
         <SectionHeader
-          title="Our Services"
+          title="Why choose us?"
           description="Discover how we can transform your spaces with our professional services."
         />
 

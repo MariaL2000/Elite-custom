@@ -8,22 +8,23 @@ export const services: ServiceItem[] = [
   {
     id: 1,
     title: 'Service 1',
-    description: 'Description of our first amazing service',
+    description:
+      'Custom quartz countertop installation for kitchens, offering stylish and durable surfaces.  ',
   },
   {
     id: 2,
     title: 'Service 2',
-    description: 'Description of our second amazing service',
+    description: 'Bathroom remodels with premium granite vanities and countertops.  ',
   },
   {
     id: 3,
     title: 'Service 3',
-    description: 'Description of our third amazing service',
+    description: 'Fireplace surround upgrades using elegant marble or quartz designs.  ',
   },
   {
     id: 4,
     title: 'Service 4',
-    description: 'Description of our fourth amazing service',
+    description: 'Laminate countertop replacements for a budget-friendly kitchen refresh.',
   },
 ];
 
