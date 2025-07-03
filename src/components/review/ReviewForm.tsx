@@ -48,6 +48,7 @@ export function ReviewForm() {
     mutate(values, {
       onSuccess: () => {
         form.reset();
+        setRating(0)
       },
     });
   }
