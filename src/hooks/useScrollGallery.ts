@@ -1,5 +1,5 @@
+import { GalleryItem } from '@/types/gallery.type';
 import { useState, useEffect, useRef } from 'react';
-import { GalleryItem } from '@/types/data.type';
 
 interface UseScrollGalleryProps {
   items: GalleryItem[];

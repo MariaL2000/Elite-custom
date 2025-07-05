@@ -67,7 +67,7 @@ export function CarouselContainer({
         onMouseDown={() => setIsPending(true)}
       >
         <CarouselContent className={isPending ? 'transition-none' : ''}>
-          {second_carousel.map((i, index) => (
+          {second_carousel.map(i => (
             <CarouselItem
               key={i.alt}
               className={`basis-full md:basis-1/2 ${slidesPerViewLg[sliders]}`}
