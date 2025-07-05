@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { URLS } from '@/config';
 import { ModeToggle } from '../buttons/ModleToggle';
-import { VideoIntroGate } from '../home/VideoIntroGate';
 
 export const NavBar = ({ ref }: React.RefAttributes<HTMLElement>) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -111,10 +110,8 @@ export const NavBar = ({ ref }: React.RefAttributes<HTMLElement>) => {
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="absolute top-3 right-4 bottom-2 z-40 flex items-center gap-4 xl:top-[1.2vw] xl:right-[1vw] xl:gap-[1vw] 2xl:bottom-[2vh]">
-        <VideoIntroGate />
-        <ModeToggle />
-      </div>
+
+      <ModeToggle />
     </motion.nav>
   );
 };
