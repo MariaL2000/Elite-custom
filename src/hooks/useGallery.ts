@@ -10,7 +10,5 @@ export const useGallery = () => {
       const response = await getImagesGallery();
       return response.data;
     },
-    staleTime: 100000, // los datos se consideran frescos durante 10 segundos
-    refetchInterval: 100000, // polling cada 10 segundos
   });
 };

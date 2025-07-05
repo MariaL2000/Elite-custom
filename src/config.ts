@@ -5,7 +5,7 @@ interface URLS {
   path: string;
 }
 export const URLS: URLS[] = [
-  { name: 'Home', path: `${BASE_URL}` },
+  { name: 'Home', path: `${BASE_URL}home` },
   { name: 'About', path: `${BASE_URL}about` },
   { name: 'Gallery', path: `${BASE_URL}gallery` },
 
