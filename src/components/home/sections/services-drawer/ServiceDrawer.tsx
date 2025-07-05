@@ -6,6 +6,7 @@ import { DrawerCloseButton } from './DrawerClosebutton';
 import { DrawerFooterComponent } from './DrawerFooterComponent';
 import { ServicesGrid } from './ServiceGrid';
 import { DrawerHeaderComponent } from './DrawerHeaderComponent';
+import { Button } from '@/components/ui/button';
 
 interface ServicesDrawerProps {
   isOpen: boolean;
@@ -22,7 +23,9 @@ export const ServicesDrawer = ({ isOpen, setIsOpen }: ServicesDrawerProps) => (
         viewport={{ once: true }}
         className="mt-12 flex justify-center"
       >
-        <ViewMoreButton onClick={() => setIsOpen(true)} />
+        <Button variant={'default'} className="xl:p-[1vw] xl:text-[1vw]">
+          View more services +
+        </Button>
       </motion.div>
     </DrawerTrigger>
 

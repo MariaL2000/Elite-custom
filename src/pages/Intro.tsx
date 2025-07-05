@@ -42,7 +42,7 @@ export const IntroPage = () => {
     >
       <motion.video
         ref={videoRef}
-        className="h-full w-full object-cover"
+        className="h-full w-full object-contain"
         autoPlay
         muted
         playsInline
