@@ -1,3 +1,5 @@
+import { DataSecondCarousel } from './data.type';
+
 export interface GalleryResponse {
   success: boolean;
   data: GalleryData[];
@@ -16,3 +18,4 @@ export interface RoomImage {
 export interface Metadata {
   last_updated: Date;
 }
+export interface GalleryItem extends DataSecondCarousel {}

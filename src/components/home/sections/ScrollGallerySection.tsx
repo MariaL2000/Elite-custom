@@ -1,11 +1,10 @@
 import { lazy, Suspense, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { GalleryItem } from '@/types/data.type';
 import { useScrollGallery } from '@/hooks/useScrollGallery';
 import { useBrowserDetection } from '@/hooks/useBrowserDetection';
 import { Skeleton } from '@/components/ui/skeleton';
+import { GalleryItem } from '@/types/gallery.type';
 
-// Componente de imagen diferido
 const LazyImage = lazy(() => import('@/components/ui/LazyImage'));
 
 interface ScrollGalleryProps {
@@ -67,7 +66,7 @@ export const ScrollGallerySection = ({ items }: ScrollGalleryProps) => {
               >
                 <Suspense fallback={<Skeleton className="size-full" />}>
                   <LazyImage
-                    src={item.imageUrl}
+                    src={item?.url}
                     alt={item.alt}
                     className="size-full object-cover md:h-[80vh]"
                   />
