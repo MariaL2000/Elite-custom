@@ -4,12 +4,14 @@ import { useState, lazy, Suspense } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useBrowserDetection } from '@/hooks/useBrowserDetection';
 import { MaterialPerView } from './MaterialPerView';
-import { Material, materials } from '@/datas/material-selector';
+import { Material } from '@/datas/material-selector';
+import { useData } from '@/context/DataContext';
 
 // Componente de imagen diferido
 const LazyImage = lazy(() => import('@/components/ui/LazyImage'));
 
 export const MaterialSelectorSection = () => {
+  const { materials } = useData();
   const [selectedMaterial, setSelectedMaterial] = useState<Material>(materials[0]);
   const [loadedImages, setLoadedImages] = useState<Record<string, boolean>>({});
   const { isIOS, isSafari } = useBrowserDetection();

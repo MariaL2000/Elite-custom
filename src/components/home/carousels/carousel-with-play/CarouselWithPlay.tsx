@@ -3,18 +3,20 @@ import { useCarousel } from '@/hooks/usecarousel';
 import { useScrollBasedMovement } from '@/hooks/useScrollBasedMovement';
 import { CarouselControls } from './CarouselControls';
 import { CarouselSlide } from './CarouselSlide';
-import { slides } from '@/datas/carousel';
+import { useData } from '@/context/DataContext';
 
 export const CarouselWithPlay = () => {
   const { move, containerRef, elementRef } = useScrollBasedMovement<HTMLDivElement, HTMLDivElement>(
     {
       multiplier: 4,
-      padding: -5, // Set padding to 0 to prevent overflow
+      padding: -5,
     }
   );
 
   const { setApi, current, count, isPlaying, togglePlayPause, goToSlide } = useCarousel();
+  const { main_carousel, loading } = useData();
 
+  const slidesTitles = ['DESIGN WITH US', 'ELEVATE YOUR EXPERIENCE', 'YOUR DREAM, OUR VISION'];
   return (
     <div
       ref={containerRef}
@@ -29,9 +31,17 @@ export const CarouselWithPlay = () => {
         }}
       >
         <CarouselContent className="h-full">
-          {slides.map((slide, index) => (
-            <CarouselItem key={index} className="h-full">
-              <CarouselSlide imageUrl={slide.imageUrl} title={slide.title} priority />
+          {slidesTitles.map((title, idx) => (
+            <CarouselItem key={title + idx} className="h-full">
+              <CarouselSlide
+                imageUrl={
+                  loading
+                    ? 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif'
+                    : main_carousel[idx]
+                }
+                title={title}
+                priority
+              />
             </CarouselItem>
           ))}
         </CarouselContent>

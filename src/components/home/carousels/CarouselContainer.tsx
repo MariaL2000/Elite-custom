@@ -11,23 +11,21 @@ import {
 import { SlidesPerView } from '@/types/carousel-type';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useBrowserDetection } from '@/hooks/useBrowserDetection';
-import { Data } from '@/datas/carousel';
+import { useData } from '@/context/DataContext';
 
-// Carga diferida del componente de tarjeta
 const LazyCardCarousel = lazy(() => import('./CardCarousel'));
 
 export function CarouselContainer({
-  data,
   sliders = 3,
   title,
 }: {
-  data: Data[];
   sliders?: keyof SlidesPerView;
   title?: string;
 }) {
   const [api, setApi] = useState<any>(null);
   const [isPending, setIsPending] = useState(false);
   const { isIOS } = useBrowserDetection();
+  const { second_carousel } = useData();
 
   const slidesPerViewLg: SlidesPerView = {
     3: 'lg:basis-1/3',
@@ -69,9 +67,9 @@ export function CarouselContainer({
         onMouseDown={() => setIsPending(true)}
       >
         <CarouselContent className={isPending ? 'transition-none' : ''}>
-          {data.map((i, index) => (
+          {second_carousel.map((i, index) => (
             <CarouselItem
-              key={`${i.alt || 'item'}-${index}`}
+              key={i.alt}
               className={`basis-full md:basis-1/2 ${slidesPerViewLg[sliders]}`}
             >
               <div className="p-[2%]">

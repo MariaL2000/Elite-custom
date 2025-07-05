@@ -1,11 +1,11 @@
-import { Data } from '@/datas/carousel';
+import { DataSecondCarousel } from '@/types/data.type';
 import { SearchIcon } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 
 import { useState } from 'react';
 
 interface Props {
-  data: Data;
+  data: DataSecondCarousel;
   isIOS?: boolean;
 }
 
@@ -22,7 +22,7 @@ const CardCarousel = ({ data, isIOS }: Props) => {
     : {};
 
   return (
-    <div className="group relative size-full overflow-hidden">
+    <div className="group relative aspect-[16/9] size-full overflow-hidden">
       <img
         src={url}
         alt={alt}

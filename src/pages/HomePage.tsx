@@ -1,7 +1,5 @@
 import { CarouselContainer, CarouselWithPlay } from '@/components/home/carousels';
 
-import { imagesDataCarousel } from '@/datas/carousel';
-
 import { galleryItems } from '@/datas/gallery';
 import {
   ResizableSection,
@@ -24,7 +22,6 @@ export const HomePage = () => {
         <VideoScrollSection />
 
         <CarouselContainer
-          data={imagesDataCarousel}
           sliders={4}
           title=" Insipre by our amazingcountertops and see our materials"
         />
