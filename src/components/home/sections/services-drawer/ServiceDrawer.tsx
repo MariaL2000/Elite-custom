@@ -1,7 +1,6 @@
 import { motion } from 'motion/react';
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
 import { serviceCards } from '@/datas/servicescards';
-import { ViewMoreButton } from './ViewMoreButton';
 import { DrawerCloseButton } from './DrawerClosebutton';
 import { DrawerFooterComponent } from './DrawerFooterComponent';
 import { ServicesGrid } from './ServiceGrid';

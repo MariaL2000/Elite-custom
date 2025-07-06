@@ -13,13 +13,12 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { SendIcon } from 'lucide-react';
-import { color, motion } from 'motion/react';
+import { motion } from 'motion/react';
 import { ContactSchema, ContactType } from '@/schemas/contact.schema';
 import { toastPromise } from '../ui/toast-promise';
 import { submitContact } from '@/api/submitContact';
 import { useMutation } from '@tanstack/react-query';
 import { useData } from '@/context/DataContext';
-import { cn } from '@/lib/utils';
 
 export const FormContact = () => {
   const form = useForm<ContactType>({

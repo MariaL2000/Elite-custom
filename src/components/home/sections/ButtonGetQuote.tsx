@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 
 export const ButtonGetQuote = () => {
-  const { colors, loading } = useData();
+  const { colors } = useData();
 
   return (
     <Button
