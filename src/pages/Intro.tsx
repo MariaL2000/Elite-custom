@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { BASE_URL } from '@/config';
+import { cn } from '@/lib/utils';
 
 export const IntroPage = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -35,7 +36,7 @@ export const IntroPage = () => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 bg-black transition-opacity duration-700 ${
+      className={`fixed inset-0 z-50 h-screen min-h-screen bg-black transition-opacity duration-700 ${
         videoEnded ? 'pointer-events-none opacity-0' : 'opacity-100'
       }`}
     >
@@ -47,7 +48,10 @@ export const IntroPage = () => {
 
       <motion.video
         ref={videoRef}
-        className={`h-full w-full object-contain ${isLoading ? 'invisible' : 'visible'}`}
+        className={cn(
+          isLoading ? 'invisible' : 'visible',
+          'absolute inset-0 h-full w-full object-cover'
+        )}
         autoPlay
         muted
         playsInline
@@ -57,7 +61,7 @@ export const IntroPage = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.2, ease: 'easeOut' }}
       >
-        <source src={`${BASE_URL}videos/intro.mp4`} type="video/mp4" />
+        <source src={`${BASE_URL}videos/intro.webm`} type="video/mp4" />
       </motion.video>
 
       {!isLoading && (
