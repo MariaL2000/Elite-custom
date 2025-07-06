@@ -14,7 +14,7 @@ export const CarouselWithPlay = () => {
   );
 
   const { setApi, current, count, isPlaying, togglePlayPause, goToSlide } = useCarousel();
-  const { main_carousel, loading } = useData();
+  const { main_carousel } = useData();
 
   const slidesTitles = ['DESIGN WITH US', 'ELEVATE YOUR EXPERIENCE', 'YOUR DREAM, OUR VISION'];
   return (
@@ -33,15 +33,7 @@ export const CarouselWithPlay = () => {
         <CarouselContent className="h-full">
           {slidesTitles.map((title, idx) => (
             <CarouselItem key={title + idx} className="h-full">
-              <CarouselSlide
-                imageUrl={
-                  loading
-                    ? 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif'
-                    : main_carousel[idx]
-                }
-                title={title}
-                priority
-              />
+              <CarouselSlide imageUrl={main_carousel[idx]} title={title} priority />
             </CarouselItem>
           ))}
         </CarouselContent>

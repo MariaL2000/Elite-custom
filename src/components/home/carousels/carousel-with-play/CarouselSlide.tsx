@@ -6,7 +6,6 @@ interface CarouselSlideProps {
   priority: boolean;
 }
 
-// CarouselSlide.tsx
 export const CarouselSlide = ({ imageUrl, title, priority }: CarouselSlideProps) => {
   return (
     <div className="relative flex h-[80vh] items-center justify-center overflow-hidden">

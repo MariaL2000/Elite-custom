@@ -22,6 +22,7 @@ import { ReviewSchema, ReviewType } from '@/schemas/review.schema';
 import { submitReview } from '@/api/submitReview';
 import { useMutation } from '@tanstack/react-query';
 import { toastPromise } from '../ui/toast-promise';
+import { useData } from '@/context/DataContext';
 
 export function ReviewForm() {
   const [rating, setRating] = useState(0);
@@ -40,15 +41,17 @@ export function ReviewForm() {
     mutationFn: (data: ReviewType) =>
       toastPromise(submitReview(data), {
         loading: 'Sending your comment...',
+
         success: res => res.message || 'comment sent successfully.',
         error: err => err.message || 'Error submitting form.',
       }),
   });
+  const { colors } = useData();
   function onSubmit(values: ReviewType) {
     mutate(values, {
       onSuccess: () => {
         form.reset();
-        setRating(0)
+        setRating(0);
       },
     });
   }
@@ -181,9 +184,10 @@ export function ReviewForm() {
             <Button
               type="submit"
               disabled={isPending}
+              style={{ background: colors.primary ?? '' }}
               className="h-[8vh] w-full text-xl xl:h-[6vh] xl:text-[1.5vw]"
             >
-              {isPending ? 'Enviando...' : 'Enviar'}
+              {isPending ? 'Sending...' : 'Send'}
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{ repeat: Infinity, duration: 2 }}

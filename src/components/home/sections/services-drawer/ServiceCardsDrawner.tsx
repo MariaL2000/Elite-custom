@@ -5,7 +5,7 @@ import { SectionHeader } from './SectionHeader';
 import { ServiceCard } from './ServiceCard';
 import { ServicesDrawer } from './ServiceDrawer';
 
-export const ServiceCards = () => {
+export const ServiceCardsDrawner = () => {
   const visibleCards = serviceCards.slice(0, 4);
   const [isOpen, setIsOpen] = useState(false);
 

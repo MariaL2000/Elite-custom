@@ -61,14 +61,14 @@ export function toastPromise<T>(
 
   sonnerToast.custom(id => {
     toastId = id;
-    return <Toast id={id} title="Enviando..." description={handlers.loading} variant="loading" />;
+    return <Toast id={id} title="Sending..." description={handlers.loading} variant="loading" />;
   });
 
   promise
     .then(data => {
       sonnerToast.custom(
         id => (
-          <Toast id={id} title="Éxito" description={handlers.success(data)} variant="success" />
+          <Toast id={id} title="Success" description={handlers.success(data)} variant="success" />
         ),
         { id: toastId }
       );

@@ -1,10 +1,9 @@
 import { CarouselContainer, CarouselWithPlay } from '@/components/home/carousels';
 
-import { galleryItems } from '@/datas/gallery';
 import {
   ResizableSection,
   ScrollGallerySection,
-  ServiceCards,
+  ServiceCardsDrawner,
   ServicesSection,
   TitlePage,
   VideoScrollSection,
@@ -27,9 +26,9 @@ export const HomePage = () => {
         />
 
         <ResizableSection />
-        <ServiceCards />
+        <ServiceCardsDrawner />
 
-        <ScrollGallerySection items={galleryItems} />
+        <ScrollGallerySection />
         <MaterialSelectorSection />
       </div>
     </div>

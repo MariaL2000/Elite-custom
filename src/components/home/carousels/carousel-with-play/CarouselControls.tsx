@@ -19,7 +19,7 @@ export const CarouselControls = React.forwardRef<HTMLDivElement, CarouselControl
         ref={ref}
         className="absolute top-0 left-1/2 z-20 flex flex-col items-center gap-2 xl:gap-[0.6vw]"
         animate={{ y: move, x: '-50%' }}
-        transition={{ type: 'spring', stiffness: 50, damping: 20 }} // más natural
+        transition={{ type: 'tween', stiffness: 100, damping: 20 }}
       >
         <Button
           variant="outline"

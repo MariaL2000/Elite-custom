@@ -13,11 +13,13 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { SendIcon } from 'lucide-react';
-import { motion } from 'motion/react';
+import { color, motion } from 'motion/react';
 import { ContactSchema, ContactType } from '@/schemas/contact.schema';
 import { toastPromise } from '../ui/toast-promise';
 import { submitContact } from '@/api/submitContact';
 import { useMutation } from '@tanstack/react-query';
+import { useData } from '@/context/DataContext';
+import { cn } from '@/lib/utils';
 
 export const FormContact = () => {
   const form = useForm<ContactType>({
@@ -38,6 +40,8 @@ export const FormContact = () => {
         error: err => err.message || 'Error submitting form.',
       }),
   });
+  const { colors } = useData();
+
   function onSubmit(values: ContactType) {
     mutate(values, {
       onSuccess: () => {
@@ -54,10 +58,10 @@ export const FormContact = () => {
       transition={{ duration: 0.8, type: 'spring' }}
       className="w-full rounded-lg bg-white p-6 shadow-md xl:p-[2vw] xl:shadow-2xl dark:bg-gray-800"
     >
-      <h2 className="mb-[3vh] text-center text-2xl font-bold xl:text-[2vw]">Contacto</h2>
+      <h2 className="mb-[3vh] text-center text-2xl font-bold xl:text-[2vw]">Contact</h2>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-[2vh] xl:space-y-[1.5vh]">
-          {/* Campo Nombre */}
+          {/* Name Field */}
           <FormField
             control={form.control}
             name="name"
@@ -69,10 +73,10 @@ export const FormContact = () => {
                 viewport={{ once: true }}
               >
                 <FormItem>
-                  <FormLabel className="text-lg xl:text-[1.2vw]">Nombre completo</FormLabel>
+                  <FormLabel className="text-lg xl:text-[1.2vw]">Full name</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Ingresa tu nombre"
+                      placeholder="Enter your name"
                       {...field}
                       className="h-[8vh] text-[3.5vw] xl:h-[5vh] xl:text-[1vw]"
                     />
@@ -83,7 +87,7 @@ export const FormContact = () => {
             )}
           />
 
-          {/* Campo Email */}
+          {/* Email Field */}
           <FormField
             control={form.control}
             name="email"
@@ -98,7 +102,7 @@ export const FormContact = () => {
                   <FormLabel className="text-lg xl:text-[1.2vw]">Email</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="tu@email.com"
+                      placeholder="your@email.com"
                       {...field}
                       className="h-[8vh] text-[3.5vw] xl:h-[5vh] xl:text-[1vw]"
                     />
@@ -109,7 +113,7 @@ export const FormContact = () => {
             )}
           />
 
-          {/* Campo Teléfono */}
+          {/* Phone Field */}
           <FormField
             control={form.control}
             name="phone"
@@ -121,10 +125,10 @@ export const FormContact = () => {
                 viewport={{ once: true }}
               >
                 <FormItem>
-                  <FormLabel className="text-lg xl:text-[1.2vw]">Teléfono</FormLabel>
+                  <FormLabel className="text-lg xl:text-[1.2vw]">Phone number</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Ej: 987654321"
+                      placeholder="Example: 987654321"
                       type="number"
                       {...field}
                       onChange={e => field.onChange(Number(e.target.value))}
@@ -137,7 +141,7 @@ export const FormContact = () => {
             )}
           />
 
-          {/* Campo Dirección */}
+          {/* Address Field */}
           <FormField
             control={form.control}
             name="address"
@@ -149,10 +153,10 @@ export const FormContact = () => {
                 viewport={{ once: true }}
               >
                 <FormItem>
-                  <FormLabel className="text-lg xl:text-[1.2vw]">Dirección</FormLabel>
+                  <FormLabel className="text-lg xl:text-[1.2vw]">Address</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Ingresa tu dirección"
+                      placeholder="Enter your address"
                       {...field}
                       className="h-[8vh] text-[3.5vw] xl:h-[5vh] xl:text-[1vw]"
                     />
@@ -163,7 +167,7 @@ export const FormContact = () => {
             )}
           />
 
-          {/* Campo Detalles del Proyecto */}
+          {/* Project Details Field */}
           <FormField
             control={form.control}
             name="project_details"
@@ -175,10 +179,10 @@ export const FormContact = () => {
                 viewport={{ once: true }}
               >
                 <FormItem>
-                  <FormLabel className="text-lg xl:text-[1.2vw]">Detalles del proyecto</FormLabel>
+                  <FormLabel className="text-lg xl:text-[1.2vw]">Project details</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Describe tu proyecto (máx. 150 caracteres)"
+                      placeholder="Describe your project (max. 150 characters)"
                       {...field}
                       className="min-h-[20vh] text-[3.5vw] xl:min-h-[15vh] xl:text-[1vw]"
                     />
@@ -202,9 +206,10 @@ export const FormContact = () => {
             <Button
               type="submit"
               disabled={isPending}
+              style={{ background: colors.primary ?? '' }}
               className="h-[8vh] w-full text-xl xl:h-[6vh] xl:text-[1.5vw]"
             >
-              {isPending ? 'Enviando...' : 'Enviar'}
+              {isPending ? 'Sending...' : 'Send'}
               <motion.span
                 animate={{ x: [0, 5, 0] }}
                 transition={{ repeat: Infinity, duration: 2 }}

@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useBrowserDetection } from '@/hooks/useBrowserDetection';
+import { useData } from '@/context/DataContext';
 
 // Componente de imagen diferido
 const LazyImage = lazy(() => import('@/components/ui/LazyImage'));
@@ -12,16 +13,18 @@ export const ResizableSection = () => {
   const [activePanel, setActivePanel] = useState<number | null>(null);
   const [loadedImages, setLoadedImages] = useState<boolean[]>([]);
   const { isSafari } = useBrowserDetection();
-
+  const { imagesResizable } = useData();
   const panels = [
     {
       image:
+        imagesResizable.kitchen ??
         'https://images.unsplash.com/photo-1677015030639-ffb7bbe68acb?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       title: 'Modern Kitchen Design',
       description: 'Elegant countertops with premium materials',
     },
     {
       image:
+        imagesResizable.bathroom ??
         'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       title: 'Luxury Bathroom',
       description: 'Sophisticated marble finishes',
@@ -103,7 +106,7 @@ export const ResizableSection = () => {
       >
         <ResizablePanelGroup
           direction="horizontal"
-          className="h-[70vh] max-h-[70vh] w-full overflow-hidden rounded-xl border shadow-2xl"
+          className="h-[70vh] max-h-[80vh] w-full overflow-hidden rounded-xl border shadow-2xl"
         >
           {panels.map((panel, index) => (
             <>

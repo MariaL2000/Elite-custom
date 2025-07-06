@@ -25,7 +25,7 @@ export function CarouselContainer({
   const [api, setApi] = useState<any>(null);
   const [isPending, setIsPending] = useState(false);
   const { isIOS } = useBrowserDetection();
-  const { second_carousel } = useData();
+  const { second_carousel, loading } = useData();
 
   const slidesPerViewLg: SlidesPerView = {
     3: 'lg:basis-1/3',
@@ -67,22 +67,37 @@ export function CarouselContainer({
         onMouseDown={() => setIsPending(true)}
       >
         <CarouselContent className={isPending ? 'transition-none' : ''}>
-          {second_carousel.map(i => (
-            <CarouselItem
-              key={i.alt}
-              className={`basis-full md:basis-1/2 ${slidesPerViewLg[sliders]}`}
-            >
-              <div className="p-[2%]">
-                <Card className="overflow-hidden border-0 bg-gradient-to-br from-slate-50 to-slate-100 p-0 shadow-lg">
-                  <CardContent className="aspect-square p-0">
-                    <Suspense fallback={<Skeleton className="h-full w-full" />}>
-                      <LazyCardCarousel data={i} isIOS={isIOS} />
-                    </Suspense>
-                  </CardContent>
-                </Card>
-              </div>
-            </CarouselItem>
-          ))}
+          {loading
+            ? Array.from({ length: 9 }).map((_, index) => (
+                <CarouselItem
+                  key={`skeleton-${index}`}
+                  className={`basis-full md:basis-1/2 ${slidesPerViewLg[sliders]}`}
+                >
+                  <div className="p-[2%]">
+                    <Card className="overflow-hidden border-0 bg-gradient-to-br from-slate-50 to-slate-100 p-0 shadow-lg">
+                      <CardContent className="aspect-square p-0">
+                        <Skeleton className="h-full w-full" />
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))
+            : second_carousel.map(i => (
+                <CarouselItem
+                  key={i.alt}
+                  className={`basis-full md:basis-1/2 ${slidesPerViewLg[sliders]}`}
+                >
+                  <div className="p-[2%]">
+                    <Card className="overflow-hidden border-0 bg-gradient-to-br from-slate-50 to-slate-100 p-0 shadow-lg">
+                      <CardContent className="aspect-square p-0">
+                        <Suspense fallback={<Skeleton className="h-full w-full" />}>
+                          <LazyCardCarousel data={i} isIOS={isIOS} />
+                        </Suspense>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
         </CarouselContent>
 
         <CarouselPrevious

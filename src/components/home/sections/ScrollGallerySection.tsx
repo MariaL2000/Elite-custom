@@ -3,15 +3,18 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useScrollGallery } from '@/hooks/useScrollGallery';
 import { useBrowserDetection } from '@/hooks/useBrowserDetection';
 import { Skeleton } from '@/components/ui/skeleton';
-import { GalleryItem } from '@/types/gallery.type';
+import { useData } from '@/context/DataContext';
+import { galleryItems } from '@/datas/gallery';
 
 const LazyImage = lazy(() => import('@/components/ui/LazyImage'));
 
-interface ScrollGalleryProps {
-  items: GalleryItem[];
-}
+export const ScrollGallerySection = () => {
+  const { imagesCarouselWithScroll } = useData();
+  const items = galleryItems.map((el, index) => ({
+    ...el,
+    url: imagesCarouselWithScroll[index] ?? el.url,
+  }));
 
-export const ScrollGallerySection = ({ items }: ScrollGalleryProps) => {
   const { activeIndex, sectionRef, contentRef } = useScrollGallery<HTMLDivElement, HTMLDivElement>({
     items,
     transitionDuration: 1.5,

@@ -1,8 +1,8 @@
 import { DataSecondCarousel } from '@/types/data.type';
 import { SearchIcon } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
-
 import { useState } from 'react';
+import { Skeleton } from '@/components/ui/skeleton';
 
 interface Props {
   data: DataSecondCarousel;
@@ -11,9 +11,10 @@ interface Props {
 
 const CardCarousel = ({ data, isIOS }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+
   const { alt, url, description, title } = data;
 
-  // Estilos específicos para iOS
   const imageStyles: React.CSSProperties = isIOS
     ? {
         WebkitTransform: 'translateZ(0)',
@@ -23,10 +24,15 @@ const CardCarousel = ({ data, isIOS }: Props) => {
 
   return (
     <div className="group relative aspect-[16/9] size-full overflow-hidden">
+      {!isImageLoaded && <Skeleton className="absolute inset-0 h-full w-full animate-pulse" />}
+
       <img
         src={url}
         alt={alt}
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
+        onLoad={() => setIsImageLoaded(true)}
+        className={`absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105 ${
+          isImageLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
         style={imageStyles}
         loading="lazy"
       />
@@ -92,7 +98,7 @@ const CardCarousel = ({ data, isIOS }: Props) => {
             duration: 0.5,
             ease: [0.4, 0, 0.2, 1],
           }}
-          className="flex origin-bottom-right items-center justify-center bg-white/90 shadow-lg backdrop-blur-sm hover:bg-white"
+          className="flex origin-bottom-right items-center justify-center bg-white/5 shadow-lg backdrop-blur-sm hover:bg-white/60"
           whileHover={{ scale: isOpen ? 1 : 1.05 }}
           style={imageStyles}
         >

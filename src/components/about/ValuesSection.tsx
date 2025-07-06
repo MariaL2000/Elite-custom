@@ -1,6 +1,10 @@
 import { motion } from 'motion/react';
 import { AspectRatioImage } from '../ui/AspectRatioImage';
 
+interface Props {
+  image?: string;
+}
+
 const values = [
   {
     title: 'Innovation',
@@ -19,7 +23,7 @@ const values = [
   },
 ];
 
-export const ValuesSection = () => {
+export const ValuesSection = ({ image }: Props) => {
   return (
     <section className="mb-20">
       <motion.div
@@ -29,7 +33,10 @@ export const ValuesSection = () => {
         className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-16"
       >
         <AspectRatioImage
-          src="https://images.unsplash.com/photo-1602028644961-dd13cb5d0c72?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src={
+            image ??
+            'https://images.unsplash.com/photo-1602028644961-dd13cb5d0c72?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+          }
           alt="Company headquarters"
           className="size-full object-cover"
         />

@@ -2,6 +2,7 @@ import { NavBar } from './navbar/NavBar';
 import { motion, AnimatePresence } from 'motion/react';
 import { useIntersectionObserver } from '@uidotdev/usehooks';
 import { ButtonGetQuote } from './home/sections/ButtonGetQuote';
+import { Briefcase } from 'lucide-react';
 
 export const Header = () => {
   const [ref, entry] = useIntersectionObserver({
@@ -30,9 +31,7 @@ export const NewNavBar = () => {
       transition={{ duration: 0.3 }}
     >
       <div className="flex items-center gap-2">
-        <h2 className="bg-gradient-to-r from-indigo-400 to-teal-400 bg-clip-text text-xl font-bold text-transparent">
-          Brand
-        </h2>
+        <Briefcase className="size-6 xl:size-[1.6vw]" />
       </div>
       <ButtonGetQuote />
     </motion.nav>

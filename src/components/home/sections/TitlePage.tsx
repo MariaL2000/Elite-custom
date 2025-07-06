@@ -28,7 +28,7 @@ export const TitlePage = () => {
     >
       {/* Logo */}
       <motion.div
-        className="short:top-0 absolute top-[5%] overflow-hidden md:h-[50vh] md:w-[50vw] lg:top-0 2xl:top-[5%]"
+        className="short:top-0 absolute top-[10%] overflow-hidden md:top-[4%] md:h-[50vh] md:w-[50vw] lg:top-0"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2, ease: 'easeIn' }}
@@ -45,19 +45,21 @@ export const TitlePage = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <motion.p
-            className="font-philosopher mb-12 text-center text-xl leading-relaxed md:text-2xl xl:text-[1.8vw]"
+            className="mb-12 text-center leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <span className="mb-4 block text-2xl font-semibold text-teal-600 md:text-3xl xl:text-[2vw] dark:text-teal-300">
+            <span className="mb-4 block text-2xl font-semibold text-teal-600 md:text-5xl xl:text-[2.6vw] dark:text-teal-300">
               Redefining home renovations
             </span>
-            Experience top-notch craftsmanship with our comprehensive services.
+            <span className="md:text-2xl xl:text-[1.5vw]">
+              Experience top-notch craftsmanship with our comprehensive services.
+            </span>
           </motion.p>
 
           <motion.div
-            className="relative mt-4"
+            className="relative"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: 0.5 }}

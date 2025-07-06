@@ -7,8 +7,9 @@ import { Material, materialsInfo } from '@/datas/material-selector';
 type ContextType = {
   main_carousel: string[];
   second_carousel: DataSecondCarousel[];
+  imagesCarouselWithScroll: string[];
   materials: Material[];
-  comparison: DataType['comparison'];
+  imagesResizable: { [k in 'kitchen' | 'bathroom']?: string };
   colors: DataType['colors'];
   loading: boolean;
   error: string | null;
@@ -54,18 +55,19 @@ export const DataProvider = ({ children }: ProviderProps) => {
     thumbnail: data?.materials[m.id as keyof typeof data.materials] ?? '',
   }));
 
+  const imagesResizable = {
+    kitchen: data?.galleries.kitchen[0],
+
+    bathroom: data?.galleries.bathroom[0],
+  };
+
+  const imagesCarouselWithScroll = data?.second_carousel ?? [];
   const value = {
     main_carousel: data?.main_carousel ?? [],
     second_carousel,
     materials,
-    galleries: data?.galleries ?? {
-      bathroom: [],
-      kitchen: [],
-      fireplace: [],
-    },
-    comparison: data?.comparison ?? {
-      before_after: { before: null, after: null },
-    },
+    imagesCarouselWithScroll,
+    imagesResizable,
     colors: data?.colors ?? {
       primary: null,
       secondary: null,
