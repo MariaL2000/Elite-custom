@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { motion } from 'motion/react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { type Material } from '@/datas/material-selector';
@@ -18,6 +18,9 @@ export const MaterialPerView = ({
   handleImageLoad,
   loadedImages,
 }: Props) => {
+  const imageId = `main-${selectedMaterial.id}`;
+  const isLoaded = loadedImages[imageId];
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -33,19 +36,17 @@ export const MaterialPerView = ({
             key={selectedMaterial.image}
             src={selectedMaterial.image}
             alt={selectedMaterial.name}
+            onLoad={() => handleImageLoad(imageId)}
             className="h-64 w-full object-cover md:h-80 lg:h-96 xl:h-[40vh]"
-            onLoad={() => handleImageLoad(`main-${selectedMaterial.id}`)}
             style={{
-              opacity: loadedImages[`main-${selectedMaterial.id}`] ? 1 : 0,
+              opacity: isLoaded ? 1 : 0,
               transition: 'opacity 0.5s ease-in-out',
               ...safariStyles,
             }}
           />
         </Suspense>
 
-        {!loadedImages[`main-${selectedMaterial.id}`] && (
-          <Skeleton className="absolute inset-0 size-full" />
-        )}
+        {!isLoaded && <Skeleton className="absolute inset-0 size-full" />}
 
         <motion.div
           className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6 text-white md:p-8 xl:p-[1.5vw]"

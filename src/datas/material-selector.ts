@@ -29,8 +29,8 @@ export const materialsInfo: Material[] = [
       "Elegant natural stone with distinctive veining. Adds luxury to any space but requires more maintenance as it's more porous and can stain more easily than other options.",
   },
   {
-    id: 'porcelain',
-    name: 'Porcelain',
+    id: 'quartzite',
+    name: 'Quartzite',
 
     description:
       "Modern, durable material that's resistant to scratches, heat, and stains. Available in various finishes including ones that mimic natural stone.",

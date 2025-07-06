@@ -1,4 +1,4 @@
-import { serviceCards } from './servicescards';
+import { serviceCards } from './datas/servicescards';
 
 // Icons for cards
 export const icons = [

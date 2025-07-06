@@ -1,7 +1,8 @@
 import { forwardRef, useState } from 'react';
+import { Skeleton } from './skeleton'; // Asegúrate de que esta ruta sea correcta
 
 const LazyImage = forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>(
-  ({ onLoad, style, ...props }, ref) => {
+  ({ onLoad, className = '', style, ...props }, ref) => {
     const [loaded, setLoaded] = useState(false);
 
     const handleLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
@@ -10,19 +11,23 @@ const LazyImage = forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImage
     };
 
     return (
-      <img
-        ref={ref}
-        loading="lazy"
-        decoding="async"
-        onLoad={handleLoad}
-        style={{
-          opacity: loaded ? 1 : 0,
-          transition: 'opacity 0.3s ease-in-out',
-          ...style,
-        }}
-        {...props}
-      />
+      <div className={`relative ${className}`} style={style}>
+        {!loaded && <Skeleton className="absolute inset-0 size-full animate-pulse" />}
+        <img
+          ref={ref}
+          loading="lazy"
+          decoding="async"
+          onLoad={handleLoad}
+          className={`h-full w-full object-cover transition-opacity duration-500 ${
+            loaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          {...props}
+        />
+      </div>
     );
   }
 );
+
+LazyImage.displayName = 'LazyImage';
+
 export default LazyImage;

@@ -67,13 +67,11 @@ export const ScrollGallerySection = () => {
                 }}
                 transition={{ duration: 0.7 }}
               >
-                <Suspense fallback={<Skeleton className="size-full" />}>
-                  <LazyImage
-                    src={item?.url}
-                    alt={item.alt}
-                    className="size-full object-cover md:h-[80vh]"
-                  />
-                </Suspense>
+                <LazyImage
+                  src={item?.url}
+                  alt={item.alt}
+                  className="size-full object-cover md:h-[80vh]"
+                />
               </motion.div>
             ))}
           </div>

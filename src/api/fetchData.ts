@@ -1,9 +1,9 @@
-import axiosInstance from "@/lib/axios";
+import axiosInstance from '@/lib/axios';
 
 export const fetchData = async () => {
-  const response = await axiosInstance.get("/index"); 
+  const response = await axiosInstance.get('/index');
   if (!response.data.success) {
-    throw new Error("Failed to fetch data");
+    throw new Error('Failed to fetch data');
   }
   return response.data.data;
 };

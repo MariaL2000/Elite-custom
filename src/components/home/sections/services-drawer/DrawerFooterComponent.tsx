@@ -14,11 +14,11 @@ export const DrawerFooterComponent = () => (
         className="rounded-lg border border-indigo-200 bg-indigo-50 p-2 text-center md:p-3 xl:p-[0.8vw] dark:border-indigo-700/50 dark:bg-indigo-900/30"
       >
         <p className="mb-2 text-xs text-gray-600 md:text-sm xl:text-[0.9vw] xl:leading-[1.2] dark:text-gray-200">
-          ¿Necesitas un servicio personalizado?
+          Do you need personalized service?
         </p>
         <Link to={`${BASE_URL}contact`}>
           <Button className="bg-gradient-to-r from-indigo-500 via-teal-500 to-indigo-500 px-4 py-1 text-xs text-white shadow-md transition-all hover:shadow-indigo-500/30 md:px-6 md:py-2 md:text-sm xl:px-[1.5vw] xl:py-[0.6vw] xl:text-[0.9vw] xl:leading-[1.2]">
-            Contáctanos
+            Contact us
           </Button>
         </Link>
       </motion.div>
