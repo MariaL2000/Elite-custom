@@ -1,8 +1,7 @@
-import { lazy, Suspense, useEffect, useRef } from 'react';
+import { lazy, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useScrollGallery } from '@/hooks/useScrollGallery';
 import { useBrowserDetection } from '@/hooks/useBrowserDetection';
-import { Skeleton } from '@/components/ui/skeleton';
 import { useData } from '@/context/DataContext';
 import { galleryItems } from '@/datas/gallery';
 
