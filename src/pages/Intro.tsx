@@ -36,7 +36,7 @@ export const IntroPage = () => {
 
   return (
     <div
-      className={`relative z-50 flex h-screen items-center justify-center bg-black transition-opacity duration-700 ${
+      className={`relative z-50 flex h-[100vh] items-center justify-center bg-black transition-opacity duration-700 ${
         videoEnded ? 'pointer-events-none opacity-0' : 'opacity-100'
       }`}
     >
@@ -56,7 +56,7 @@ export const IntroPage = () => {
         preload="auto"
         className={cn(
           isLoading ? 'invisible' : 'visible',
-          'absolute top-0 left-0 h-full w-full object-cover'
+          'absolute top-0 left-0 h-full w-full object-contain lg:object-fill'
         )}
         initial={{ opacity: 0, scale: 1.05 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -66,7 +66,7 @@ export const IntroPage = () => {
       </motion.video>
 
       {!isLoading && (
-        <div className="absolute right-6 bottom-8 z-50">
+        <div className="absolute right-6 bottom-12 z-50">
           <button
             onClick={handleSkip}
             className="rounded bg-black/60 px-6 py-2 text-lg text-white hover:bg-black/70 xl:text-[1vw]"
