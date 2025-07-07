@@ -20,14 +20,14 @@ export const IntroPage = () => {
   const finishIntro = () => {
     setVideoEnded(true);
 
-    // setTimeout(() => {
-    //   navigate(`${BASE_URL}home`);
-    // }, 800);
+    setTimeout(() => {
+      navigate(`${BASE_URL}home`);
+    }, 800);
   };
 
   const handleSkip = () => {
     videoRef.current?.pause();
-    // finishIntro();
+    finishIntro();
   };
 
   const handleVideoEnd = () => finishIntro();
