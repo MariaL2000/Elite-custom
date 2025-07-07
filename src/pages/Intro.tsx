@@ -19,7 +19,7 @@ export const IntroPage = () => {
 
   const finishIntro = () => {
     setVideoEnded(true);
-    localStorage.setItem('hasSeenIntro', 'true');
+
     setTimeout(() => {
       navigate(`${BASE_URL}home`);
     }, 800);
@@ -50,18 +50,18 @@ export const IntroPage = () => {
         ref={videoRef}
         className={cn(
           isLoading ? 'invisible' : 'visible',
-          'absolute inset-0 h-full w-full object-cover'
+          'absolute inset-0 h-full w-full object-contain object-center md:object-fill'
         )}
         autoPlay
-        muted
         playsInline
         onEnded={handleVideoEnd}
         onCanPlay={handleVideoLoaded}
+        preload="auto"
         initial={{ opacity: 0, scale: 1.05 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.2, ease: 'easeOut' }}
+        transition={{ duration: 1.3, ease: 'easeOut' }}
       >
-        <source src={`${BASE_URL}videos/intro.webm`} type="video/mp4" />
+        <source src={`${BASE_URL}videos/intro.webm`} type="video/webm" />
       </motion.video>
 
       {!isLoading && (
