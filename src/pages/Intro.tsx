@@ -54,7 +54,10 @@ export const IntroPage = () => {
         onEnded={handleVideoEnd}
         onCanPlay={handleVideoLoaded}
         preload="auto"
-        className={cn(isLoading ? 'invisible' : 'visible', 'w-full object-contain md:object-fill')}
+        className={cn(
+          isLoading ? 'invisible' : 'visible',
+          'absolute top-0 left-0 h-full w-full object-cover'
+        )}
         initial={{ opacity: 0, scale: 1.05 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.3, ease: 'easeOut' }}

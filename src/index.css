@@ -24,34 +24,6 @@ body {
 
 }
 
-/* Scrollbar personalizada para el drawer */
-.custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
-    background: transparent;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: #111827;
-
-    border-radius: 8px;
-    border: 1px solid #1f2937;
-
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #4f46e5;
-
-    border-radius: 8px;
-    border: 1px solid #6366f1;
-
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #6366f1;
-
-    border-color: #818cf8;
-
-}
 
 
 @theme inline {
