@@ -36,7 +36,7 @@ export const IntroPage = () => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 h-screen min-h-screen bg-black transition-opacity duration-700 ${
+      className={`relative inset-0 z-50 h-screen bg-black transition-opacity duration-700 ${
         videoEnded ? 'pointer-events-none opacity-0' : 'opacity-100'
       }`}
     >
@@ -48,15 +48,16 @@ export const IntroPage = () => {
 
       <motion.video
         ref={videoRef}
-        className={cn(
-          isLoading ? 'invisible' : 'visible',
-          'absolute inset-0 h-full w-full object-contain object-center md:object-fill'
-        )}
+        muted
         autoPlay
         playsInline
         onEnded={handleVideoEnd}
         onCanPlay={handleVideoLoaded}
         preload="auto"
+        className={cn(
+          isLoading ? 'invisible' : 'visible',
+          'absolute inset-0 h-full w-full object-contain object-center md:object-fill'
+        )}
         initial={{ opacity: 0, scale: 1.05 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.3, ease: 'easeOut' }}
