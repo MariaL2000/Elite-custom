@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { Main } from './components/Main';
 import { NotFound } from './pages/NotFound';
@@ -9,7 +9,6 @@ import GalleryLayout from './layouts/GalleryLayout';
 import ReviewPage from './pages/ReviewPage';
 import { ConfirmPage } from './pages/ConfirmPage';
 import ScrollToTop from './components/ScrollToTop';
-import { IntroPage } from './pages/Intro';
 
 const BASE_URL = import.meta.env.BASE_URL;
 
@@ -19,7 +18,7 @@ const App = () => {
       <ScrollToTop />
       <div className="text-gray-900 duration-1000 dark:bg-slate-950 dark:text-gray-100">
         <Routes>
-          <Route path={BASE_URL} element={<IntroPage />} />
+          <Route path={BASE_URL} element={<Navigate to={`${BASE_URL}home`} />} />
           <Route element={<Main />}>
             <Route path={`${BASE_URL}home`} element={<HomePage />} />
             <Route path={`${BASE_URL}about`} element={<AboutPage />} />

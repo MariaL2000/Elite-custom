@@ -1,14 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { BASE_URL } from '@/config';
 import { cn } from '@/lib/utils';
 
-export const IntroPage = () => {
+interface Props {
+  setEndedVideo: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const Intro = ({ setEndedVideo }: Props) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const navigate = useNavigate();
-  const [videoEnded, setVideoEnded] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -17,28 +19,31 @@ export const IntroPage = () => {
     };
   }, []);
 
-  const finishIntro = () => {
-    setVideoEnded(true);
-
-    setTimeout(() => {
-      navigate(`${BASE_URL}home`);
-    }, 800);
+  const triggerOutro = () => {
+    setIsFadingOut(true);
+    setEndedVideo(true);
   };
+
+  const handleVideoEnd = () => triggerOutro();
 
   const handleSkip = () => {
     videoRef.current?.pause();
-    finishIntro();
+    triggerOutro();
   };
-
-  const handleVideoEnd = () => finishIntro();
 
   const handleVideoLoaded = () => setIsLoading(false);
 
   return (
-    <div
-      className={`relative z-50 flex h-[100vh] items-center justify-center bg-black transition-opacity duration-700 ${
-        videoEnded ? 'pointer-events-none opacity-0' : 'opacity-100'
-      }`}
+    <motion.div
+      key="intro-container"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8 }}
+      className={cn(
+        'relative flex h-[100vh] items-center justify-center bg-black',
+        isFadingOut && 'pointer-events-none'
+      )}
     >
       {isLoading && (
         <div className="absolute inset-0 z-40 flex items-center justify-center bg-black">
@@ -56,25 +61,32 @@ export const IntroPage = () => {
         preload="auto"
         className={cn(
           isLoading ? 'invisible' : 'visible',
-          'absolute top-0 left-0 h-full w-full object-contain lg:object-fill'
+          'fixed -top-3 left-0 h-full w-full object-contain lg:object-fill'
         )}
         initial={{ opacity: 0, scale: 1.05 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.3, ease: 'easeOut' }}
+        exit={{ opacity: 0, scale: 1.02 }}
+        transition={{ duration: 1.2, ease: 'easeOut' }}
       >
         <source src={`${BASE_URL}videos/intro.webm`} type="video/webm" />
       </motion.video>
 
       {!isLoading && (
-        <div className="absolute right-6 bottom-12 z-50">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="absolute right-6 bottom-12 z-50"
+        >
           <button
             onClick={handleSkip}
             className="rounded bg-black/60 px-6 py-2 text-lg text-white hover:bg-black/70 xl:text-[1vw]"
           >
             Skip Intro
           </button>
-        </div>
+        </motion.div>
       )}
-    </div>
+    </motion.div>
   );
 };

@@ -39,8 +39,6 @@ export const MaterialPerView = ({
             onLoad={() => handleImageLoad(imageId)}
             className="h-64 w-full object-cover md:h-80 lg:h-96 xl:h-[40vh]"
             style={{
-              opacity: isLoaded ? 1 : 0,
-              transition: 'opacity 0.5s ease-in-out',
               ...safariStyles,
             }}
           />

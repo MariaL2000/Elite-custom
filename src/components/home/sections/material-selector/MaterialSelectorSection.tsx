@@ -10,7 +10,7 @@ import { Material } from '@/datas/material-selector';
 const LazyImage = lazy(() => import('@/components/ui/LazyImage'));
 
 export const MaterialSelectorSection = () => {
-  const { materials } = useData();
+  const { materials, loading } = useData();
   const [selectedMaterial, setSelectedMaterial] = useState<Material>(materials[0]);
   const [loadedImages, setLoadedImages] = useState<Record<string, boolean>>({});
   const { isIOS, isSafari } = useBrowserDetection();
@@ -118,12 +118,16 @@ export const MaterialSelectorSection = () => {
           </motion.div>
 
           {/* Preview */}
-          <MaterialPerView
-            safariStyles={safariStyles}
-            selectedMaterial={selectedMaterial}
-            handleImageLoad={handleImageLoad}
-            loadedImages={loadedImages}
-          />
+          {loading ? (
+            <Skeleton className="h-64 w-full md:h-80 lg:h-96 xl:h-[40vh]" />
+          ) : (
+            <MaterialPerView
+              safariStyles={safariStyles}
+              selectedMaterial={selectedMaterial}
+              handleImageLoad={handleImageLoad}
+              loadedImages={loadedImages}
+            />
+          )}
         </div>
       </div>
     </section>
