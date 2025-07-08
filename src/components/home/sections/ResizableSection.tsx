@@ -4,6 +4,7 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/componen
 import { Skeleton } from '@/components/ui/skeleton';
 import { useBrowserDetection } from '@/hooks/useBrowserDetection';
 import { useData } from '@/context/DataContext';
+import { ArrowRightIcon } from 'lucide-react';
 
 // Componente de imagen diferido
 const LazyImage = lazy(() => import('@/components/ui/LazyImage'));
@@ -184,20 +185,7 @@ export const ResizableSection = () => {
             transition={{ delay: 0.8, duration: 0.5 }}
             className="flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm text-slate-600 shadow-lg md:text-base xl:px-[1vw] xl:py-[0.5vh] xl:text-[0.9vw]"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M5 12h14"></path>
-              <path d="m12 5 7 7-7 7"></path>
-            </svg>
+            <ArrowRightIcon className="size-4 xl:size-[1vw]" />
             Drag to compare
           </motion.div>
         </div>
