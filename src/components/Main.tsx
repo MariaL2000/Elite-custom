@@ -5,7 +5,7 @@ import { ThemeProvider } from '@/providers/ThemeProvider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from '@/components/ui/sonner';
 import { DataProvider } from '@/context/DataContext';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { AnimatePresence, motion } from 'motion/react';
 import { Intro } from './Intro';
