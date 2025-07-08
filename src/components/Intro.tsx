@@ -21,6 +21,7 @@ export const Intro = ({ setEndedVideo }: Props) => {
 
   const triggerOutro = () => {
     setIsFadingOut(true);
+
     setEndedVideo(true);
   };
 
@@ -39,9 +40,9 @@ export const Intro = ({ setEndedVideo }: Props) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.5 }}
       className={cn(
-        'relative flex h-[100vh] items-center justify-center bg-black',
+        'relative hidden h-[100vh] bg-black lg:block',
         isFadingOut && 'pointer-events-none'
       )}
     >
