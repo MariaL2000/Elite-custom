@@ -27,7 +27,12 @@ export const TitlePage = () => {
     >
       {/* Logo */}
       <motion.div
-  className="short:top-0 absolute top-[10%] left-1/2 -translate-x-1/2 overflow-hidden md:top-[4%] md:h-[50vh] md:w-[50vw] lg:top-0"
+  className="absolute left-1/2 -translate-x-1/2 overflow-hidden
+    top-[8%] w-[90vw] h-[40vh]
+    sm:top-[10%] sm:w-[85vw] sm:h-[42vh]
+    md:top-[4%] md:w-[50vw] md:h-[50vh]
+    lg:top-0 lg:w-[50vw] lg:h-[50vh]
+    short:top-0 short:h-[35vh]"
   style={{
     mask: `
       linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%),
@@ -44,13 +49,12 @@ export const TitlePage = () => {
   animate={{ opacity: 1 }}
   transition={{ duration: 2, ease: 'easeIn' }}
 >
-  <img 
-    src="logo1.jpg" 
+  <img
+    src="logo1.jpg"
     alt="Elite Custom Countertops Logo"
     className="w-full h-full object-cover object-center"
   />
 </motion.div>
-
 
 
 
