@@ -14,7 +14,7 @@ export const ButtonGetQuote = () => {
       size="lg"
       style={{ background: colors.primary ?? '' }}
       className={cn(
-        !colors.primary && 'bg-gradient-to-r from-blue-600 to-blue-700',
+        !colors.primary && 'bg-(--chocolate-martini)',
 
         'group focus:ring-opacity-50 relative overflow-hidden px-10 py-6 font-medium text-white shadow-lg transition-all duration-100 hover:shadow-[0_0_15px_-3px_rgba(30,58,138,0.5)] focus:ring-2 focus:ring-blue-500 focus:outline-none xl:rounded-[0.3vw] xl:py-[3vh] dark:hover:shadow-[0_0_15px_-3px_rgba(30,64,175,0.5)]'
       )}

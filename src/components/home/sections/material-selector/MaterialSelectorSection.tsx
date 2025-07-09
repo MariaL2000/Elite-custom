@@ -33,7 +33,7 @@ export const MaterialSelectorSection = () => {
 
   return (
     <section className="relative w-full py-12 md:py-16 xl:py-[8vh]" style={safariStyles}>
-      <div className="mx-auto w-full px-4 md:px-6 xl:px-[2vw]">
+      <div className="mx-auto w-full px-6 md:px-6 xl:px-[2vw]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -58,7 +58,7 @@ export const MaterialSelectorSection = () => {
           </p>
         </motion.div>
 
-        <div className="flex flex-col gap-8 lg:flex-row xl:gap-[3vw]">
+        <div className="flex gap-8 lg:flex-row lg:justify-center xl:gap-[3vw]">
           {/* Material list */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -69,7 +69,7 @@ export const MaterialSelectorSection = () => {
             style={safariStyles}
           >
             <p className="mb-4 text-lg font-medium xl:text-[1.3vw]">Select a material:</p>
-            <div className="flex flex-wrap justify-center gap-4 lg:flex-col xl:gap-[1vw]">
+            <div className="grid grid-cols-2 gap-4 xl:gap-[1vw]">
               {materials.map(material => {
                 const isSelected = material.id === selectedMaterial.id;
                 return (
@@ -78,23 +78,23 @@ export const MaterialSelectorSection = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setSelectedMaterial(material)}
-                    className={`group flex items-center gap-3 rounded-full p-2 transition-all xl:gap-[1vw] xl:p-[0.5vw] ${
+                    className={`group flex flex-col items-center gap-2 rounded-xl p-3 transition-all ${
                       isSelected ? 'bg-gray-800/50 text-slate-100' : 'hover:bg-gray-800/30'
                     }`}
                     style={safariStyles}
                   >
                     <motion.div
-                      className={`relative h-14 w-14 overflow-hidden rounded-full border-2 md:h-16 md:w-16 xl:h-[4vw] xl:w-[4vw] ${
+                      className={`relative size-20 overflow-hidden rounded-full border-2 md:h-24 md:w-24 xl:size-[10vw] ${
                         isSelected
                           ? 'border-indigo-400'
                           : 'border-gray-600 group-hover:border-gray-400'
                       }`}
                     >
-                      <Suspense fallback={<Skeleton className="size-full rounded-full" />}>
+                      <Suspense fallback={<Skeleton className="size-full rounded-xl" />}>
                         <LazyImage
                           src={material.thumbnail}
                           alt={material.name}
-                          className="size-full object-cover"
+                          className="h-full w-full object-cover"
                           onLoad={() => handleImageLoad(`thumb-${material.id}`)}
                           style={safariStyles}
                         />
@@ -108,7 +108,7 @@ export const MaterialSelectorSection = () => {
                         />
                       )}
                     </motion.div>
-                    <span className="text-sm font-medium md:text-base xl:text-[1.1vw]">
+                    <span className="text-center text-sm font-medium md:text-base xl:text-[1.1vw]">
                       {material.name}
                     </span>
                   </motion.button>

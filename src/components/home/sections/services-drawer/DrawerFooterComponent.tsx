@@ -17,7 +17,7 @@ export const DrawerFooterComponent = () => (
           Do you need personalized service?
         </p>
         <Link to={`${BASE_URL}contact`}>
-          <Button className="bg-gradient-to-r from-indigo-500 via-teal-500 to-indigo-500 px-4 py-1 text-xs text-white shadow-md transition-all hover:shadow-indigo-500/30 md:px-6 md:py-2 md:text-sm xl:px-[1.5vw] xl:py-[0.6vw] xl:text-[0.9vw] xl:leading-[1.2]">
+          <Button className="bg-(--chocolate-martini) px-4 py-1 text-xs text-white shadow-md transition-all hover:shadow-indigo-500/30 md:px-6 md:py-2 md:text-sm xl:rounded-[0.6vw] xl:px-[1.5vw] xl:py-[1vw] xl:text-[0.9vw] xl:leading-[1.2]">
             Contact us
           </Button>
         </Link>

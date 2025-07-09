@@ -12,7 +12,7 @@ export const ServiceCard = ({ card }: ServiceCardProps) => {
   // Eliminamos motion para mejor performance en iOS
   return (
     <div
-      className={`group shadow-l relative overflow-hidden rounded-xl border border-gray-800 bg-slate-900/70 p-4 backdrop-blur-sm transition-all duration-300 md:p-6 xl:p-[1.5vw] dark:bg-gray-900 ${
+      className={`group shadow-l relative overflow-hidden rounded-xl border bg-(--mocha-mousse) p-4 backdrop-blur-sm transition-all duration-300 md:p-6 xl:p-[1.5vw] xl:py-[3vw] 2xl:rounded-[0.8vw] ${
         isHovered ? 'scale-[1.03] shadow-xl' : ''
       }`}
       style={{
@@ -29,7 +29,7 @@ export const ServiceCard = ({ card }: ServiceCardProps) => {
             className="mb-2 text-xl font-bold text-white transition-colors duration-300 md:mb-3 md:text-2xl xl:text-[1.5vw]"
             style={{
               lineHeight: '1.3',
-              color: isHovered ? '#5eead4' : 'white', // teal-300
+              color: isHovered ? 'var(--baltic-amber)' : 'white', // teal-300
             }}
           >
             {card.title}

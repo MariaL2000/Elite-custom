@@ -107,7 +107,7 @@ export const ResizableSection = () => {
       >
         <ResizablePanelGroup
           direction="horizontal"
-          className="h-[70vh] max-h-[80vh] w-full overflow-hidden rounded-xl border shadow-2xl"
+          className="h-[70vh] max-h-[70vh] w-full overflow-hidden rounded-xl border shadow-2xl"
         >
           {panels.map((panel, index) => (
             <>

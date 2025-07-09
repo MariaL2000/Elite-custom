@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -7,7 +9,10 @@
 
 html {
 
-    font-family: "Inter", sans-serif;
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+
+
     scroll-behavior: smooth;
 }
 
@@ -79,6 +84,15 @@ body {
 }
 
 :root {
+    --cannoli-cream: rgb(240, 234, 214);
+    --cream-tan: rgb(233, 202, 173);
+    --safari: rgb(181, 162, 124);
+    --sirocco: rgb(137, 128, 121);
+    --mocha-mousse: rgb(111, 90, 77);
+    --chanterelle: rgb(208, 188, 145);
+    --baltic-amber: rgb(153, 101, 21);
+    --chocolate-martini: rgb(80, 52, 35);
+
 
     --radius: 0.625rem;
     --background: oklch(1 0 0);
@@ -194,7 +208,12 @@ button,
     font-family: "Philosopher", serif;
     font-weight: 400;
     font-style: normal;
+
 }
+
+
+
+
 
 /* Fixes para Safari */
 @supports (-webkit-touch-callout: none) {

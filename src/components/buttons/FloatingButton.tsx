@@ -43,7 +43,7 @@ export const FloatingButton = ({ to, color, children }: Props) => {
       >
         <Button
           variant="outline"
-          className={`border-2 ${colorClasses[color].border} bg-transparent px-6 py-2 ${colorClasses[color].text} shadow-lg ${colorClasses[color].shadow} transition-all duration-300 ${colorClasses[color].hoverBg} hover:text-white hover:shadow-xl ${colorClasses[color].shadow} xl:px-[1.5vw] xl:py-[0.7vw] xl:text-[0.9vw]`}
+          className={`border-2 ${colorClasses[color].border} bg-transparent px-6 py-2 ${colorClasses[color].text} shadow-lg ${colorClasses[color].shadow} transition-all duration-300 ${colorClasses[color].hoverBg} hover:text-white hover:shadow-xl ${colorClasses[color].shadow} xl:px-[1.5vw] xl:py-[1vw] xl:text-[0.9vw]`}
         >
           {children}
         </Button>

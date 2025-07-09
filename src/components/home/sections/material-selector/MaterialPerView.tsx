@@ -27,17 +27,17 @@ export const MaterialPerView = ({
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5, delay: 0.4 }}
       viewport={{ once: true }}
-      className="w-[98%] px-4 lg:w-3/4 lg:p-0 xl:w-[72vw]"
+      className="w-[98%] lg:w-3/4 lg:p-0 xl:w-[60vw]"
       style={safariStyles}
     >
       <div className="relative overflow-hidden rounded-xl border border-gray-700 bg-gray-900/50 shadow-xl backdrop-blur-sm">
-        <Suspense fallback={<Skeleton className="h-64 w-full md:h-80 lg:h-96 xl:h-[40vh]" />}>
+        <Suspense fallback={<Skeleton className="h-64 w-full md:h-80 lg:h-[60vh]" />}>
           <LazyImage
             key={selectedMaterial.image}
             src={selectedMaterial.image}
             alt={selectedMaterial.name}
             onLoad={() => handleImageLoad(imageId)}
-            className="h-64 w-full object-cover md:h-80 lg:h-96 xl:h-[40vh]"
+            className="h-64 w-full object-cover md:h-80 lg:h-[60vh]"
             style={{
               ...safariStyles,
             }}

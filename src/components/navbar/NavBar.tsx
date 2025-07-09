@@ -29,7 +29,7 @@ export const NavBar = ({ ref }: React.RefAttributes<HTMLElement>) => {
         'relative z-10 flex w-full items-center justify-between gap-8 px-4 py-3 transition-all duration-300 md:justify-start md:px-8 md:py-4 xl:gap-16 xl:px-[2vw] xl:py-[1vw]',
         scrolled
           ? 'bg-background/95 shadow-lg backdrop-blur-md dark:bg-gray-900/95'
-          : 'bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800'
+          : 'bg-(--siroco)'
       )}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}

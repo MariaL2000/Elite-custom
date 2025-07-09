@@ -14,17 +14,17 @@ export const Header = () => {
   const isNavBarVisible = entry?.isIntersecting;
 
   return (
-    <>
+    <header>
       <NavBar ref={ref} />
       <AnimatePresence>{!isNavBarVisible && <NewNavBar />}</AnimatePresence>
-    </>
+    </header>
   );
 };
 
 export const NewNavBar = () => {
   return (
     <motion.nav
-      className="border-border/50 bg-background/80 fixed top-0 right-0 left-0 z-50 flex w-full items-center justify-between border-b px-6 py-3 shadow-lg backdrop-blur-md md:px-[2rem] dark:bg-gray-900/80"
+      className="border-border/50 fixed top-0 right-0 left-0 z-50 flex w-full items-center justify-between border-b bg-slate-950/80 px-6 py-3 shadow-lg backdrop-blur-md md:px-[2rem] dark:bg-gray-900/80"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}

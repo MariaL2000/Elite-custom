@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import { ServiceCardType } from '@/types/services';
 import { motion } from 'motion/react';
 
@@ -16,14 +17,17 @@ export const DrawerServiceCard = ({ card, index, className }: DrawerServiceCardP
       scale: 1.02,
       boxShadow: '0 10px 15px -5px rgba(0, 0, 0, 0.2), 0 5px 5px -5px rgba(0, 0, 0, 0.1)',
     }}
-    className={`group relative overflow-hidden rounded-xl border border-gray-800 bg-slate-800/80 p-3 text-gray-100 shadow-lg backdrop-blur-sm transition-all duration-300 md:p-4 lg:p-3 xl:p-[1vw] dark:bg-gray-900/50 ${className || ''}`}
+    className={cn(
+      'group relative overflow-hidden rounded-xl border border-(--mocha-mousse) bg-(--mocha-mousse) p-3 text-gray-100 shadow-lg backdrop-blur-sm transition-all duration-300 md:p-4 lg:p-3 xl:p-[1vw]',
+      className || ''
+    )}
     style={{
       minHeight: 'clamp(100px, 12vh, 150px)', // Altura más compacta
     }}
   >
     <div className="flex items-start gap-2 md:gap-3">
       <div className="flex-1">
-        <h3 className="mb-1 text-base font-bold text-white transition-colors duration-300 group-hover:text-teal-300 md:text-lg lg:text-base xl:text-[1.1vw]">
+        <h3 className="mb-1 text-base font-bold text-white transition-colors duration-300 group-hover:text-(--baltic-amber) md:text-lg lg:text-base xl:text-[1.1vw]">
           {card.title}
         </h3>
         <p className="text-xs text-gray-300 transition-colors duration-300 group-hover:text-white md:text-sm lg:text-xs xl:text-[0.7vw]">

@@ -33,7 +33,7 @@ export const TitlePage = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 2, ease: 'easeIn' }}
       >
-        <Logo className="fill-black md:size-full dark:fill-white" />
+        <img src="icon.png" />
       </motion.div>
 
       {/* Content */}
