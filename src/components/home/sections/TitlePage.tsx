@@ -1,4 +1,3 @@
-import { Logo } from '@/components/Logo';
 import useWindowScreen from '@/hooks/useWindowScreen';
 import { motion } from 'motion/react';
 import { useMemo } from 'react';
