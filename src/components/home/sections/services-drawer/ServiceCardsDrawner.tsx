@@ -12,7 +12,7 @@ export const ServiceCardsDrawner = () => {
   useDrawerKeyboardClose(isOpen, setIsOpen);
 
   return (
-    <div className="relative w-full py-16 xl:py-[5vh]" id="services">
+    <div className="relative  w-full py-16 xl:py-[5vh]" id="services">
       <div className="relative z-10 px-4">
         <SectionHeader
           title="Why choose us?"

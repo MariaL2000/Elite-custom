@@ -21,23 +21,43 @@ export const TitlePage = () => {
 
   return (
     <motion.div
-      className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-slate-50 py-30 text-gray-900 transition-colors duration-300 dark:bg-gray-950 dark:text-white"
+      className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-(--safari)/30 py-30 text-gray-900 transition-colors duration-300 dark:bg-gray-950 dark:text-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
       {/* Logo */}
       <motion.div
-        className="short:top-0 absolute top-[10%] overflow-hidden md:top-[4%] md:h-[50vh] md:w-[50vw] lg:top-0"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 2, ease: 'easeIn' }}
-      >
-        <img src="icon.png" />
-      </motion.div>
+  className="short:top-0 absolute top-[10%] left-1/2 -translate-x-1/2 overflow-hidden md:top-[4%] md:h-[50vh] md:w-[50vw] lg:top-0"
+  style={{
+    mask: `
+      linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)
+    `,
+    WebkitMask: `
+      linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)
+    `,
+    maskComposite: 'intersect',
+    WebkitMaskComposite: 'source-in'
+  }}
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 2, ease: 'easeIn' }}
+>
+  <img 
+    src="logo1.jpg" 
+    alt="Elite Custom Countertops Logo"
+    className="w-full h-full object-cover object-center"
+  />
+</motion.div>
+
+
+
+
 
       {/* Content */}
-      <div className="relative z-4 flex flex-col items-center px-4">
+      <div className="relative z-4 flex flex-col items-center px-4 mt-16 sm:mt-20 md:mt-24 lg:mt-28 xl:mt-32">
         <motion.div
           className="mx-auto flex max-w-3xl flex-col items-center xl:max-w-[35vw]"
           initial={{ opacity: 0 }}
@@ -45,18 +65,25 @@ export const TitlePage = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <motion.p
-            className="mb-12 text-center leading-relaxed"
+            className="mb-7 text-center leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <span className="mb-4 block text-2xl font-semibold text-teal-600 md:text-5xl xl:text-[2.6vw] dark:text-teal-300">
-              Redefining home renovations
+            <span
+              className="mb-2 mt-3 block font-satisfy text-5xl font-bold sm:text-5xl md:text-7xl lg:text-8xl xl:text-[5vw] 2xl:text-[7rem] leading-tight tracking-wide transform transition-all duration-300 hover:scale-105"
+              style={{
+                color: 'var(--sirocco)',
+                textShadow: '0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08)',
+                letterSpacing: '0.025em',
+                filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))'
+              }}
+            >
+              Elite Custom Countertops
             </span>
-            <span className="md:text-2xl xl:text-[1.5vw]">
-              Experience top-notch craftsmanship with our comprehensive services.
-            </span>
+
           </motion.p>
+
 
           <motion.div
             className="relative"
@@ -69,7 +96,6 @@ export const TitlePage = () => {
             <ButtonGetQuote />
           </motion.div>
         </motion.div>
-
         {/* Scroll indicator */}
         <motion.div
           className="absolute -bottom-22 xl:-bottom-[10vh]"
@@ -102,11 +128,12 @@ export const TitlePage = () => {
         </motion.div>
       </div>
 
+
       {/* Particles */}
       {particles.map((particle, i) => (
         <motion.div
           key={i}
-          className="absolute size-1 rounded-full bg-indigo-500 xl:size-[0.3vw] dark:bg-white"
+          className="absolute size-1 rounded-full bg-white xl:size-[1.1vw] dark:bg-white"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
@@ -125,5 +152,12 @@ export const TitlePage = () => {
         />
       ))}
     </motion.div>
+
+
+
+
+
+
+
   );
 };

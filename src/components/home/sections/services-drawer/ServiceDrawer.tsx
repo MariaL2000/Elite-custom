@@ -26,7 +26,7 @@ export const ServicesDrawer = ({ isOpen, setIsOpen }: ServicesDrawerProps) => (
           variant={'default'}
           className="xl:px-[1vw] xl:py-[1.4vw] xl:text-[1vw] 2xl:rounded-[0.6vw]"
         >
-          View more services +
+          View more services 
         </Button>
       </motion.div>
     </DrawerTrigger>

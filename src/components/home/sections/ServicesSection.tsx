@@ -30,7 +30,7 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="px-4 py-16 transition-colors duration-300 md:px-6 xl:px-[2vw] xl:py-[8vh] dark:bg-gray-950"
+      className="px-4 py-10 mt-18 transition-colors duration-300 md:px-6 xl:px-[2vw] xl:py-[8vh] dark:bg-gray-950"
     >
       <div className="container mx-auto max-w-6xl xl:max-w-[80vw]">
         <motion.h2
@@ -38,7 +38,12 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5 }}
-          className="mb-12 text-center text-3xl font-bold text-gray-900 md:text-4xl xl:mb-[3vh] xl:text-[2.5vw] dark:text-white"
+          className="mb-3 text-center text-5xl font-normal sm:text-6xl md:text-7xl lg:text-8xl xl:mb-[3vh] xl:text-[4vw] 2xl:text-[5rem]"
+style={{ 
+  fontFamily: 'Satisfy, cursive',
+  color: 'var(--sirocco)',
+}}
+
         >
           Our Services
         </motion.h2>
@@ -53,13 +58,13 @@ export function ServicesSection() {
           {services.map(service => (
             <motion.div key={service.id} variants={itemVariants}>
               <Card className="h-full border-gray-200 bg-slate-100/70 shadow-md transition-all duration-300 hover:border-indigo-100 hover:shadow-lg 2xl:rounded-[0.7vw] 2xl:shadow-xl dark:border-gray-800 dark:bg-gray-900 dark:hover:border-indigo-900/50">
-                <CardHeader className="p-6 xl:p-[1.5vw]">
+                <CardHeader className="p-1 xl:p-[1.3vw]">
                   <CardTitle className="text-xl text-gray-800 xl:text-[1.5vw] dark:text-gray-100">
                     {service.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-6 pt-0 xl:p-[1.5vw] xl:pt-0">
-                  <p className="text-gray-600 xl:text-[0.9vw] dark:text-gray-400">
+                  <p className="text-gray-600 xl:text-[1.2vw] dark:text-gray-400">
                     {service.description}
                   </p>
                 </CardContent>
