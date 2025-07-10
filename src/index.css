@@ -32,18 +32,7 @@ body {
 
 
 @theme inline {
-    --breakpoint-3xl: 120rem;
-    /* 1920px ÷ 16px = 120rem */
-    --breakpoint-4xl: 160rem;
-    /* 2560px ÷ 16px = 160rem */
-    --breakpoint-5xl: 240rem;
-    /* 3840px ÷ 16px = 240rem */
-    --breakpoint-6xl: 320rem;
-    /* 5120px ÷ 16px = 320rem */
-    --breakpoint-7xl: 480rem;
-    /* 7680px ÷ 16px = 480rem */
-    --breakpoint-8xl: 512rem;
-    /* 8192px ÷ 16px = 512rem */
+
 
 
     --radius-sm: calc(var(--radius) - 4px);
@@ -173,6 +162,9 @@ body {
         @apply bg-background text-foreground;
     }
 
+    :not(h1, h2, h3) {
+        @apply text-[16px] xl:text-[1vw]
+    }
 
 }
 

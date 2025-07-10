@@ -41,7 +41,7 @@ export const ScrollGallerySection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative  w-full bg-(--chanterelle)"
+      className="relative w-full bg-(--chanterelle)/30"
       style={{ height: `${items.length * 100}vh`, ...safariStyles }}
     >
       <div

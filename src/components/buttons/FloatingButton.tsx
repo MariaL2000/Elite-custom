@@ -3,23 +3,23 @@ import { Link } from 'react-router-dom';
 import { Button } from '../ui/button';
 interface Props {
   to: string;
-  color: 'indigo' | 'teal';
+  color: 'balticAmber' | 'chocolateMartini';
   children: React.ReactNode;
 }
 // Componente reutilizable para los botones flotantes
 export const FloatingButton = ({ to, color, children }: Props) => {
   const colorClasses = {
-    indigo: {
-      border: 'border-indigo-600',
-      text: 'text-indigo-600',
-      hoverBg: 'hover:bg-indigo-600',
-      shadow: 'shadow-indigo-500/40',
+    balticAmber: {
+      border: 'border-(--baltic-amber)',
+      text: 'text-(--baltic-amber)',
+      hoverBg: 'hover:bg-(--baltic-amber)',
+      shadow: 'shadow-(--baltic-amber)/40',
     },
-    teal: {
-      border: 'border-teal-600',
-      text: 'text-teal-600',
-      hoverBg: 'hover:bg-teal-600',
-      shadow: 'shadow-teal-500/40',
+    chocolateMartini: {
+      border: 'border-(--chocolate-martini)',
+      text: 'text-(--chocolate-martini)',
+      hoverBg: 'hover:bg-(--chocolate-martini)',
+      shadow: 'shadow-(--chocolate-martini)40',
     },
   };
 

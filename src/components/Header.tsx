@@ -14,7 +14,7 @@ export const Header = () => {
   const isNavBarVisible = entry?.isIntersecting;
 
   return (
-    <header>
+    <header className="shadow-lg">
       <NavBar ref={ref} />
       <AnimatePresence>{!isNavBarVisible && <NewNavBar />}</AnimatePresence>
     </header>

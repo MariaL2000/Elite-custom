@@ -22,11 +22,8 @@ export const ServicesDrawer = ({ isOpen, setIsOpen }: ServicesDrawerProps) => (
         viewport={{ once: true }}
         className="mt-12 flex justify-center"
       >
-        <Button
-          variant={'default'}
-          className="xl:px-[1vw] xl:py-[1.4vw] xl:text-[1vw] 2xl:rounded-[0.6vw]"
-        >
-          View more services 
+        <Button className="bg-(--chocolate-martini) hover:bg-(--chocolate-martini)/90 xl:px-[1vw] xl:py-[1.4vw] xl:text-[1vw] 2xl:rounded-[0.6vw]">
+          View more services
         </Button>
       </motion.div>
     </DrawerTrigger>

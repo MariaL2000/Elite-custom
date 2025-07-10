@@ -6,6 +6,7 @@ import { useBrowserDetection } from '@/hooks/useBrowserDetection';
 import { useData } from '@/context/DataContext';
 import { MaterialPerView } from './MaterialPerView';
 import { Material } from '@/datas/material-selector';
+import { SeparatorWithColor } from '@/components/SeparatorWithColor';
 
 const LazyImage = lazy(() => import('@/components/ui/LazyImage'));
 
@@ -39,26 +40,19 @@ export const MaterialSelectorSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-12 text-center"
+          className="mb-12 grid gap-2 text-center"
           style={safariStyles}
         >
           <h2 className="text-3xl font-bold md:text-4xl xl:text-[2.5vw]">
             Choose Your Perfect Material
           </h2>
-          <div
-            className="mx-auto my-4 h-1 w-24 md:mb-6 xl:mb-[1vh] xl:h-[0.2vh] xl:w-[6vw]"
-            style={{
-              background: isIOS
-                ? 'linear-gradient(to right, #6366f1, #0d9488, #6366f1)'
-                : 'linear-gradient(to right, #6366f1, #0d9488, #6366f1)',
-            }}
-          />
+          <SeparatorWithColor />
           <p className="mx-auto max-w-md md:text-lg xl:max-w-[30vw] xl:text-[1.1vw]">
             Select from our premium materials to find the perfect match for your space
           </p>
         </motion.div>
 
-        <div className="flex gap-8 lg:flex-row lg:justify-center xl:gap-[3vw]">
+        <div className="flex flex-col gap-8 lg:flex-row lg:justify-center xl:gap-[3vw]">
           {/* Material list */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -68,7 +62,7 @@ export const MaterialSelectorSection = () => {
             className="lg:w-1/4 xl:w-[25vw]"
             style={safariStyles}
           >
-            <p className="mb-4 text-lg font-medium xl:text-[1.3vw]">Select a material:</p>
+            <p className="mb-4 font-medium xl:text-[1.3vw]">Select a material:</p>
             <div className="grid grid-cols-2 gap-4 xl:gap-[1vw]">
               {materials.map(material => {
                 const isSelected = material.id === selectedMaterial.id;
@@ -79,14 +73,14 @@ export const MaterialSelectorSection = () => {
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setSelectedMaterial(material)}
                     className={`group flex flex-col items-center gap-2 rounded-xl p-3 transition-all ${
-                      isSelected ? 'bg-gray-800/50 text-slate-100' : 'hover:bg-gray-800/30'
+                      isSelected ? 'bg-(--sirocco) text-slate-100' : 'hover:bg-(--sirocco)/40'
                     }`}
                     style={safariStyles}
                   >
                     <motion.div
                       className={`relative size-20 overflow-hidden rounded-full border-2 md:h-24 md:w-24 xl:size-[10vw] ${
                         isSelected
-                          ? 'border-indigo-400'
+                          ? 'border-(--chocolate-martini)'
                           : 'border-gray-600 group-hover:border-gray-400'
                       }`}
                     >
@@ -119,7 +113,7 @@ export const MaterialSelectorSection = () => {
 
           {/* Preview */}
           {loading ? (
-            <Skeleton className="h-64 w-full md:h-80 lg:h-96 xl:h-[40vh]" />
+            <Skeleton className="w-[98%] lg:w-3/4 lg:p-0 xl:w-[60vw]" />
           ) : (
             <MaterialPerView
               safariStyles={safariStyles}

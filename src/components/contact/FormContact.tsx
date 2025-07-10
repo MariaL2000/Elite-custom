@@ -206,7 +206,7 @@ export const FormContact = () => {
               type="submit"
               disabled={isPending}
               style={{ background: colors.primary ?? '' }}
-              className="h-[8vh] w-full text-xl xl:h-[6vh] xl:text-[1.5vw]"
+              className="h-[8vh] w-full bg-(--chocolate-martini)/90 text-xl hover:bg-(--chocolate-martini) xl:h-[6vh] xl:text-[1.5vw]"
             >
               {isPending ? 'Sending...' : 'Send'}
               <motion.span

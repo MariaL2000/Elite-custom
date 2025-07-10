@@ -11,7 +11,7 @@ export const TitlePage = () => {
       x: Math.random() * 100,
       y: Math.random() * 100,
       opacity: Math.random() * 0.5 + 0.3,
-      scale: Math.random() * 0.5 + 0.5,
+      scale: Math.random() * 0.5 + 0.2,
       duration: Math.random() * 5 + 5,
       yOffset: Math.random() * -100,
       opacityChange: Math.random() * 0.8 + 0.2,
@@ -27,66 +27,52 @@ export const TitlePage = () => {
     >
       {/* Logo */}
       <motion.div
-  className="absolute left-1/2 -translate-x-1/2 overflow-hidden
-    top-[8%] w-[90vw] h-[40vh]
-    sm:top-[10%] sm:w-[85vw] sm:h-[42vh]
-    md:top-[4%] md:w-[50vw] md:h-[50vh]
-    lg:top-0 lg:w-[50vw] lg:h-[50vh]
-    short:top-0 short:h-[35vh]"
-  style={{
-    mask: `
+        className="short:top-0 short:h-[35vh] absolute top-[8%] left-1/2 h-[40vh] w-[90vw] -translate-x-1/2 overflow-hidden sm:top-[10%] sm:h-[42vh] sm:w-[85vw] md:top-[4%] md:h-[50vh] md:w-[50vw] lg:top-0 lg:h-[50vh] lg:w-[50vw]"
+        style={{
+          mask: `
       linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%),
       linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)
     `,
-    WebkitMask: `
+          WebkitMask: `
       linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%),
       linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)
     `,
-    maskComposite: 'intersect',
-    WebkitMaskComposite: 'source-in'
-  }}
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ duration: 2, ease: 'easeIn' }}
->
-  <img
-    src="logo1.jpg"
-    alt="Elite Custom Countertops Logo"
-    className="w-full h-full object-cover object-center"
-  />
-</motion.div>
-
-
-
+          maskComposite: 'intersect',
+          WebkitMaskComposite: 'source-in',
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2, ease: 'easeIn' }}
+      >
+        <img
+          src="logo1.jpg"
+          alt="Elite Custom Countertops Logo"
+          className="h-full w-full object-cover object-center"
+        />
+      </motion.div>
 
       {/* Content */}
-      <div className="relative z-4 flex flex-col items-center px-4 mt-16 sm:mt-20 md:mt-24 lg:mt-28 xl:mt-32">
+      <div className="relative z-4 mt-16 flex flex-col items-center px-4 sm:mt-20 md:mt-24 lg:mt-28 xl:mt-32">
         <motion.div
           className="mx-auto flex max-w-3xl flex-col items-center xl:max-w-[35vw]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <motion.p
-            className="mb-7 text-center leading-relaxed"
+          <motion.h1
+            className="font-satisfy font-satisfy mt-3 mb-2 block transform text-center text-5xl leading-tight font-bold tracking-wide transition-all duration-300"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
+            style={{
+              color: 'var(--sirocco)',
+              textShadow: '0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08)',
+              letterSpacing: '0.025em',
+              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
+            }}
           >
-            <span
-              className="mb-2 mt-3 block font-satisfy text-5xl font-bold sm:text-5xl md:text-7xl lg:text-8xl xl:text-[5vw] 2xl:text-[7rem] leading-tight tracking-wide transform transition-all duration-300 hover:scale-105"
-              style={{
-                color: 'var(--sirocco)',
-                textShadow: '0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08)',
-                letterSpacing: '0.025em',
-                filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))'
-              }}
-            >
-              Elite Custom Countertops
-            </span>
-
-          </motion.p>
-
+            Elite Custom Countertops
+          </motion.h1>
 
           <motion.div
             className="relative"
@@ -110,12 +96,12 @@ export const TitlePage = () => {
         >
           <a
             href="#services"
-            className="group flex size-14 items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 via-teal-500 to-indigo-500 p-0.5 transition-all duration-300 hover:shadow-[0_0_20px_rgba(79,209,197,0.6)] focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 focus-visible:outline-none xl:size-[3vw] dark:focus-visible:ring-offset-gray-900"
+            className="group flex size-14 items-center justify-center rounded-full bg-gradient-to-r from-(--baltic-amber) via-(--siroco) to-(--chocolate-martini) p-0.5 transition-all duration-300 hover:shadow-[0_0_20px_rgba(79,209,197,0.6)] focus-visible:ring-2 focus-visible:ring-(--chocolate-martini) focus-visible:ring-offset-2 focus-visible:outline-none xl:size-[3vw]"
             aria-label="Ir a la sección de servicios"
           >
-            <div className="group-hover:bg-opacity-80 flex h-full w-full items-center justify-center rounded-full bg-white transition-all duration-300 dark:bg-gray-900">
+            <div className="group-hover:bg-opacity-80 flex h-full w-full items-center justify-center rounded-full bg-white transition-all duration-300">
               <motion.span
-                className="text-2xl text-indigo-600 xl:text-[1.5vw] dark:text-teal-400"
+                className="text-2xl text-(--chocolate-martini) xl:text-[1.5vw]"
                 animate={{ y: [0, 5, 0] }}
                 transition={{
                   duration: 1.5,
@@ -130,7 +116,6 @@ export const TitlePage = () => {
           </a>
         </motion.div>
       </div>
-
 
       {/* Particles */}
       {particles.map((particle, i) => (
@@ -155,12 +140,5 @@ export const TitlePage = () => {
         />
       ))}
     </motion.div>
-
-
-
-
-
-
-
   );
 };

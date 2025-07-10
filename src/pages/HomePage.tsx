@@ -14,7 +14,7 @@ export const HomePage = () => {
   return (
     <div className="w-full">
       <TitlePage />
-      <div>
+      <div className="grid gap-8 xl:gap-[5vw]">
         <CarouselWithPlay />
         <ServicesSection />
 

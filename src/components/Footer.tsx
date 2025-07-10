@@ -24,7 +24,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative overflow-hidden bg-(--safari) px-4 py-12 backdrop-blur-sm md:px-6 md:py-16 xl:py-[4vw] dark:bg-(--mocha-mousse)">
+    <footer className="relative overflow-hidden bg-(--safari)/90 px-4 py-12 backdrop-blur-sm md:px-6 md:py-16 xl:py-[4vw] dark:bg-(--mocha-mousse)">
       {/* Fondo decorativo */}
       <div className="absolute -top-12 -right-12 h-24 w-24 rounded-full bg-gradient-to-r from-indigo-500/20 to-teal-500/20 blur-2xl xl:-top-[5vw] xl:-right-[5vw] xl:h-[10vw] xl:w-[10vw] xl:blur-[2vw] dark:from-indigo-500/20 dark:to-teal-500/20"></div>
       <div className="absolute -bottom-8 -left-8 h-20 w-20 rounded-full bg-gradient-to-r from-indigo-500/10 to-teal-500/10 blur-lg xl:-bottom-[3vw] xl:-left-[3vw] xl:h-[8vw] xl:w-[8vw] xl:blur-[1.5vw] dark:from-indigo-500/10 dark:to-teal-500/10"></div>
@@ -39,16 +39,13 @@ const Footer = () => {
         {/* Logo Section */}
         <motion.div variants={itemVariants} className="space-y-4 xl:space-y-[1vw]">
           <div className="flex items-center gap-2 xl:gap-[0.5vw]">
-
             <span
               className="text-2xl font-bold xl:text-[2vw]"
               style={{ color: 'var(--cannoli-cream)' }}
             >
               Elite Custom Countertops
             </span>
-
           </div>
-
         </motion.div>
 
         {/* Quick Links */}
@@ -61,9 +58,9 @@ const Footer = () => {
               <motion.li key={index} variants={itemVariants}>
                 <Link
                   to={link.path}
-                  className="group flex items-center gap-2 text-gray-600 transition-colors hover:bg-(--cannoli-cream) xl:gap-[0.5vw] xl:text-[1.1vw] dark:text-gray-400 dark:hover:text-teal-300"
+                  className="group flex items-center gap-2 text-gray-600 transition-colors hover:bg-(--cannoli-cream) xl:gap-[0.5vw] xl:text-[1.1vw]"
                 >
-                  <ChevronRight className="h-4 w-4 text-teal-600 opacity-0 transition-all group-hover:opacity-100 xl:h-[1vw] xl:w-[1vw] dark:text-teal-500" />
+                  <ChevronRight className="h-4 w-4 text-(--chocolate-martini) opacity-0 transition-all group-hover:opacity-100 xl:h-[1vw] xl:w-[1vw]" />
                   <span>{link.name}</span>
                 </Link>
               </motion.li>
@@ -86,7 +83,7 @@ const Footer = () => {
             ].map((service, index) => (
               <motion.li key={index} variants={itemVariants}>
                 <div className="flex items-center gap-2 text-gray-600 xl:gap-[0.5vw] xl:text-[1.2vw] dark:text-gray-400">
-                  <div className="h-1 w-1 rounded-full bg-teal-600 xl:h-[0.3vw] xl:w-[0.3vw] dark:bg-teal-500"></div>
+                  <div className="h-1 w-1 rounded-full bg-(--baltic-amber) xl:h-[0.3vw] xl:w-[0.3vw] dark:bg-teal-500"></div>
                   <span>{service}</span>
                 </div>
               </motion.li>

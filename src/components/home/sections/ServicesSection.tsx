@@ -30,7 +30,7 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="px-4 py-10 mt-18 transition-colors duration-300 md:px-6 xl:px-[2vw] xl:py-[8vh] dark:bg-gray-950"
+      className="mt-18 px-4 py-10 transition-colors duration-300 md:px-6 xl:px-[2vw] xl:py-[8vh] dark:bg-gray-950"
     >
       <div className="container mx-auto max-w-6xl xl:max-w-[80vw]">
         <motion.h2
@@ -38,12 +38,11 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5 }}
-          className="mb-3 text-center text-5xl font-normal sm:text-6xl md:text-7xl lg:text-8xl xl:mb-[3vh] xl:text-[4vw] 2xl:text-[5rem]"
-style={{ 
-  fontFamily: 'Satisfy, cursive',
-  color: 'var(--sirocco)',
-}}
-
+          className="mb-3 text-center text-5xl font-normal xl:mb-[1vw] xl:text-[3vw]"
+          style={{
+            fontFamily: 'Satisfy, cursive',
+            color: 'var(--sirocco)',
+          }}
         >
           Our Services
         </motion.h2>
@@ -81,11 +80,11 @@ style={{
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <FloatingButton to={`${BASE_URL}contact`} color="indigo">
+        <FloatingButton to={`${BASE_URL}contact`} color="balticAmber">
           Contact Us
         </FloatingButton>
 
-        <FloatingButton to={`${BASE_URL}about`} color="teal">
+        <FloatingButton to={`${BASE_URL}about`} color="chocolateMartini">
           About Us
         </FloatingButton>
       </motion.div>

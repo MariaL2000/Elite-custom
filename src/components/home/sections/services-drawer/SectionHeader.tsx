@@ -1,3 +1,4 @@
+import { SeparatorWithColor } from '@/components/SeparatorWithColor';
 import { motion } from 'motion/react';
 
 interface SectionHeaderProps {
@@ -14,7 +15,7 @@ export const SectionHeader = ({ title, description }: SectionHeaderProps) => (
     className="mb-12 text-center"
   >
     <h2 className="mb-4 bg-clip-text text-3xl font-bold md:text-4xl xl:text-[3vw]">{title}</h2>
-    <div className="mx-auto mb-4 h-1 w-24 bg-gradient-to-r from-indigo-500 via-teal-500 to-indigo-500"></div>
+    <SeparatorWithColor />
     <p className="mx-auto xl:max-w-[25vw] xl:text-[1.2vw]">{description}</p>
   </motion.div>
 );
