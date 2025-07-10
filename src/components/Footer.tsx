@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Separator } from '@/components/ui/separator';
 import { ChevronRight, Facebook, Instagram, Twitter, Phone, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { URLS } from '@/config';

@@ -1,4 +1,3 @@
-import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
