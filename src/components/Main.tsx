@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { Header } from './Header';
 import Footer from './Footer';
-import { ThemeProvider } from '@/providers/ThemeProvider';
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from '@/components/ui/sonner';
 import { DataProvider } from '@/context/DataContext';
@@ -18,46 +18,44 @@ export const Main = () => {
   const isMobile = useIsMobile();
 
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <QueryClientProvider client={queryClient}>
-        <DataProvider>
-          {isMobile ? (
-            <motion.div
-              key="main-content"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.9 }}
-            >
-              <Header />
-              <main>
-                <Outlet />
-              </main>
-              <Toaster />
-              <Footer />
-            </motion.div>
-          ) : (
-            <AnimatePresence mode="wait">
-              {!endedVideo ? (
-                <Intro key="intro" setEndedVideo={setEndedVideo} />
-              ) : (
-                <motion.div
-                  key="main-content"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Header />
-                  <main>
-                    <Outlet />
-                  </main>
-                  <Toaster />
-                  <Footer />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          )}
-        </DataProvider>
-      </QueryClientProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <DataProvider>
+        {isMobile ? (
+          <motion.div
+            key="main-content"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.9 }}
+          >
+            <Header />
+            <main>
+              <Outlet />
+            </main>
+            <Toaster />
+            <Footer />
+          </motion.div>
+        ) : (
+          <AnimatePresence mode="wait">
+            {!endedVideo ? (
+              <Intro key="intro" setEndedVideo={setEndedVideo} />
+            ) : (
+              <motion.div
+                key="main-content"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Header />
+                <main>
+                  <Outlet />
+                </main>
+                <Toaster />
+                <Footer />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        )}
+      </DataProvider>
+    </QueryClientProvider>
   );
 };
