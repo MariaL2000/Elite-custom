@@ -41,7 +41,11 @@ export const ScrollGallerySection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-(--chanterelle)/30"
+      className="relative w-full bg-[rgb(var(--chocolate-martini))]/40 backdrop-blur-sm backdrop-saturate-150"
+
+
+
+      
       style={{ height: `${items.length * 100}vh`, ...safariStyles }}
     >
       <div
@@ -90,7 +94,7 @@ export const ScrollGallerySection = () => {
                 className="w-full max-w-[90vw] md:max-w-[38vw]"
                 style={safariStyles}
               >
-                <h2 className="mb-4 text-3xl font-bold md:mb-6 md:text-4xl xl:mb-[1.5vw] xl:text-[1.8vw]">
+                <h2 className="mb-4 text-4xl font-bold md:mb-6 md:text-4xl xl:mb-[1.5vw] xl:text-[1.9vw]">
                   {items[activeIndex].title}
                 </h2>
                 <p className="text-lg md:text-xl xl:text-[1.2vw]">

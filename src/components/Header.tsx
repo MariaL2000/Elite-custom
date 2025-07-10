@@ -24,7 +24,7 @@ export const Header = () => {
 export const NewNavBar = () => {
   return (
     <motion.nav
-      className="border-border/50 fixed top-0 right-0 left-0 z-50 flex w-full items-center justify-between border-b bg-(--chanterelle)/20 px-6 py-3 shadow-lg backdrop-blur-md md:px-[2rem] dark:bg-(--mocha-mousse)"
+      className="border-border/50 fixed top-0 right-0 left-0 z-50 flex w-full items-center justify-between border-b bg-(--chanterelle)/20 px-6 py-3 shadow-lg backdrop-blur-md md:px-[2rem] dark:bg-(--chanterelle)/20"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
