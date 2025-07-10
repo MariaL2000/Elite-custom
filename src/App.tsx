@@ -16,7 +16,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="bg-(--safari)/25 text-gray-900 duration-1000 dark:bg-slate-950 dark:text-gray-100">
+      <div className="bg-(--safari)/25 text-gray-900 duration-1000">
         <Routes>
           <Route path={BASE_URL} element={<Navigate to={`${BASE_URL}home`} />} />
           <Route element={<Main />}>

@@ -55,9 +55,7 @@ export const ValuesSection = ({ image }: Props) => {
                 <span className="text-3xl xl:text-[1vw]">{value.icon}</span>
                 <div>
                   <h3 className="text-xl font-semibold xl:text-[2vw]">{value.title}</h3>
-                  <p className="text-gray-600 xl:text-[1vw] dark:text-gray-300">
-                    {value.description}
-                  </p>
+                  <p className="text-gray-600 xl:text-[1vw]">{value.description}</p>
                 </div>
               </motion.div>
             ))}

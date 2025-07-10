@@ -20,7 +20,7 @@ export const CarouselWithPlay = () => {
   return (
     <div
       ref={containerRef}
-      className="relative mt-5 h-[90vh] w-full overflow-hidden sm:h-[75vh] md:h-[80vh]"
+      className="relative h-[90vh] w-full overflow-hidden sm:h-[75vh] md:h-[80vh]"
     >
       <Carousel
         setApi={setApi}

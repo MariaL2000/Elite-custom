@@ -50,15 +50,13 @@ const Footer = () => {
 
         {/* Quick Links */}
         <motion.div variants={itemVariants} className="space-y-4 xl:space-y-[1vw]">
-          <h3 className="text-lg font-semibold text-gray-900 xl:text-[1.5vw] dark:text-white">
-            Quick Links
-          </h3>
-          <ul className="flex flex-col gap-3 xl:gap-[`vw]">
+          <h3 className="text-lg font-semibold text-white xl:text-[1.5vw]">Quick Links</h3>
+          <ul className="flex flex-col gap-3 xl:gap-[1vw]">
             {URLS.map((link, index) => (
               <motion.li key={index} variants={itemVariants}>
                 <Link
                   to={link.path}
-                  className="group flex items-center gap-2 text-gray-600 transition-colors hover:bg-(--cannoli-cream) xl:gap-[0.5vw] xl:text-[1.1vw]"
+                  className="group flex items-center gap-2 rounded-md px-2 py-1 text-gray-300 transition-all duration-300 hover:bg-(--cannoli-cream) hover:text-(--chocolate-martini) xl:gap-[0.5vw] xl:text-[1.1vw]"
                 >
                   <ChevronRight className="h-4 w-4 text-(--chocolate-martini) opacity-0 transition-all group-hover:opacity-100 xl:h-[1vw] xl:w-[1vw]" />
                   <span>{link.name}</span>
@@ -70,9 +68,7 @@ const Footer = () => {
 
         {/* Services */}
         <motion.div variants={itemVariants} className="space-y-4 xl:space-y-[1vw]">
-          <h3 className="text-lg font-semibold text-gray-900 xl:text-[1.5vw] dark:text-white">
-            Our Services
-          </h3>
+          <h3 className="text-lg font-semibold text-white xl:text-[1.5vw]">Our Services</h3>
           <ul className="flex flex-col gap-3 xl:gap-[0.7vw]">
             {[
               'Quartz Countertops',
@@ -82,8 +78,8 @@ const Footer = () => {
               'Professional Measurement',
             ].map((service, index) => (
               <motion.li key={index} variants={itemVariants}>
-                <div className="flex items-center gap-2 text-gray-600 xl:gap-[0.5vw] xl:text-[1.2vw] dark:text-gray-400">
-                  <div className="h-1 w-1 rounded-full bg-(--baltic-amber) xl:h-[0.3vw] xl:w-[0.3vw] dark:bg-teal-500"></div>
+                <div className="flex items-center gap-2 text-gray-300 xl:gap-[0.5vw] xl:text-[1.2vw]">
+                  <div className="h-1 w-1 rounded-full bg-(--baltic-amber) xl:h-[0.3vw] xl:w-[0.3vw]"></div>
                   <span>{service}</span>
                 </div>
               </motion.li>
@@ -93,30 +89,28 @@ const Footer = () => {
 
         {/* Contact */}
         <motion.div variants={itemVariants} className="space-y-4 xl:space-y-[1vw]">
-          <h3 className="text-lg font-semibold text-gray-900 xl:text-[1.5vw] dark:text-white">
-            Contact Us
-          </h3>
+          <h3 className="text-lg font-semibold text-white xl:text-[1.5vw]">Contact Us</h3>
           <div className="flex flex-col gap-3 xl:gap-[0.7vw]">
             <motion.a
               href="tel:+1234567890"
-              className="flex items-center gap-3 text-gray-600 transition-colors hover:bg-(--cannoli-cream) xl:gap-[0.7vw] xl:text-[1.1vw] dark:text-gray-400 dark:hover:text-teal-300"
+              className="flex items-center gap-3 rounded-md px-2 py-1 text-gray-300 transition-colors duration-300 hover:bg-(--cannoli-cream) hover:text-(--chocolate-martini) xl:gap-[0.7vw] xl:text-[1.1vw]"
               whileHover={{ x: 5 }}
             >
-              <Phone className="h-5 w-5 text-teal-600 xl:h-[1.2vw] xl:w-[1.2vw] dark:text-teal-400" />
+              <Phone className="h-5 w-5 text-teal-600 xl:h-[1.2vw] xl:w-[1.2vw]" />
               <span>+1 (234) 567-890</span>
             </motion.a>
             <motion.a
               href="mailto:contact@countertoppro.com"
-              className="flex items-center gap-3 text-gray-600 transition-colors hover:bg-(--cannoli-cream) xl:gap-[0.7vw] xl:text-[1.1vw] dark:text-gray-400 dark:hover:text-teal-300"
+              className="flex items-center gap-3 rounded-md px-2 py-1 text-gray-300 transition-colors duration-300 hover:bg-(--cannoli-cream) hover:text-(--chocolate-martini) xl:gap-[0.7vw] xl:text-[1.1vw]"
               whileHover={{ x: 5 }}
             >
-              <Mail className="h-5 w-5 text-teal-600 xl:h-[1.2vw] xl:w-[1.2vw] dark:text-teal-400" />
+              <Mail className="h-5 w-5 text-teal-600 xl:h-[1.2vw] xl:w-[1.2vw]" />
               <span>contact@countertoppro.com</span>
             </motion.a>
           </div>
 
           <div className="pt-4 xl:pt-[1vw]">
-            <h4 className="mb-3 text-sm font-medium text-gray-900 xl:mb-[0.7vw] xl:text-[1vw] dark:text-white">
+            <h4 className="mb-3 text-sm font-medium text-white xl:mb-[0.7vw] xl:text-[1vw]">
               Follow Us
             </h4>
             <div className="flex gap-3 xl:gap-[0.8vw]">
@@ -128,13 +122,13 @@ const Footer = () => {
                 <motion.a
                   key={index}
                   href={social.href}
-                  className="group flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white/50 transition-all hover:border-teal-600/30 hover:bg-teal-600/10 xl:h-[2.5vw] xl:w-[2.5vw] dark:border-gray-800 dark:bg-gray-900/50 dark:hover:border-teal-400/30 dark:hover:bg-teal-400/10"
+                  className="group flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white/50 shadow-sm transition-all duration-300 hover:border-teal-600/30 hover:bg-teal-600/20 xl:h-[2.5vw] xl:w-[2.5vw]"
                   whileHover={{ y: -3 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   {React.cloneElement(social.icon, {
                     className:
-                      'h-5 w-5 text-gray-600 group-hover:text-teal-600 dark:text-gray-400 dark:group-hover:text-teal-300 xl:h-[1.4vw] xl:w-[1.4vw]',
+                      'h-5 w-5 text-gray-300 group-hover:text-teal-600 xl:h-[1.4vw] xl:w-[1.4vw]',
                   })}
                 </motion.a>
               ))}
@@ -151,21 +145,20 @@ const Footer = () => {
         transition={{ delay: 0.3 }}
         viewport={{ once: true }}
       >
-        <Separator className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent xl:h-[0.1vw] dark:via-gray-800" />
         <div className="mt-6 flex flex-col items-center justify-between gap-4 md:flex-row xl:mt-[1.5vw] xl:gap-[1vw]">
-          <p className="text-sm text-gray-500 xl:text-[0.9vw]">
+          <p className="text-sm text-gray-400 xl:text-[0.9vw]">
             &copy; {new Date().getFullYear()} CountertopPro. All rights reserved.
           </p>
           <div className="flex gap-6 xl:gap-[1.5vw]">
             <Link
               to="/privacy"
-              className="text-sm text-gray-500 hover:text-teal-600 xl:text-[0.9vw] dark:hover:text-teal-300"
+              className="text-sm text-gray-300 underline-offset-4 transition-colors duration-300 hover:text-teal-600 hover:underline xl:text-[0.9vw]"
             >
               Privacy Policy
             </Link>
             <Link
               to="/terms"
-              className="text-sm text-gray-500 hover:text-teal-600 xl:text-[0.9vw] dark:hover:text-teal-300"
+              className="text-sm text-gray-300 underline-offset-4 transition-colors duration-300 hover:text-teal-600 hover:underline xl:text-[0.9vw]"
             >
               Terms of Service
             </Link>

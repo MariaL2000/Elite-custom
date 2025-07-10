@@ -20,7 +20,7 @@ export const TitlePage = () => {
 
   return (
     <motion.div
-      className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-(--safari)/30 py-30 text-gray-900 transition-colors duration-300 dark:bg-gray-950 dark:text-white"
+      className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-(--safari)/30 py-30 text-gray-900 transition-colors duration-300"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}

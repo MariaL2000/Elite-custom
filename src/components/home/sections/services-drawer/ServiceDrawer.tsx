@@ -28,7 +28,7 @@ export const ServicesDrawer = ({ isOpen, setIsOpen }: ServicesDrawerProps) => (
       </motion.div>
     </DrawerTrigger>
 
-    <DrawerContent className="max-h-[85vh] w-full border-t border-gray-800 bg-slate-50 backdrop-blur-lg dark:bg-gray-950/90">
+    <DrawerContent className="max-h-[85vh] w-full border-t border-gray-800 bg-slate-50 backdrop-blur-lg">
       <div className="relative mx-auto h-full w-full max-w-[90%]">
         <DrawerCloseButton />
 

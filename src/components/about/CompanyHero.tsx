@@ -18,7 +18,7 @@ export const CompanyHero = ({ image }: Props) => {
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl xl:text-[3vw]">
             Who we are as company
           </h1>
-          <p className="text-lg leading-8 text-gray-600 xl:max-w-[40vw] xl:text-[1vw] xl:leading-[2.5vh] dark:text-gray-300">
+          <p className="text-lg leading-8 text-gray-600 xl:max-w-[40vw] xl:text-[1vw] xl:leading-[2.5vh]">
             Founded in 2010, we've been transforming industries with innovative solutions and a
             customer-first approach.
           </p>

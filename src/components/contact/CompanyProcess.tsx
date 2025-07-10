@@ -58,13 +58,12 @@ export const CompanyProcess = () => {
                 damping: 10,
               }}
               viewport={{ once: true, margin: '0px 0px -50px 0px' }}
-              className="relative rounded-xl bg-white p-6 xl:p-[1.5vw] dark:bg-gray-800"
+              className="relative rounded-xl bg-white p-6 xl:p-[1.5vw]"
               style={{
                 transformStyle: 'preserve-3d',
                 willChange: 'transform, box-shadow',
               }}
             >
-              {/* Glow border effect */}
               <motion.div
                 className="absolute inset-0 rounded-xl opacity-0"
                 whileHover={{

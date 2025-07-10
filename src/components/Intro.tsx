@@ -62,7 +62,7 @@ export const Intro = ({ setEndedVideo }: Props) => {
         preload="auto"
         className={cn(
           isLoading ? 'invisible' : 'visible',
-          'fixed -top-3 left-0 h-full w-full object-contain lg:object-fill'
+          'fixed left-0 h-full w-full object-contain lg:object-fill'
         )}
         initial={{ opacity: 0, scale: 1.05 }}
         animate={{ opacity: 1, scale: 1 }}

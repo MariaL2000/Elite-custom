@@ -72,7 +72,7 @@ export const ResizableSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="mb-4 bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-3xl font-bold text-transparent md:text-4xl xl:text-[2.5vw] dark:from-slate-200 dark:to-slate-400"
+          className="mb-4 bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-3xl font-bold text-transparent md:text-4xl xl:text-[2.5vw]"
           style={{
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
@@ -87,7 +87,7 @@ export const ResizableSection = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mx-auto max-w-md text-slate-600 md:text-lg xl:max-w-[40vw] xl:text-[1.1vw] dark:text-slate-300"
+          className="mx-auto max-w-md text-slate-600 md:text-lg xl:max-w-[40vw] xl:text-[1.1vw]"
           style={{
             WebkitFontSmoothing: 'antialiased',
           }}

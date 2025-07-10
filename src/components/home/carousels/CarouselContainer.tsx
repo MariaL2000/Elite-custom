@@ -46,7 +46,7 @@ export function CarouselContainer({
     <div className="relative my-[5%] w-full overflow-hidden py-12" style={carouselStyles}>
       {title && (
         <h1
-          className="my-[2%] bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-center text-3xl font-bold text-transparent xl:text-[2.5vw] dark:from-slate-200 dark:to-slate-400"
+          className="my-[2%] bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-center text-3xl font-bold text-transparent xl:text-[2.5vw]"
           style={{
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
@@ -76,7 +76,7 @@ export function CarouselContainer({
                   <div className="p-[2%]">
                     <Card className="overflow-hidden border-0 bg-gradient-to-br from-slate-50 to-slate-100 p-0 shadow-lg">
                       <CardContent className="aspect-square p-0">
-                        <Skeleton className="h-full w-full" />
+                        <Skeleton className="size-full" />
                       </CardContent>
                     </Card>
                   </div>

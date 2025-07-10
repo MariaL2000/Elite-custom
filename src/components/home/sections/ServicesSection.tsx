@@ -30,7 +30,7 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="mt-18 px-4 py-10 transition-colors duration-300 md:px-6 xl:px-[2vw] xl:py-[8vh] dark:bg-gray-950"
+      className="mt-18 px-4 py-10 transition-colors duration-300 md:px-6 xl:px-[2vw] xl:py-[8vh]"
     >
       <div className="container mx-auto max-w-6xl xl:max-w-[80vw]">
         <motion.h2
@@ -56,16 +56,14 @@ export function ServicesSection() {
         >
           {services.map(service => (
             <motion.div key={service.id} variants={itemVariants}>
-              <Card className="h-full border-gray-200 bg-slate-100/70 shadow-md transition-all duration-300 hover:border-indigo-100 hover:shadow-lg 2xl:rounded-[0.7vw] 2xl:shadow-xl dark:border-gray-800 dark:bg-gray-900 dark:hover:border-indigo-900/50">
+              <Card className="h-full border-gray-200 bg-slate-100/70 shadow-md transition-all duration-300 hover:border-indigo-100 hover:shadow-lg 2xl:rounded-[0.7vw] 2xl:shadow-xl">
                 <CardHeader className="p-1 xl:p-[1.3vw]">
-                  <CardTitle className="text-xl text-gray-800 xl:text-[1.5vw] dark:text-gray-100">
+                  <CardTitle className="text-xl text-gray-800 xl:text-[1.5vw]">
                     {service.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-6 pt-0 xl:p-[1.5vw] xl:pt-0">
-                  <p className="text-gray-600 xl:text-[1.2vw] dark:text-gray-400">
-                    {service.description}
-                  </p>
+                  <p className="text-gray-600 xl:text-[1.2vw]">{service.description}</p>
                 </CardContent>
               </Card>
             </motion.div>

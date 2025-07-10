@@ -62,7 +62,7 @@ export function ReviewForm() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.8, type: 'spring' }}
-      className="w-full rounded-lg bg-white p-6 shadow-md xl:w-[60%] xl:p-[2vw] xl:shadow-2xl dark:bg-gray-800"
+      className="w-full rounded-lg bg-white p-6 shadow-md xl:w-[60%] xl:p-[2vw] xl:shadow-2xl"
     >
       <h2 className="mb-6 text-center text-2xl font-bold xl:text-[2vw]">Leave a Review</h2>
 

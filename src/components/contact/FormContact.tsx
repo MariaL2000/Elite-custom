@@ -31,6 +31,7 @@ export const FormContact = () => {
       project_details: '',
     },
   });
+
   const { mutate, isPending } = useMutation({
     mutationFn: (data: ContactType) =>
       toastPromise(submitContact(data), {
@@ -39,6 +40,7 @@ export const FormContact = () => {
         error: err => err.message || 'Error submitting form.',
       }),
   });
+
   const { colors } = useData();
 
   function onSubmit(values: ContactType) {
@@ -55,12 +57,12 @@ export const FormContact = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.8, type: 'spring' }}
-      className="w-full rounded-lg bg-white p-6 shadow-md xl:p-[2vw] xl:shadow-2xl dark:bg-gray-800"
+      className="w-full rounded-lg bg-white p-6 shadow-md xl:p-[2vw] xl:shadow-2xl"
     >
       <h2 className="mb-[3vh] text-center text-2xl font-bold xl:text-[2vw]">Contact</h2>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-[2vh] xl:space-y-[1.5vh]">
-          {/* Name Field */}
+          {/* Name */}
           <FormField
             control={form.control}
             name="name"
@@ -86,7 +88,7 @@ export const FormContact = () => {
             )}
           />
 
-          {/* Email Field */}
+          {/* Email */}
           <FormField
             control={form.control}
             name="email"
@@ -112,7 +114,7 @@ export const FormContact = () => {
             )}
           />
 
-          {/* Phone Field */}
+          {/* Phone */}
           <FormField
             control={form.control}
             name="phone"
@@ -140,7 +142,7 @@ export const FormContact = () => {
             )}
           />
 
-          {/* Address Field */}
+          {/* Address */}
           <FormField
             control={form.control}
             name="address"
@@ -166,7 +168,7 @@ export const FormContact = () => {
             )}
           />
 
-          {/* Project Details Field */}
+          {/* Project Details */}
           <FormField
             control={form.control}
             name="project_details"
@@ -196,6 +198,8 @@ export const FormContact = () => {
               </motion.div>
             )}
           />
+
+          {/* Submit Button */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}

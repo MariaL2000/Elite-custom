@@ -158,9 +158,6 @@ body {
         @apply border-border outline-ring/50;
     }
 
-    body {
-        @apply bg-background text-foreground;
-    }
 
     :not(h1, h2, h3) {
         @apply text-[16px] xl:text-[1vw]
