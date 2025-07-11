@@ -1,9 +1,10 @@
 import { lazy, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollGallery } from '@/hooks/useScrollGallery';
 import { useBrowserDetection } from '@/hooks/useBrowserDetection';
 import { useData } from '@/context/DataContext';
 import { galleryItems } from '@/datas/gallery';
+import { Card, CardContent } from '@/components/ui/card';
 
 const LazyImage = lazy(() => import('@/components/ui/LazyImage'));
 
@@ -22,7 +23,6 @@ export const ScrollGallerySection = () => {
   const { isIOS, isSafari } = useBrowserDetection();
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Estilos específicos para iOS/Safari
   const safariStyles: React.CSSProperties =
     isIOS || isSafari
       ? {
@@ -39,13 +39,13 @@ export const ScrollGallerySection = () => {
   }, [items.length]);
 
   return (
-    <section
+    <motion.section
       ref={sectionRef}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+      viewport={{ once: true, amount: 0.3 }}
       className="relative w-full bg-[rgb(var(--chocolate-martini))]/40 backdrop-blur-sm backdrop-saturate-150"
-
-
-
-      
       style={{ height: `${items.length * 100}vh`, ...safariStyles }}
     >
       <div
@@ -54,15 +54,19 @@ export const ScrollGallerySection = () => {
         style={safariStyles}
       >
         <div className="flex size-full flex-col md:flex-row">
-          {/* Image Container - Simplificado */}
-          <div
-            className="relative flex h-1/2 w-full items-center md:h-full md:w-3/5"
+          {/* Image Container */}
+          <motion.div
+            className="relative flex h-1/2 w-full items-center justify-center md:h-full md:w-3/5"
             style={safariStyles}
+            initial={{ opacity: 0, x: -80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            viewport={{ once: true, amount: 0.3 }}
           >
             {items.map((item, index) => (
               <motion.div
                 key={`image-${index}`}
-                className="absolute inset-0 flex items-center"
+                className="absolute inset-0 flex items-center justify-center px-6"
                 initial={{ opacity: 0 }}
                 animate={{
                   opacity: activeIndex === index ? 1 : 0,
@@ -70,19 +74,27 @@ export const ScrollGallerySection = () => {
                 }}
                 transition={{ duration: 0.7 }}
               >
-                <LazyImage
-                  src={item?.url}
-                  alt={item.alt}
-                  className="size-full object-cover md:h-[80vh]"
-                />
+                <Card className="bg-background/80 w-full rounded-2xl py-0 shadow-2xl backdrop-blur-md transition-transform duration-500 ease-out hover:scale-[1.015]">
+                  <CardContent className="h-[30vh] w-full overflow-hidden rounded-lg p-0 md:h-[80vh] 2xl:rounded-2xl">
+                    <LazyImage
+                      src={item?.url}
+                      alt={item.alt}
+                      className="size-full rounded-2xl object-contain"
+                    />
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Text Container */}
-          <div
-            className="flex w-full items-center justify-center p-6 md:h-full md:w-2/5 md:p-8"
+          <motion.div
+            className="flex w-full items-center justify-center md:h-full md:w-2/5 md:p-8"
             style={safariStyles}
+            initial={{ opacity: 0, x: 80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
+            viewport={{ once: true, amount: 0.3 }}
           >
             <AnimatePresence mode="wait">
               <motion.div
@@ -102,9 +114,9 @@ export const ScrollGallerySection = () => {
                 </p>
               </motion.div>
             </AnimatePresence>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };

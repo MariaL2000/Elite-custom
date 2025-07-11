@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion, Variants } from 'framer-motion';
 import { BASE_URL } from '@/config';
 
 export const GallerySectionNotFound = () => {
@@ -26,7 +26,7 @@ export const GallerySectionNotFound = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,

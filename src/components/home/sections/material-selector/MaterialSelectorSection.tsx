@@ -1,5 +1,5 @@
 import { useState, lazy, Suspense } from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 import { Skeleton } from '@/components/ui/skeleton';
 import { useBrowserDetection } from '@/hooks/useBrowserDetection';
@@ -86,7 +86,10 @@ export const MaterialSelectorSection = () => {
                     >
                       <Suspense fallback={<Skeleton className="size-full rounded-xl" />}>
                         <LazyImage
-                          src={material.thumbnail}
+                          src={
+                            material.thumbnail ??
+                            'https://via.placeholder.com/500/cccccc/808080.png'
+                          }
                           alt={material.name}
                           className="h-full w-full object-cover"
                           onLoad={() => handleImageLoad(`thumb-${material.id}`)}

@@ -1,5 +1,5 @@
 import { NavBar } from './navbar/NavBar';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useIntersectionObserver } from '@uidotdev/usehooks';
 import { ButtonGetQuote } from './home/sections/ButtonGetQuote';
 import { Briefcase } from 'lucide-react';

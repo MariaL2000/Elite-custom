@@ -1,10 +1,10 @@
-import { motion } from 'motion/react';
+import { motion, Variants } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BASE_URL } from '@/config';
 import { services } from '@/datas/servicescards';
 import { FloatingButton } from '@/components/buttons/FloatingButton';
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -15,7 +15,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: {
     y: 60,
     opacity: 0,
@@ -30,53 +30,80 @@ const itemVariants = {
     transition: {
       duration: 0.7,
       ease: [0.25, 0.46, 0.45, 0.94],
-      type: "spring",
+      type: 'spring',
       stiffness: 120,
       damping: 12,
     },
   },
 };
 
-// Imágenes específicas para cada servicio
 const serviceImages = [
-  "services/service1",
-  "services/service2",
-  "services/service3",
-  "services/service4",
-
+  'services/service1',
+  'services/service2',
+  'services/service3',
+  'services/service4',
 ];
 
-// Imágenes de respaldo desde Unsplash
 const fallbackImages = [
-  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&crop=entropy&auto=format&q=85",
-  "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop&crop=entropy&auto=format&q=85",
-  "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&h=600&fit=crop&crop=entropy&auto=format&q=85",
-  "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=600&fit=crop&crop=entropy&auto=format&q=85",
-  
+  'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&crop=entropy&auto=format&q=85',
+  'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop&crop=entropy&auto=format&q=85',
+  'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&h=600&fit=crop&crop=entropy&auto=format&q=85',
+  'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=600&fit=crop&crop=entropy&auto=format&q=85',
 ];
 
-// Colores dinámicos para cada card
 const cardColors = [
-  { gradient: 'from-blue-500/20 to-cyan-500/20', accent: 'bg-blue-500/10', border: 'border-blue-200' },
-  { gradient: 'from-purple-500/20 to-pink-500/20', accent: 'bg-purple-500/10', border: 'border-purple-200' },
-  { gradient: 'from-emerald-500/20 to-teal-500/20', accent: 'bg-emerald-500/10', border: 'border-emerald-200' },
-  { gradient: 'from-orange-500/20 to-red-500/20', accent: 'bg-orange-500/10', border: 'border-orange-200' },
-  { gradient: 'from-indigo-500/20 to-blue-500/20', accent: 'bg-indigo-500/10', border: 'border-indigo-200' },
-  { gradient: 'from-rose-500/20 to-pink-500/20', accent: 'bg-rose-500/10', border: 'border-rose-200' },
-  { gradient: 'from-amber-500/20 to-yellow-500/20', accent: 'bg-amber-500/10', border: 'border-amber-200' },
-  { gradient: 'from-violet-500/20 to-purple-500/20', accent: 'bg-violet-500/10', border: 'border-violet-200' },
+  {
+    gradient: 'from-blue-500/20 to-cyan-500/20',
+    accent: 'bg-blue-500/10',
+    border: 'border-blue-200',
+  },
+  {
+    gradient: 'from-purple-500/20 to-pink-500/20',
+    accent: 'bg-purple-500/10',
+    border: 'border-purple-200',
+  },
+  {
+    gradient: 'from-emerald-500/20 to-teal-500/20',
+    accent: 'bg-emerald-500/10',
+    border: 'border-emerald-200',
+  },
+  {
+    gradient: 'from-orange-500/20 to-red-500/20',
+    accent: 'bg-orange-500/10',
+    border: 'border-orange-200',
+  },
+  {
+    gradient: 'from-indigo-500/20 to-blue-500/20',
+    accent: 'bg-indigo-500/10',
+    border: 'border-indigo-200',
+  },
+  {
+    gradient: 'from-rose-500/20 to-pink-500/20',
+    accent: 'bg-rose-500/10',
+    border: 'border-rose-200',
+  },
+  {
+    gradient: 'from-amber-500/20 to-yellow-500/20',
+    accent: 'bg-amber-500/10',
+    border: 'border-amber-200',
+  },
+  {
+    gradient: 'from-violet-500/20 to-purple-500/20',
+    accent: 'bg-violet-500/10',
+    border: 'border-violet-200',
+  },
 ];
 
 export function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative mt-18 px-4 py-16 bg-(--cannoli-cream)/20 backdrop-blur-sm transition-all duration-500 md:px-6 md:py-20 xl:px-[2vw] xl:py-[10vh] overflow-hidden"
+      className="relative mt-18 overflow-hidden bg-(--cannoli-cream)/20 px-4 py-16 backdrop-blur-sm transition-all duration-500 md:px-6 md:py-20 xl:px-[2vw] xl:py-[10vh]"
     >
       {/* Elementos decorativos de fondo */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute -top-32 -right-32 w-64 h-64 bg-white/80 rounded-full blur-3xl"
+          className="absolute -top-32 -right-32 h-64 w-64 rounded-full bg-white/80 blur-3xl"
           animate={{
             scale: [1, 1.1, 1],
             rotate: [0, 90, 180],
@@ -84,11 +111,11 @@ export function ServicesSection() {
           transition={{
             duration: 15,
             repeat: Infinity,
-            ease: "circular",
+            ease: 'easeIn',
           }}
         />
         <motion.div
-          className="absolute -bottom-32 -left-32 w-64 h-64 bg-white/80 rounded-full blur-3xl"
+          className="absolute -bottom-32 -left-32 h-64 w-64 rounded-full bg-white/80 blur-3xl"
           animate={{
             scale: [1.1, 1, 1.1],
             rotate: [180, 90, 0],
@@ -96,18 +123,18 @@ export function ServicesSection() {
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: "circular",
+            ease: 'easeIn',
           }}
         />
       </div>
 
-      <div className="container mx-auto max-w-7xl xl:max-w-[90vw] 2xl:max-w-[85vw] relative z-10">
+      <div className="relative z-10 container mx-auto max-w-7xl xl:max-w-[90vw] 2xl:max-w-[85vw]">
         <motion.h2
           initial={{ opacity: 0, y: -30, scale: 0.9 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="mb-12 text-center text-5xl font-normal xl:mb-[3vw] xl:text-[3.5vw] 2xl:text-[3vw] tracking-tight"
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="mb-12 text-center text-5xl font-normal tracking-tight xl:mb-[3vw] xl:text-[3.5vw] 2xl:text-[3vw]"
           style={{
             fontFamily: 'Satisfy, cursive',
             color: 'var(--sirocco)',
@@ -138,70 +165,65 @@ export function ServicesSection() {
                   rotateY: 5,
                   transition: {
                     duration: 0.4,
-                    ease: "easeOut",
-                    type: "spring",
+                    ease: 'easeOut',
+                    type: 'spring',
                     stiffness: 400,
                     damping: 25,
-                  }
+                  },
                 }}
                 whileTap={{ scale: 0.97 }}
                 className="perspective-1000 transform-gpu"
               >
-                <Card className={`group relative h-full min-h-[420px] overflow-hidden bg-white/80 backdrop-blur-sm shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-700 hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] sm:min-h-[450px] md:min-h-[480px] xl:min-h-[500px] 2xl:min-h-[460px] rounded-2xl xl:rounded-[1.2vw] border ${colorScheme.border} hover:border-opacity-60`}>
-
+                <Card
+                  className={`group relative h-full min-h-[420px] overflow-hidden rounded-2xl border bg-white/80 py-0 shadow-[0_4px_20px_rgba(0,0,0,0.08)] backdrop-blur-sm transition-all duration-700 hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] sm:min-h-[450px] md:min-h-[480px] xl:min-h-[500px] xl:rounded-[1.2vw] 2xl:min-h-[460px] ${colorScheme.border} hover:border-opacity-60`}
+                >
                   {/* Badge numerado */}
                   <motion.div
-                    className={`absolute top-4 right-4 z-20 px-3 py-1.5 bg-(--cannoli-cream) backdrop-blur-md rounded-xl border border-white/40 shadow-sm`}
+                    className={`absolute top-4 right-4 z-20 rounded-xl border border-white/40 bg-(--cannoli-cream) px-3 py-1.5 shadow-sm backdrop-blur-md`}
                     initial={{ scale: 0, rotate: -180 }}
                     whileInView={{ scale: 1, rotate: 0 }}
-                    transition={{ delay: 0.5, duration: 0.5, type: "spring" }}
+                    transition={{ delay: 0.5, duration: 0.5, type: 'spring' }}
                     whileHover={{ scale: 1.1, rotate: 5 }}
                   >
-                    <span className="text-xs font-bold text-gray-700 tracking-wide">
+                    <span className="text-xs font-bold tracking-wide text-gray-700">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                   </motion.div>
 
-                  {/* Imagen - 60% de la card , quitale el padding ese de arriba */}
-                  <div className="relative h-[60%]  w-full overflow-hidden rounded-t-2xl xl:rounded-t-[1.2vw]">
+                  <div className="relative h-[60%] w-full overflow-hidden rounded-t-2xl xl:rounded-t-[1.2vw]">
                     <motion.img
                       src={imageUrl}
                       alt={service.title}
                       className="h-full w-full object-cover transition-all duration-1000 group-hover:scale-110"
-                      loading={index < 4 ? "eager" : "lazy"}
+                      loading={index < 4 ? 'eager' : 'lazy'}
                       whileHover={{
                         scale: 1.1,
-                        filter: "brightness(1.05) contrast(1.05)",
+                        filter: 'brightness(1.05) contrast(1.05)',
                       }}
-                      transition={{ duration: 0.8, ease: "easeOut" }}
-                      onError={(e) => {
-                        // Si falla la imagen local, usar la de respaldo
+                      transition={{ duration: 0.8, ease: 'easeOut' }}
+                      onError={e => {
                         e.currentTarget.src = fallbackImages[index % fallbackImages.length];
                       }}
                     />
 
-
-
-                    {/* Efecto de brillo */}
                     <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full"
+                      className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent"
                       animate={{
-                        x: ["0%", "100%"],
+                        x: ['0%', '100%'],
                       }}
                       transition={{
                         duration: 2.5,
                         repeat: Infinity,
                         repeatDelay: 3,
-                        ease: "easeInOut",
+                        ease: 'easeInOut',
                       }}
                     />
 
-                    {/* Partículas flotantes */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                    <div className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100">
                       {[...Array(6)].map((_, i) => (
                         <motion.div
                           key={i}
-                          className="absolute w-1.5 h-1.5 bg-white/50 rounded-full"
+                          className="absolute h-1.5 w-1.5 rounded-full bg-white/50"
                           style={{
                             left: `${20 + i * 12}%`,
                             top: `${25 + i * 8}%`,
@@ -214,25 +236,22 @@ export function ServicesSection() {
                             duration: 2,
                             repeat: Infinity,
                             delay: i * 0.3,
-                            ease: "easeInOut",
+                            ease: 'easeInOut',
                           }}
                         />
                       ))}
                     </div>
                   </div>
 
-                  {/* Contenido - 40% de la card */}
                   <motion.div
-                    className="relative h-[40%] p-4 xl:p-[1.2vw] 2xl:p-[1vw] flex flex-col justify-between"
+                    className="relative flex h-[40%] flex-col justify-between p-4 xl:p-[1.2vw] 2xl:p-[1vw]"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.6 }}
                   >
-
-
-                    <CardHeader className="p-0 mb-1">
+                    <CardHeader className="mb-1 p-0">
                       <CardTitle
-                        className="text-lg font-bold text-gray-800 transition-all duration-300 group-hover:text-gray-900 group-hover:scale-105 xl:text-[2vw] 2xl:text-[1.5vw] leading-tight"
+                        className="text-lg leading-tight font-bold text-gray-800 transition-all duration-300 group-hover:scale-105 group-hover:text-gray-900 xl:text-[2vw] 2xl:text-[1.5vw]"
                         style={{
                           fontFamily: 'Satisfy, cursive',
                           color: 'var(--sirocco)',
@@ -240,46 +259,40 @@ export function ServicesSection() {
                       >
                         {service.title}
                       </CardTitle>
-
                     </CardHeader>
 
-
-
-                    <CardContent className="p-0 flex-1">
+                    <CardContent className="flex-1 p-0">
                       <motion.p
-                        className="text-sm text-gray-600 transition-all duration-300 group-hover:text-gray-700 xl:text-[1.2vw] 2xl:text-[1.2vw] leading-relaxed line-clamp-3"
+                        className="line-clamp-3 text-sm leading-relaxed text-gray-600 transition-all duration-300 group-hover:text-gray-700 xl:text-[1.2vw] 2xl:text-[1.2vw]"
                         initial={{ opacity: 0.8 }}
                         whileHover={{ opacity: 1 }}
                       >
                         {service.description}
                       </motion.p>
                     </CardContent>
-
-
                   </motion.div>
 
-                  {/* Borde animado */}
                   <motion.div
-                    className={`absolute inset-0 rounded-2xl xl:rounded-[1.2vw] border-2 border-transparent group-hover:${colorScheme.border} transition-all duration-700`}
+                    className={`absolute inset-0 rounded-2xl border-2 border-transparent xl:rounded-[1.2vw] group-hover:${colorScheme.border} transition-all duration-700`}
                     whileHover={{
                       boxShadow: [
-                        "0 0 15px rgba(0,0,0,0.1)",
-                        "0 0 25px rgba(0,0,0,0.15)",
-                        "0 0 15px rgba(0,0,0,0.1)",
+                        '0 0 15px rgba(0,0,0,0.1)',
+                        '0 0 25px rgba(0,0,0,0.15)',
+                        '0 0 15px rgba(0,0,0,0.1)',
                       ],
                     }}
                     transition={{
                       boxShadow: {
                         duration: 1.5,
                         repeat: Infinity,
-                        ease: "easeInOut",
-                      }
+                        ease: 'easeInOut',
+                      },
                     }}
                   />
 
                   {/* Efectos de luz en las esquinas */}
-                  <div className="absolute top-4 left-4 w-4 h-4 bg-white/20 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                  <div className="absolute bottom-4 right-4 w-3 h-3 bg-white/15 rounded-full blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100" />
+                  <div className="absolute top-4 left-4 h-4 w-4 rounded-full bg-white/20 opacity-0 blur-sm transition-opacity duration-700 group-hover:opacity-100" />
+                  <div className="absolute right-4 bottom-4 h-3 w-3 rounded-full bg-white/15 opacity-0 blur-sm transition-opacity delay-100 duration-700 group-hover:opacity-100" />
                 </Card>
               </motion.div>
             );
@@ -293,21 +306,15 @@ export function ServicesSection() {
         initial={{ opacity: 0, y: 30, scale: 0.95 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+        transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
       >
-        <motion.div
-          whileHover={{ scale: 1.05, y: -3 }}
-          whileTap={{ scale: 0.95 }}
-        >
+        <motion.div whileHover={{ scale: 1.05, y: -3 }} whileTap={{ scale: 0.95 }}>
           <FloatingButton to={`${BASE_URL}contact`} color="balticAmber">
             Contact Us
           </FloatingButton>
         </motion.div>
 
-        <motion.div
-          whileHover={{ scale: 1.05, y: -3 }}
-          whileTap={{ scale: 0.95 }}
-        >
+        <motion.div whileHover={{ scale: 1.05, y: -3 }} whileTap={{ scale: 0.95 }}>
           <FloatingButton to={`${BASE_URL}about`} color="chocolateMartini">
             About Us
           </FloatingButton>
@@ -316,4 +323,3 @@ export function ServicesSection() {
     </section>
   );
 }
-

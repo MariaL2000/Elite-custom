@@ -1,5 +1,5 @@
 import useWindowScreen from '@/hooks/useWindowScreen';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { useMemo } from 'react';
 import { ButtonGetQuote } from './ButtonGetQuote';
 
@@ -20,8 +20,7 @@ export const TitlePage = () => {
 
   return (
     <motion.div
-    className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-white/20 via-white/10 to-transparent backdrop-blur-sm py-30 text-gray-900 transition-colors duration-300"
-
+      className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-white/20 via-white/10 to-transparent py-30 text-gray-900 backdrop-blur-sm transition-colors duration-300"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}

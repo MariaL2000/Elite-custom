@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion, Variants } from 'framer-motion';
 import { BASE_URL } from '@/config';
 
 export const NotFound = () => {
@@ -14,7 +14,7 @@ export const NotFound = () => {
   }, [navigate]);
 
   // Variantes para las animaciones
-  const svgVariants = {
+  const svgVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -25,7 +25,7 @@ export const NotFound = () => {
     },
   };
 
-  const pathVariants = {
+  const pathVariants: Variants = {
     hidden: {
       pathLength: 0,
       opacity: 0,
@@ -40,7 +40,7 @@ export const NotFound = () => {
     },
   };
 
-  const numberVariants = {
+  const numberVariants: Variants = {
     hidden: { y: '-5vw', opacity: 0 },
     visible: {
       y: 0,
@@ -53,7 +53,7 @@ export const NotFound = () => {
     },
   };
 
-  const pulseVariants = {
+  const pulseVariants: Variants = {
     pulse: {
       scale: [1, 1.05, 1],
       opacity: [0.8, 1, 0.8],

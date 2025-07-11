@@ -1,6 +1,6 @@
 import { DataSecondCarousel } from '@/types/data.type';
 import { SearchIcon } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -23,7 +23,13 @@ const CardCarousel = ({ data, isIOS }: Props) => {
     : {};
 
   return (
-    <div className="group relative aspect-[16/9] size-full overflow-hidden">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.7, ease: 'easeOut' }}
+      viewport={{ once: true, amount: 0.4 }}
+      className="group relative aspect-[16/9] size-full overflow-hidden"
+    >
       {!isImageLoaded && <Skeleton className="absolute inset-0 h-full w-full animate-pulse" />}
 
       <img
@@ -113,7 +119,7 @@ const CardCarousel = ({ data, isIOS }: Props) => {
           )}
         </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

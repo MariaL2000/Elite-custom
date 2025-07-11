@@ -1,13 +1,29 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useBrowserDetection } from '@/hooks/useBrowserDetection';
 import { useData } from '@/context/DataContext';
 import { ArrowRightIcon } from 'lucide-react';
 
-// Componente de imagen diferido
+// Lazy load de imagen
 const LazyImage = lazy(() => import('@/components/ui/LazyImage'));
+
+// Variants para animación escalonada
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.4,
+    },
+  },
+};
+
+const panelVariants = {
+  hidden: { opacity: 0, y: 50, scale: 0.95 },
+  visible: { opacity: 1, y: 0, scale: 1 },
+};
 
 export const ResizableSection = () => {
   const [isClient, setIsClient] = useState(false);
@@ -15,18 +31,19 @@ export const ResizableSection = () => {
   const [loadedImages, setLoadedImages] = useState<boolean[]>([]);
   const { isSafari } = useBrowserDetection();
   const { imagesResizable } = useData();
+
   const panels = [
     {
       image:
         imagesResizable.kitchen ??
-        'https://images.unsplash.com/photo-1677015030639-ffb7bbe68acb?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        'https://images.unsplash.com/photo-1677015030639-ffb7bbe68acb?q=80&w=1470&auto=format&fit=crop',
       title: 'Modern Kitchen Design',
       description: 'Elegant countertops with premium materials',
     },
     {
       image:
         imagesResizable.bathroom ??
-        'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1587&auto=format&fit=crop',
       title: 'Luxury Bathroom',
       description: 'Sophisticated marble finishes',
     },
@@ -45,33 +62,29 @@ export const ResizableSection = () => {
     });
   };
 
-  if (!isClient) {
-    return null;
-  }
+  if (!isClient) return null;
 
-  // Estilos específicos para Safari
-  const panelStyles: React.CSSProperties = isSafari
+  const safariFixStyles: React.CSSProperties = isSafari
     ? {
         WebkitBackfaceVisibility: 'hidden',
         WebkitPerspective: 1000,
         willChange: 'transform',
       }
     : {};
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true, margin: '-100px' }}
+      initial="hidden"
+      whileInView="visible"
+      variants={containerVariants}
+      viewport={{ once: true, amount: 0.3 }}
       className="my-16 w-full px-4 md:px-8 xl:px-[1vw]"
-      style={panelStyles}
+      style={safariFixStyles}
     >
       <div className="mb-12 text-center">
         <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
+          variants={panelVariants}
+          transition={{ duration: 0.6 }}
           className="mb-4 bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-3xl font-bold text-transparent md:text-4xl xl:text-[2.5vw]"
           style={{
             WebkitBackgroundClip: 'text',
@@ -83,54 +96,28 @@ export const ResizableSection = () => {
         </motion.h2>
 
         <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
+          variants={panelVariants}
+          transition={{ duration: 0.5, delay: 0.2 }}
           className="mx-auto max-w-md text-slate-600 md:text-lg xl:max-w-[40vw] xl:text-[1.1vw]"
-          style={{
-            WebkitFontSmoothing: 'antialiased',
-          }}
+          style={{ WebkitFontSmoothing: 'antialiased' }}
         >
           Drag the divider to explore and compare our beautiful designs. Each side showcases our
           premium craftsmanship and attention to detail.
         </motion.p>
       </div>
 
-      <motion.div
-        initial={{ scale: 0.95, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="relative"
-        style={panelStyles}
-      >
+      <motion.div variants={panelVariants} transition={{ duration: 0.6 }} className="relative">
         <ResizablePanelGroup
           direction="horizontal"
           className="h-[70vh] max-h-[70vh] w-full overflow-hidden rounded-xl border shadow-2xl"
         >
           {panels.map((panel, index) => (
-            <>
+            <motion.div key={index} variants={panelVariants} className="contents">
               {index > 0 && (
                 <ResizableHandle className="group">
                   <div className="relative h-full w-2 bg-gradient-to-b from-slate-200 to-slate-300 transition-colors duration-300 group-hover:from-blue-200 group-hover:to-indigo-300">
                     <div className="absolute top-1/2 left-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md transition-transform duration-300 group-hover:scale-110">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-slate-600 transition-colors duration-300 group-hover:text-indigo-600"
-                      >
-                        <path d="M18 8L22 12L18 16"></path>
-                        <path d="M6 8L2 12L6 16"></path>
-                        <line x1="2" y1="12" x2="22" y2="12"></line>
-                      </svg>
+                      <ArrowRightIcon className="text-slate-600 group-hover:text-indigo-600" />
                     </div>
                   </div>
                 </ResizableHandle>
@@ -148,14 +135,18 @@ export const ResizableSection = () => {
                       src={panel.image}
                       alt={panel.title}
                       onLoad={() => handleImageLoad(index)}
-                      className={`aspect-auto size-full object-cover transition-transform duration-700 ${activePanel === index ? 'scale-105' : 'scale-100'}`}
-                      style={panelStyles}
+                      className={`aspect-auto size-full object-cover transition-transform duration-700 ${
+                        activePanel === index ? 'scale-105' : 'scale-100'
+                      }`}
+                      style={safariFixStyles}
                     />
                   </Suspense>
+
                   {!loadedImages[index] && (
                     <Skeleton className="absolute inset-0 h-full w-full rounded-none" />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -169,26 +160,27 @@ export const ResizableSection = () => {
                     <h3 className="mb-2 text-2xl font-bold md:text-3xl xl:text-[1.8vw]">
                       {panel.title}
                     </h3>
-                    <div className="mb-3 h-1 w-16 bg-white/70 xl:w-[4vw]"></div>
+                    <div className="mb-3 h-1 w-16 bg-white/70 xl:w-[4vw]" />
                     <p className="text-white/90 md:text-lg xl:text-[1.1vw]">{panel.description}</p>
                   </motion.div>
                 </div>
               </ResizablePanel>
-            </>
+            </motion.div>
           ))}
         </ResizablePanelGroup>
 
-        <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 transform">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.5 }}
-            className="flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm text-slate-600 shadow-lg md:text-base xl:px-[1vw] xl:py-[0.5vh] xl:text-[0.9vw]"
-          >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+          className="absolute -bottom-5 left-1/2 -translate-x-1/2 transform"
+        >
+          <div className="flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm text-slate-600 shadow-lg md:text-base xl:px-[1vw] xl:py-[0.5vh] xl:text-[0.9vw]">
             <ArrowRightIcon className="size-4 xl:size-[1vw]" />
             Drag to compare
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </motion.div>
     </motion.div>
   );
