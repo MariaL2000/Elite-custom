@@ -7,7 +7,7 @@ import { Toaster } from '@/components/ui/sonner';
 import { DataProvider } from '@/context/DataContext';
 import { useState } from 'react';
 
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Intro } from './Intro';
 import { useIsMobile } from '@/hooks/useIsMobile';
 

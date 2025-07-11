@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Pause, Play } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import React from 'react';
 
 interface CarouselControlsProps {

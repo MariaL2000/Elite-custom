@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer';
 import { serviceCards } from '@/datas/servicescards';
 import { DrawerCloseButton } from './DrawerClosebutton';

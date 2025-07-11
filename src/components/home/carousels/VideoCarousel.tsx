@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Pause, ChevronLeft, ChevronRight } from 'lucide-react';
 import { VideoSlide } from '@/datas/carousel-video';
 
@@ -123,7 +123,7 @@ export const VideoCarousel = ({ slides }: { slides: VideoSlide[] }) => {
 
             {/* Play/Pause Button */}
             <motion.div // Cambiado de button a div
-              onClick={e => {
+              onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
                 e.stopPropagation(); // Previene que el clic llegue al contenedor
                 togglePlay();
               }}
