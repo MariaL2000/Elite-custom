@@ -50,47 +50,29 @@ const fallbackImages = [
   'https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&h=600&fit=crop&crop=entropy&auto=format&q=85',
   'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=600&fit=crop&crop=entropy&auto=format&q=85',
 ];
-
 const cardColors = [
   {
-    gradient: 'from-blue-500/20 to-cyan-500/20',
-    accent: 'bg-blue-500/10',
-    border: 'border-blue-200',
+    gradient:
+      '[background-image:linear-gradient(to_right,rgb(--cannoli-cream/0.2),rgb(--cream-tan/0.2))]',
+    accent: '[background-color:rgb(--cannoli-cream/0.1)]',
+    border: '[border-color:rgb(--cannoli-cream)]',
   },
   {
-    gradient: 'from-purple-500/20 to-pink-500/20',
-    accent: 'bg-purple-500/10',
-    border: 'border-purple-200',
+    gradient: '[background-image:linear-gradient(to_right,rgb(--safari/0.2),rgb(--sirocco/0.2))]',
+    accent: '[background-color:rgb(--safari/0.1)]',
+    border: '[border-color:rgb(--safari)]',
   },
   {
-    gradient: 'from-emerald-500/20 to-teal-500/20',
-    accent: 'bg-emerald-500/10',
-    border: 'border-emerald-200',
+    gradient:
+      '[background-image:linear-gradient(to_right,rgb(--chanterelle/0.2),rgb(--mocha-mousse/0.2))]',
+    accent: '[background-color:rgb(--chanterelle/0.1)]',
+    border: '[border-color:rgb(--chanterelle)]',
   },
   {
-    gradient: 'from-orange-500/20 to-red-500/20',
-    accent: 'bg-orange-500/10',
-    border: 'border-orange-200',
-  },
-  {
-    gradient: 'from-indigo-500/20 to-blue-500/20',
-    accent: 'bg-indigo-500/10',
-    border: 'border-indigo-200',
-  },
-  {
-    gradient: 'from-rose-500/20 to-pink-500/20',
-    accent: 'bg-rose-500/10',
-    border: 'border-rose-200',
-  },
-  {
-    gradient: 'from-amber-500/20 to-yellow-500/20',
-    accent: 'bg-amber-500/10',
-    border: 'border-amber-200',
-  },
-  {
-    gradient: 'from-violet-500/20 to-purple-500/20',
-    accent: 'bg-violet-500/10',
-    border: 'border-violet-200',
+    gradient:
+      '[background-image:linear-gradient(to_right,rgb(--baltic-amber/0.2),rgb(--chocolate-martini/0.2))]',
+    accent: '[background-color:rgb(--baltic-amber/0.1)]',
+    border: '[border-color:rgb(--baltic-amber)]',
   },
 ];
 
@@ -98,7 +80,7 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative mt-18 overflow-hidden bg-(--cannoli-cream)/20 px-4 py-16 backdrop-blur-sm transition-all duration-500 md:px-6 md:py-20 xl:px-[2vw] xl:py-[10vh]"
+      className="relative mt-18 overflow-hidden bg-(--mocha-mousse)/10 px-4 py-16 backdrop-blur-[10px] transition-all duration-500 md:px-6 md:py-20 xl:px-[2vw] xl:py-[10vh]"
     >
       {/* Elementos decorativos de fondo */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">

@@ -69,7 +69,7 @@ export const NavBar = ({ ref }: React.RefAttributes<HTMLElement>) => {
       <Button
         variant="ghost"
         size="icon"
-        className="text-gray-700 hover:bg-gray-200/50 md:hidden dark:text-gray-300 dark:hover:bg-gray-800/50"
+        className="text-gray-900 hover:bg-gray-200/50 md:hidden"
         onClick={toggleMenu}
       >
         {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

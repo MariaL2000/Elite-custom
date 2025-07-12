@@ -20,7 +20,7 @@ export const TitlePage = () => {
 
   return (
     <motion.div
-      className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-white/20 via-white/10 to-transparent py-30 text-gray-900 backdrop-blur-sm transition-colors duration-300"
+      className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-transparent py-30 text-gray-900 backdrop-blur-2xl transition-colors duration-300"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -121,7 +121,7 @@ export const TitlePage = () => {
       {particles.map((particle, i) => (
         <motion.div
           key={i}
-          className="absolute size-1 rounded-full bg-white xl:size-[1.1vw] dark:bg-white"
+          className="absolute size-1 rounded-full bg-white xl:size-[1.1vw]"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
