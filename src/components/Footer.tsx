@@ -35,17 +35,18 @@ const Footer = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
-        {/* Logo Section */}
-        <motion.div variants={itemVariants} className="space-y-4 xl:space-y-[1vw]">
-          <div className="flex items-center gap-2 xl:gap-[0.5vw]">
-            <span
-              className="text-2xl font-bold xl:text-[2vw]"
-              style={{ color: 'var(--cannoli-cream)' }}
-            >
-              Elite Custom Countertops
-            </span>
-          </div>
-        </motion.div>
+     {/* Logo Section */}
+<motion.div variants={itemVariants} className="space-y-4 xl:space-y-[1vw]">
+  <div className="flex items-center gap-2 xl:gap-[0.5vw]">
+    <img
+      src="elite2.PNG"
+      alt="Elite Custom Countertops Logo"
+      className="h-20 w-auto sm:h-24 md:h-28 lg:h-32 xl:h-[6vw] 2xl:h-36 object-contain"
+    />
+  </div>
+</motion.div>
+
+
 
         {/* Quick Links */}
         <motion.div variants={itemVariants} className="space-y-4 xl:space-y-[1vw]">
@@ -95,7 +96,7 @@ const Footer = () => {
               className="flex items-center gap-3 rounded-md px-2 py-1 text-gray-300 transition-colors duration-300 hover:bg-(--cannoli-cream) hover:text-(--chocolate-martini) xl:gap-[0.7vw] xl:text-[1.1vw]"
               whileHover={{ x: 5 }}
             >
-              <Phone className="h-5 w-5 text-teal-600 xl:h-[1.2vw] xl:w-[1.2vw]" />
+              <Phone className="h-5 w-5 text-white-600 xl:h-[1.2vw] xl:w-[1.2vw]" />
               <span>+1 (234) 567-890</span>
             </motion.a>
             <motion.a
@@ -103,7 +104,7 @@ const Footer = () => {
               className="flex items-center gap-3 rounded-md px-2 py-1 text-gray-300 transition-colors duration-300 hover:bg-(--cannoli-cream) hover:text-(--chocolate-martini) xl:gap-[0.7vw] xl:text-[1.1vw]"
               whileHover={{ x: 5 }}
             >
-              <Mail className="h-5 w-5 text-teal-600 xl:h-[1.2vw] xl:w-[1.2vw]" />
+              <Mail className="h-5 w-5 text-white-600 xl:h-[1.2vw] xl:w-[1.2vw]" />
               <span>contact@countertoppro.com</span>
             </motion.a>
           </div>
@@ -127,7 +128,7 @@ const Footer = () => {
                 >
                   {React.cloneElement(social.icon, {
                     className:
-                      'h-5 w-5 text-gray-300 group-hover:text-teal-600 xl:h-[1.4vw] xl:w-[1.4vw]',
+                      'h-5 w-5 text-black-300 group-hover:text-white-600 xl:h-[1.4vw] xl:w-[1.4vw]',
                   })}
                 </motion.a>
               ))}

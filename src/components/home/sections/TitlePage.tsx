@@ -44,7 +44,7 @@ export const TitlePage = () => {
       
       {/* Floating Glass Orbs */}
       <motion.div
-        className="absolute top-20 left-20 w-32 h-32 rounded-full bg-gradient-to-br from-white/30 to-amber-200/20 backdrop-blur-xl"
+        className="absolute top-20 left-20 w-28 h-30 rounded-full bg-gradient-to-br from-white/30 to-amber-200/20 backdrop-blur-xl"
         animate={{
           y: [-20, 20, -20],
           x: [-10, 10, -10],
@@ -113,7 +113,7 @@ export const TitlePage = () => {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-16 left-1/2 -translate-x-1/2 sm:bottom-12 md:bottom-12 lg:bottom-14 xl:bottom-16 2xl:bottom-18"
+       className="absolute bottom-6 left-1/2 -translate-x-1/2 sm:bottom-8 md:bottom-10 lg:bottom-12 xl:bottom-14 2xl:bottom-16"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5, duration: 0.6 }}
@@ -123,7 +123,7 @@ export const TitlePage = () => {
         <a
           href="#services"
           className="group flex size-16 items-center justify-center rounded-full bg-gradient-to-r from-amber-400/80 via-orange-400/80 to-yellow-500/80 backdrop-blur-md p-0.5 transition-all duration-300 hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:outline-none xl:size-[4vw]"
-          aria-label="Ir a la sección de servicios"
+          aria-label="Services"
         >
           <div className="group-hover:bg-white/90 flex h-full w-full items-center justify-center rounded-full bg-white/80 backdrop-blur-sm transition-all duration-300">
             <motion.span
@@ -146,7 +146,7 @@ export const TitlePage = () => {
       {particles.map((particle, i) => (
         <motion.div
           key={i}
-          className={`absolute size-3 rounded-full ${particle.color} xl:size-[0.8vw]`}
+          className={`absolute size-2 rounded-full ${particle.color} xl:size-[0.8vw]`}
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,

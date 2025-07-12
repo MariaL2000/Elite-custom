@@ -43,31 +43,7 @@ export function CarouselContainer({
     : {};
 
   return (
-    <div 
-  className="relative my-[5%] w-full overflow-hidden py-12" 
-  style={{
-    ...carouselStyles,
-    background: `
-      linear-gradient(135deg, 
-        rgba(255, 248, 220, 0.15) 0%,
-        rgba(245, 222, 179, 0.20) 25%,
-        rgba(222, 184, 135, 0.15) 50%,
-        rgba(210, 180, 140, 0.20) 75%,
-        rgba(188, 143, 143, 0.15) 100%
-      )
-    `,
-    backdropFilter: 'blur(20px)',
-    WebkitBackdropFilter: 'blur(20px)',
-    borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-    borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-    boxShadow: `
-      inset 0 1px 0 rgba(255, 255, 255, 0.1),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
-      0 8px 32px rgba(0, 0, 0, 0.1)
-    `,
-  }}
->
-
+    <div className="relative my-[5%] w-full overflow-hidden py-12" style={carouselStyles}>
       {title && (
         <h1
           className="my-[2%] bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-center text-3xl font-bold text-transparent xl:text-[2.5vw]"
