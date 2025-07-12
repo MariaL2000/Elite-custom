@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -26,9 +26,7 @@ export const NavBar = ({ ref }: React.RefAttributes<HTMLElement>) => {
       ref={ref}
       className={cn(
         'relative z-10 flex w-full items-center justify-between gap-8 px-4 py-3 transition-all duration-300 md:justify-start md:px-8 md:py-4 xl:gap-16 xl:px-[2vw] xl:py-[1vw]',
-        scrolled
-          ? 'bg-gradient-to-r from-(--canoli-cream)/95 to-(--safari)/95 shadow-lg backdrop-blur-md'
-          : 'bg-gradient-to-r from-(--canoli-cream) to-(--safari)'
+        scrolled ? 'bg-(--canoli-cream)/10 shadow-lg backdrop-blur-xl' : 'bg-(--canoli-cream)/10'
       )}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -71,7 +69,7 @@ export const NavBar = ({ ref }: React.RefAttributes<HTMLElement>) => {
       <Button
         variant="ghost"
         size="icon"
-        className="text-gray-700 hover:bg-gray-200/50 md:hidden dark:text-gray-300 dark:hover:bg-gray-800/50"
+        className="text-gray-900 hover:bg-gray-200/50 md:hidden"
         onClick={toggleMenu}
       >
         {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

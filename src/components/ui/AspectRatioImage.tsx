@@ -1,7 +1,7 @@
 import { Suspense, useState } from 'react';
 import { Skeleton } from './skeleton';
 import LazyImage from './LazyImage';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 // import { Card } from './card';
 
 interface AspectRatioImageProps {

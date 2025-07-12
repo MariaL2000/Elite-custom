@@ -1,6 +1,6 @@
 import { DataSecondCarousel } from '@/types/data.type';
 import { SearchIcon } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -50,7 +50,7 @@ const CardCarousel = ({ data, isIOS }: Props) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ delay: 0.3, duration: 0.3 }}
-            className="absolute inset-0 z-20 grid cursor-pointer place-content-center bg-gradient-to-br from-slate-900/95 to-indigo-900/95 p-6 text-center backdrop-blur-sm"
+            className="absolute inset-0 z-20 grid cursor-pointer place-content-center bg-gradient-to-br from-(--mocha-mousse)/95 to-(--chocolate-martini)/95 p-6 text-center backdrop-blur-sm"
             style={imageStyles}
           >
             <motion.h2
@@ -65,7 +65,7 @@ const CardCarousel = ({ data, isIOS }: Props) => {
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="mx-auto mb-4 h-0.5 w-16 bg-indigo-400 xl:h-[0.2vh] xl:w-[4vw]"
+              className="mx-auto mb-4 h-0.5 w-16 bg-(--baltic-amber) xl:h-[0.2vh] xl:w-[4vw]"
             />
             <motion.p
               initial={{ y: 50, opacity: 0 }}

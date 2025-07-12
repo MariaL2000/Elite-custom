@@ -1,5 +1,5 @@
 import { SeparatorWithColor } from '@/components/SeparatorWithColor';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 interface SectionHeaderProps {
   title: string;

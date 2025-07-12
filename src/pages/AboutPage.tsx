@@ -2,7 +2,7 @@ import { CompanyHero } from '@/components/about/CompanyHero';
 import { ValuesSection } from '@/components/about/ValuesSection';
 import { useData } from '@/context/DataContext';
 
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 export const AboutPage = () => {
   const { main_carousel } = useData();

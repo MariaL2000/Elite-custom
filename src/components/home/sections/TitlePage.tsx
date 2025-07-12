@@ -1,142 +1,194 @@
 import useWindowScreen from '@/hooks/useWindowScreen';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { useMemo } from 'react';
-import { ButtonGetQuote } from './ButtonGetQuote';
 
 export const TitlePage = () => {
   const isMac = useWindowScreen();
-  // Pre-compute random values for particles
+
+  // Partículas de colores claros
   const particles = useMemo(() => {
-    return Array.from({ length: 10 }).map(() => ({
+    return Array.from({ length: 15 }).map(() => ({
       x: Math.random() * 100,
       y: Math.random() * 100,
-      opacity: Math.random() * 0.5 + 0.3,
-      scale: Math.random() * 0.5 + 0.2,
-      duration: Math.random() * 5 + 5,
-      yOffset: Math.random() * -100,
-      opacityChange: Math.random() * 0.8 + 0.2,
+      opacity: Math.random() * 0.8 + 0.4,
+      scale: Math.random() * 1.2 + 0.6,
+      duration: Math.random() * 4 + 6,
+      yOffset: Math.random() * -120,
+      opacityChange: Math.random() * 0.9 + 0.3,
+      color: Math.random() > 0.7 ? 'bg-white' : 
+             Math.random() > 0.4 ? 'bg-yellow-100' : 
+             Math.random() > 0.2 ? 'bg-amber-100' : 'bg-orange-100',
     }));
   }, []);
 
   return (
     <motion.div
-    className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-white/20 via-white/10 to-transparent backdrop-blur-sm py-30 text-gray-900 transition-colors duration-300"
-
+      className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
+      style={{
+        background: `
+          linear-gradient(135deg, 
+            rgba(255, 248, 220, 0.1) 0%,
+            rgba(245, 222, 179, 0.15) 25%,
+            rgba(222, 184, 135, 0.1) 50%,
+            rgba(210, 180, 140, 0.15) 75%,
+            rgba(188, 143, 143, 0.1) 100%
+          )
+        `,
+      }}
     >
-      {/* Logo */}
+      {/* Glassmorphism Background Effects */}
+      <div className="absolute inset-0 backdrop-blur-3xl bg-gradient-to-br from-white/20 via-amber-50/30 to-orange-100/20" />
+      
+      {/* Floating Glass Orbs */}
       <motion.div
-        className="short:top-0 short:h-[35vh] absolute top-[8%] left-1/2 h-[40vh] w-[90vw] -translate-x-1/2 overflow-hidden sm:top-[10%] sm:h-[42vh] sm:w-[85vw] md:top-[4%] md:h-[50vh] md:w-[50vw] lg:top-0 lg:h-[50vh] lg:w-[50vw]"
-        style={{
-          mask: `
-      linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%),
-      linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)
-    `,
-          WebkitMask: `
-      linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%),
-      linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%)
-    `,
-          maskComposite: 'intersect',
-          WebkitMaskComposite: 'source-in',
+        className="absolute top-20 left-20 w-32 h-32 rounded-full bg-gradient-to-br from-white/30 to-amber-200/20 backdrop-blur-xl"
+        animate={{
+          y: [-20, 20, -20],
+          x: [-10, 10, -10],
+          rotate: [0, 180, 360],
         }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 2, ease: 'easeIn' }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      
+      <motion.div
+        className="absolute bottom-32 right-16 w-24 h-24 rounded-full bg-gradient-to-br from-orange-200/30 to-amber-300/20 backdrop-blur-xl"
+        animate={{
+          y: [20, -20, 20],
+          x: [10, -10, 10],
+          rotate: [360, 180, 0],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* Primera imagen - Logo principal */}
+      <motion.div
+        className="absolute top-[5%] left-1/2 h-[40vh] w-[90vw] -translate-x-1/2 overflow-hidden sm:top-[8%] sm:h-[42vh] sm:w-[80vw] md:top-[8%] md:h-[48vh] md:w-[50vw] lg:top-[5%] lg:h-[52vh] lg:w-[52vw] xl:top-[8%] xl:h-[48vh] xl:w-[48vw] 2xl:top-[10%] 2xl:h-[45vh] 2xl:w-[45vw]"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 2, ease: 'easeOut' }}
+        style={{
+          filter: 'drop-shadow(0 10px 25px rgba(0, 0, 0, 0.1))',
+        }}
       >
         <img
-          src="logo1.jpg"
+          src="elite.PNG"
           alt="Elite Custom Countertops Logo"
-          className="h-full w-full object-cover object-center"
+          className="h-full w-full object-contain object-center"
+          onError={(e) => {
+            console.error('Error cargando imagen principal:', e);
+          }}
         />
       </motion.div>
 
-      {/* Content */}
-      <div className="relative z-4 mt-16 flex flex-col items-center px-4 sm:mt-20 md:mt-24 lg:mt-28 xl:mt-32">
-        <motion.div
-          className="mx-auto flex max-w-3xl flex-col items-center xl:max-w-[35vw]"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <motion.h1
-            className="font-satisfy font-satisfy mt-3 mb-2 block transform text-center text-5xl leading-tight font-bold tracking-wide transition-all duration-300"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            style={{
-              color: 'var(--sirocco)',
-              textShadow: '0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08)',
-              letterSpacing: '0.025em',
-              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
-            }}
-          >
-            Elite Custom Countertops
-          </motion.h1>
+      {/* Segunda imagen - Título */}
+      <motion.div
+        className="absolute top-[48%] left-1/2 h-[25vh] w-[80vw] -translate-x-1/2 overflow-hidden sm:top-[52%] sm:h-[28vh] sm:w-[70vw] md:top-[58%] md:h-[30vh] md:w-[45vw] lg:top-[60%] lg:h-[32vh] lg:w-[45vw] xl:top-[58%] xl:h-[30vh] xl:w-[40vw] 2xl:top-[56%] 2xl:h-[28vh] 2xl:w-[38vw]"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 2, ease: 'easeOut', delay: 0.5 }}
+        style={{
+          filter: 'drop-shadow(0 8px 20px rgba(0, 0, 0, 0.08))',
+        }}
+      >
+        <img
+          src="elite2.PNG"
+          alt="Elite Custom Countertops Title"
+          className="h-full w-full object-contain object-center"
+          onError={(e) => {
+            console.error('Error cargando imagen título:', e);
+          }}
+        />
+      </motion.div>
 
-          <motion.div
-            className="relative"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: 0.5 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <ButtonGetQuote />
-          </motion.div>
-        </motion.div>
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute -bottom-22 xl:-bottom-[10vh]"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          whileHover={{ y: 5 }}
-          whileTap={{ scale: 0.9 }}
+      {/* Scroll indicator */}
+      <motion.div
+        className="absolute bottom-16 left-1/2 -translate-x-1/2 sm:bottom-12 md:bottom-12 lg:bottom-14 xl:bottom-16 2xl:bottom-18"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5, duration: 0.6 }}
+        whileHover={{ y: -3, scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <a
+          href="#services"
+          className="group flex size-16 items-center justify-center rounded-full bg-gradient-to-r from-amber-400/80 via-orange-400/80 to-yellow-500/80 backdrop-blur-md p-0.5 transition-all duration-300 hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:outline-none xl:size-[4vw]"
+          aria-label="Ir a la sección de servicios"
         >
-          <a
-            href="#services"
-            className="group flex size-14 items-center justify-center rounded-full bg-gradient-to-r from-(--baltic-amber) via-(--siroco) to-(--chocolate-martini) p-0.5 transition-all duration-300 hover:shadow-[0_0_20px_rgba(79,209,197,0.6)] focus-visible:ring-2 focus-visible:ring-(--chocolate-martini) focus-visible:ring-offset-2 focus-visible:outline-none xl:size-[3vw]"
-            aria-label="Ir a la sección de servicios"
-          >
-            <div className="group-hover:bg-opacity-80 flex h-full w-full items-center justify-center rounded-full bg-white transition-all duration-300">
-              <motion.span
-                className="text-2xl text-(--chocolate-martini) xl:text-[1.5vw]"
-                animate={{ y: [0, 5, 0] }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  repeatType: 'loop',
-                }}
-                aria-hidden="true"
-              >
-                ↓
-              </motion.span>
-            </div>
-          </a>
-        </motion.div>
-      </div>
+          <div className="group-hover:bg-white/90 flex h-full w-full items-center justify-center rounded-full bg-white/80 backdrop-blur-sm transition-all duration-300">
+            <motion.span
+              className="text-3xl text-amber-600 xl:text-[2vw]"
+              animate={{ y: [0, 8, 0] }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                repeatType: 'loop',
+              }}
+              aria-hidden="true"
+            >
+              ↓
+            </motion.span>
+          </div>
+        </a>
+      </motion.div>
 
-      {/* Particles */}
+      {/* Partículas de colores claros */}
       {particles.map((particle, i) => (
         <motion.div
           key={i}
-          className="absolute size-1 rounded-full bg-white xl:size-[1.1vw] dark:bg-white"
+          className={`absolute size-3 rounded-full ${particle.color} xl:size-[0.8vw]`}
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
             opacity: particle.opacity,
             scale: particle.scale,
+            filter: 'blur(0.5px)',
+            boxShadow: '0 0 8px rgba(255,255,255,0.3)',
           }}
           animate={{
-            y: [0, isMac ? particle.yOffset * 10 : particle.yOffset, 0],
+            y: [0, isMac ? particle.yOffset * 8 : particle.yOffset, 0],
             opacity: [particle.opacity, particle.opacityChange, particle.opacity],
+            scale: [particle.scale, particle.scale * 1.3, particle.scale],
           }}
           transition={{
             duration: particle.duration,
             repeat: Infinity,
             repeatType: 'reverse',
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+
+      {/* Partículas adicionales con colores claros */}
+      {Array.from({ length: 8 }).map((_, i) => (
+        <motion.div
+          key={`glow-${i}`}
+          className="absolute w-2 h-2 rounded-full bg-gradient-to-r from-white to-yellow-50"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            filter: 'blur(1px)',
+            boxShadow: '0 0 12px rgba(255,255,255,0.6)',
+          }}
+          animate={{
+            opacity: [0, 1, 0],
+            scale: [0.5, 1.5, 0.5],
+          }}
+          transition={{
+            duration: 3 + Math.random() * 2,
+            repeat: Infinity,
+            delay: Math.random() * 2,
+            ease: "easeInOut",
           }}
         />
       ))}

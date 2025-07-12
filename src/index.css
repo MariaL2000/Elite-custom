@@ -11,8 +11,6 @@ html {
 
     font-family: "Quicksand", sans-serif;
     font-optical-sizing: auto;
-
-
     scroll-behavior: smooth;
 }
 
@@ -23,9 +21,7 @@ body {
     height: 100vh;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
-    /* Mejora el renderizado de fuentes */
     text-rendering: optimizeLegibility;
-    /* Optimiza la legibilidad */
 
 }
 
@@ -159,7 +155,7 @@ body {
     }
 
 
-    :not(h1, h2, h3) {
+    :not(h1, h2, h3, h4, h5, h6) {
         @apply text-[16px] xl:text-[1vw]
     }
 

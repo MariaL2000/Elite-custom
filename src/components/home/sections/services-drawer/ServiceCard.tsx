@@ -12,8 +12,9 @@ export const ServiceCard = ({ card }: ServiceCardProps) => {
   // Eliminamos motion para mejor performance en iOS
   return (
     <div
-      className={`group shadow-lg hover:shadow-2xl relative overflow-hidden rounded-xl border bg-(--mocha-mousse)/70 p-4 backdrop-blur-sm transition-all duration-300 md:p-6 xl:p-[1.5vw] xl:py-[3vw] 2xl:rounded-[0.9vw] ${isHovered ? 'scale-[1.03] shadow-xl' : ''
-        }`}
+      className={`group relative h-full overflow-hidden rounded-xl border bg-(--mocha-mousse)/70 p-4 shadow-lg backdrop-blur-sm transition-all duration-300 hover:shadow-2xl md:p-6 xl:p-[1.5vw] xl:py-[3vw] 2xl:rounded-[0.9vw] ${
+        isHovered ? 'scale-[1.03] shadow-xl' : ''
+      }`}
       style={{
         minHeight: 'clamp(180px, 20vh, 250px)',
       }}
@@ -57,8 +58,6 @@ export const ServiceCard = ({ card }: ServiceCardProps) => {
           filter: 'brightness(1.1)',
         }}
       />
-
-
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import { ServiceCardType } from '@/types/services';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 interface DrawerServiceCardProps {
   card: ServiceCardType;

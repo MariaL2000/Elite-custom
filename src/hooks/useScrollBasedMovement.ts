@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { useScroll } from 'motion/react';
+import { useScroll } from 'framer-motion';
 
 interface ScrollMovementOptions {
   multiplier?: number;

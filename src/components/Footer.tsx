@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { ChevronRight, Facebook, Instagram, Twitter, Phone, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { URLS } from '@/config';
@@ -145,23 +145,10 @@ const Footer = () => {
         viewport={{ once: true }}
       >
         <div className="mt-6 flex flex-col items-center justify-between gap-4 md:flex-row xl:mt-[1.5vw] xl:gap-[1vw]">
-          <p className="text-sm text-gray-400 xl:text-[0.9vw]">
+          <p className="text-sm text-white xl:text-[0.9vw]">
             &copy; {new Date().getFullYear()} CountertopPro. All rights reserved.
           </p>
-          <div className="flex gap-6 xl:gap-[1.5vw]">
-            <Link
-              to="/privacy"
-              className="text-sm text-gray-300 underline-offset-4 transition-colors duration-300 hover:text-teal-600 hover:underline xl:text-[0.9vw]"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              to="/terms"
-              className="text-sm text-gray-300 underline-offset-4 transition-colors duration-300 hover:text-teal-600 hover:underline xl:text-[0.9vw]"
-            >
-              Terms of Service
-            </Link>
-          </div>
+          
         </div>
       </motion.div>
     </footer>

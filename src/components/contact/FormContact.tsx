@@ -13,7 +13,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { SendIcon } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { ContactSchema, ContactType } from '@/schemas/contact.schema';
 import { toastPromise } from '../ui/toast-promise';
 import { submitContact } from '@/api/submitContact';

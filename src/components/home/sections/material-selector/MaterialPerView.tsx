@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Skeleton } from '@/components/ui/skeleton';
 import { type Material } from '@/datas/material-selector';
 
@@ -34,7 +34,7 @@ export const MaterialPerView = ({
         <Suspense fallback={<Skeleton className="h-64 w-full md:h-80 lg:h-[60vh]" />}>
           <LazyImage
             key={selectedMaterial.image}
-            src={selectedMaterial.image}
+            src={selectedMaterial.image ?? 'https://via.placeholder.com/500/cccccc/808080.png'}
             alt={selectedMaterial.name}
             onLoad={() => handleImageLoad(imageId)}
             className="h-64 w-full object-cover md:h-80 lg:h-[60vh]"

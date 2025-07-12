@@ -7,24 +7,24 @@ export interface ServiceItem {
 export const services: ServiceItem[] = [
   {
     id: 1,
-    title: 'Service 1',
+    title: 'Quartz countertop installation',
     description:
-      'Custom quartz countertop installation for kitchens, offering stylish and durable surfaces.  ',
+      'Custom-cut, durable quartz surfaces installed professionally.',
   },
   {
     id: 2,
-    title: 'Service 2',
-    description: 'Bathroom remodels with premium granite vanities and countertops.  ',
+    title: 'Countertop remodeling & eco-friendly surfaces',
+    description: 'Choose from sleek edge designs for a polished look.',
   },
   {
     id: 3,
-    title: 'Service 3',
-    description: 'Fireplace surround upgrades using elegant marble or quartz designs.  ',
+    title: 'Luxury bathroom vanities ',
+    description: 'Elevate your space with custom, luxury countertops',
   },
   {
     id: 4,
-    title: 'Service 4',
-    description: 'Laminate countertop replacements for a budget-friendly kitchen refresh.',
+    title: ' Statement fireplaces',
+    description: 'Bold, custom designs that become the heart of your home.',
   },
 ];
 

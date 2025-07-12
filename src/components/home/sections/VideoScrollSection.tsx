@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Pause, Play } from 'lucide-react';
 import { BASE_URL } from '@/config';
