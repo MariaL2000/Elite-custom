@@ -121,7 +121,7 @@ const Footer = () => {
                 <motion.a
                   key={index}
                   href={social.href}
-                  className="group flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white/50 shadow-sm transition-all duration-300 hover:border-teal-600/30 hover:bg-teal-600/20 xl:h-[2.5vw] xl:w-[2.5vw]"
+                  className="group flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white/50 shadow-sm transition-all duration-300 hover:bg-(--cannoli-cream) xl:h-[2.5vw] xl:w-[2.5vw]"
                   whileHover={{ y: -3 }}
                   whileTap={{ scale: 0.95 }}
                 >
