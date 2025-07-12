@@ -39,10 +39,10 @@ const itemVariants = {
 
 // Imágenes específicas para cada servicio
 const serviceImages = [
-  "services/service1",
-  "services/service2",
-  "services/service3",
-  "services/service4",
+  "/services/kitchen.jpg",
+  "/services/bathroom.jpg",
+  "/services/fireplace.jpg",
+  "/services/kitchen2.jpg",
 
 ];
 
@@ -84,7 +84,7 @@ export function ServicesSection() {
           transition={{
             duration: 15,
             repeat: Infinity,
-            ease: "circular",
+            ease: "linear",
           }}
         />
         <motion.div
@@ -96,7 +96,7 @@ export function ServicesSection() {
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: "circular",
+            ease: "linear",
           }}
         />
       </div>
