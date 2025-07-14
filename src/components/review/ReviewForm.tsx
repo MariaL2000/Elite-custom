@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
@@ -23,7 +23,7 @@ import { submitReview } from '@/api/submitReview';
 import { useMutation } from '@tanstack/react-query';
 import { toastPromise } from '../ui/toast-promise';
 import { useData } from '@/context/DataContext';
-import { cn } from '@/lib/utils';
+import { cn, hexToRGBA } from '@/lib/utils';
 
 export function ReviewForm() {
   const [rating, setRating] = useState(0);
@@ -48,9 +48,9 @@ export function ReviewForm() {
       }),
   });
   const { colors } = useData();
-  const colorsBtn = `bg-${
-    colors?.primary ? `[${colors.primary}]` : '(--chocolate-martini)'
-  } hover:bg-${colors?.primary ? `[${colors.primary}]` : '(--chocolate-martini)'}/90`;
+  const id = useId();
+  const dynamicClass = `btn-submit-${id}`;
+  const backgroundColor = colors.primary ?? 'var(--chocolate-martini)';
 
   function onSubmit(values: ReviewType) {
     mutate(values, {
@@ -69,6 +69,17 @@ export function ReviewForm() {
       transition={{ duration: 0.8, type: 'spring' }}
       className="w-full rounded-lg bg-white p-6 shadow-md xl:w-[60%] xl:p-[2vw] xl:shadow-2xl"
     >
+      <style>
+        {`
+                .${dynamicClass} {
+                  background: ${backgroundColor};
+                  color: white;
+                }
+                .${dynamicClass}:hover {
+                  background: ${hexToRGBA(backgroundColor, 0.9)};
+                }
+              `}
+      </style>
       <h2 className="mb-6 text-center text-2xl font-bold xl:text-[2vw]">Leave a Review</h2>
 
       <Form {...form}>
@@ -189,7 +200,7 @@ export function ReviewForm() {
             <Button
               type="submit"
               disabled={isPending}
-              className={cn(colorsBtn, 'h-[8vh] w-full text-xl xl:h-[6vh] xl:text-[1.5vw]')}
+              className={cn(dynamicClass, 'h-[8vh] w-full text-xl xl:h-[6vh] xl:text-[1.5vw]')}
             >
               {isPending ? 'Sending...' : 'Send'}
               <motion.span

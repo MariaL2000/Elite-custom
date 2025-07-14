@@ -19,7 +19,8 @@ import { toastPromise } from '../ui/toast-promise';
 import { submitContact } from '@/api/submitContact';
 import { useMutation } from '@tanstack/react-query';
 import { useData } from '@/context/DataContext';
-import { cn } from '@/lib/utils';
+import { cn, hexToRGBA } from '@/lib/utils';
+import { useId } from 'react';
 
 export const FormContact = () => {
   const form = useForm<ContactType>({
@@ -43,9 +44,9 @@ export const FormContact = () => {
   });
 
   const { colors } = useData();
-  const colorsBtn = `bg-${
-    colors?.primary ? `[${colors.primary}]` : '(--chocolate-martini)'
-  } hover:bg-${colors?.primary ? `[${colors.primary}]` : '(--chocolate-martini)'}/90`;
+  const id = useId();
+  const dynamicClass = `btn-submit-${id}`;
+  const backgroundColor = colors.primary ?? 'var(--chocolate-martini)';
 
   function onSubmit(values: ContactType) {
     mutate(values, {
@@ -63,6 +64,18 @@ export const FormContact = () => {
       transition={{ duration: 0.8, type: 'spring' }}
       className="w-full rounded-lg bg-white p-6 shadow-md xl:p-[2vw] xl:shadow-2xl"
     >
+      <style>
+        {`
+          .${dynamicClass} {
+            background: ${backgroundColor};
+            color: white;
+          }
+          .${dynamicClass}:hover {
+            background: ${hexToRGBA(backgroundColor, 0.9)};
+          }
+        `}
+      </style>
+
       <h2 className="mb-[3vh] text-center text-2xl font-bold xl:text-[2vw]">Contact</h2>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-[2vh] xl:space-y-[1.5vh]">
@@ -213,7 +226,10 @@ export const FormContact = () => {
             <Button
               type="submit"
               disabled={isPending}
-              className={cn(colorsBtn, 'h-[8vh] w-full xl:h-[6vh] xl:text-[1.5vw]')}
+              className={cn(
+                dynamicClass,
+                'h-[8vh] w-full transition-all duration-200 xl:h-[6vh] xl:text-[1.5vw]'
+              )}
             >
               {isPending ? 'Sending...' : 'Send'}
               <motion.span

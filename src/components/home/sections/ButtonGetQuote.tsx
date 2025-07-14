@@ -1,30 +1,44 @@
 import { Button } from '@/components/ui/button';
 import { BASE_URL } from '@/config';
 import { useData } from '@/context/DataContext';
-import { cn } from '@/lib/utils';
+import { cn, hexToRGBA } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
-
 import { Link } from 'react-router-dom';
+import { useId } from 'react';
 
 export const ButtonGetQuote = () => {
   const { colors } = useData();
-  const colorsBtn = `bg-${
-    colors?.primary ? `[${colors.primary}]` : '(--chocolate-martini)'
-  } hover:bg-${colors?.primary ? `[${colors.primary}]` : '(--chocolate-martini)'}/90`;
+  const id = useId();
+  const dynamicClass = `btn-dynamic-${id}`;
+
+  const backgroundColor = colors.primary ?? 'var(--chocolate-martini)';
 
   return (
-    <Button
-      size="default"
-      className={cn(
-        colorsBtn,
-        'group focus:ring-opacity-50 relative overflow-hidden px-10 py-6 font-medium text-white shadow-lg transition-all duration-100 hover:shadow-[0_0_15px_-3px_rgba(30,58,138,0.5)] focus:ring-2 focus:ring-blue-500 focus:outline-none xl:rounded-[0.3vw] xl:py-[1vw]'
-      )}
-      asChild
-    >
-      <Link to={`${BASE_URL}contact`} className="focus:outline-none">
-        Get a quote
-        <ArrowRight className="size-4 xl:size-[1vw]" />
-      </Link>
-    </Button>
+    <>
+      <style>
+        {`
+          .${dynamicClass} {
+            background: ${backgroundColor};
+          }
+          .${dynamicClass}:hover {
+            background: ${hexToRGBA(backgroundColor, 0.9)};
+          }
+        `}
+      </style>
+
+      <Button
+        size="default"
+        className={cn(
+          dynamicClass,
+          'group focus:ring-opacity-50 relative overflow-hidden px-10 py-6 font-medium text-white shadow-lg transition-all duration-100 hover:shadow-[0_0_15px_-3px_rgba(30,58,138,0.5)] focus:ring-2 focus:ring-blue-500 focus:outline-none xl:rounded-[0.3vw] xl:py-[1vw]'
+        )}
+        asChild
+      >
+        <Link to={`${BASE_URL}contact`} className="focus:outline-none">
+          Get a quote
+          <ArrowRight className="size-4 xl:size-[1vw]" />
+        </Link>
+      </Button>
+    </>
   );
 };
