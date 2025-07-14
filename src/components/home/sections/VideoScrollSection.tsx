@@ -96,6 +96,7 @@ export const VideoScrollSection = () => {
 
         {/* Video */}
         <video
+          key={window.location.pathname}
           ref={videoRef}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
             isLoading ? 'opacity-0' : 'opacity-100'

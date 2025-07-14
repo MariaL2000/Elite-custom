@@ -30,17 +30,17 @@ export const NewNavBar = () => {
       transition={{ duration: 0.3 }}
     >
       <div className="flex items-center gap-2 sm:gap-3">
-  <img 
-    src="elite.PNG" 
-    alt="Elite Logo" 
-    className="h-8 w-auto sm:h-10 md:h-12 lg:h-14 xl:h-[3vw] 2xl:h-16 object-contain" 
-  />
-  <img 
-    src="elite2.PNG" 
-    alt="Elite Text" 
-    className="h-6 w-auto sm:h-8 md:h-9 lg:h-10 xl:h-[2.2vw] 2xl:h-12 object-contain" 
-  />
-</div>
+        <img
+          src="elite.PNG"
+          alt="Elite Logo"
+          className="h-8 w-auto object-contain sm:h-10 md:h-12 lg:h-14 xl:h-[3vw] 2xl:h-16"
+        />
+        <img
+          src="elite2.webp"
+          alt="Elite Text"
+          className="h-6 w-auto object-contain sm:h-8 md:h-9 lg:h-10 xl:h-[2.2vw] 2xl:h-12"
+        />
+      </div>
 
       <ButtonGetQuote />
     </motion.nav>

@@ -15,9 +15,14 @@ export const TitlePage = () => {
       duration: Math.random() * 4 + 6,
       yOffset: Math.random() * -120,
       opacityChange: Math.random() * 0.9 + 0.3,
-      color: Math.random() > 0.7 ? 'bg-white' : 
-             Math.random() > 0.4 ? 'bg-yellow-100' : 
-             Math.random() > 0.2 ? 'bg-amber-100' : 'bg-orange-100',
+      color:
+        Math.random() > 0.7
+          ? 'bg-white'
+          : Math.random() > 0.4
+            ? 'bg-yellow-100'
+            : Math.random() > 0.2
+              ? 'bg-amber-100'
+              : 'bg-orange-100',
     }));
   }, []);
 
@@ -40,11 +45,11 @@ export const TitlePage = () => {
       }}
     >
       {/* Glassmorphism Background Effects */}
-      <div className="absolute inset-0 backdrop-blur-3xl bg-gradient-to-br from-white/20 via-amber-50/30 to-orange-100/20" />
-      
+      <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-amber-50/30 to-orange-100/20 backdrop-blur-3xl" />
+
       {/* Floating Glass Orbs */}
       <motion.div
-        className="absolute top-20 left-20 w-28 h-30 rounded-full bg-gradient-to-br from-white/30 to-amber-200/20 backdrop-blur-xl"
+        className="absolute top-20 left-20 h-30 w-28 rounded-full bg-gradient-to-br from-white/30 to-amber-200/20 backdrop-blur-xl"
         animate={{
           y: [-20, 20, -20],
           x: [-10, 10, -10],
@@ -53,12 +58,12 @@ export const TitlePage = () => {
         transition={{
           duration: 8,
           repeat: Infinity,
-          ease: "easeInOut",
+          ease: 'easeInOut',
         }}
       />
-      
+
       <motion.div
-        className="absolute bottom-32 right-16 w-24 h-24 rounded-full bg-gradient-to-br from-orange-200/30 to-amber-300/20 backdrop-blur-xl"
+        className="absolute right-16 bottom-32 h-24 w-24 rounded-full bg-gradient-to-br from-orange-200/30 to-amber-300/20 backdrop-blur-xl"
         animate={{
           y: [20, -20, 20],
           x: [10, -10, 10],
@@ -67,7 +72,7 @@ export const TitlePage = () => {
         transition={{
           duration: 10,
           repeat: Infinity,
-          ease: "easeInOut",
+          ease: 'easeInOut',
         }}
       />
 
@@ -85,7 +90,7 @@ export const TitlePage = () => {
           src="elite.PNG"
           alt="Elite Custom Countertops Logo"
           className="h-full w-full object-contain object-center"
-          onError={(e) => {
+          onError={e => {
             console.error('Error cargando imagen principal:', e);
           }}
         />
@@ -102,10 +107,10 @@ export const TitlePage = () => {
         }}
       >
         <img
-          src="elite2.PNG"
+          src="elite2.webp"
           alt="Elite Custom Countertops Title"
           className="h-full w-full object-contain object-center"
-          onError={(e) => {
+          onError={e => {
             console.error('Error cargando imagen título:', e);
           }}
         />
@@ -113,7 +118,7 @@ export const TitlePage = () => {
 
       {/* Scroll indicator */}
       <motion.div
-       className="absolute bottom-6 left-1/2 -translate-x-1/2 sm:bottom-8 md:bottom-10 lg:bottom-12 xl:bottom-14 2xl:bottom-16"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 sm:bottom-8 md:bottom-10 lg:bottom-12 xl:bottom-14 2xl:bottom-16"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5, duration: 0.6 }}
@@ -122,10 +127,10 @@ export const TitlePage = () => {
       >
         <a
           href="#services"
-          className="group flex size-16 items-center justify-center rounded-full bg-gradient-to-r from-amber-400/80 via-orange-400/80 to-yellow-500/80 backdrop-blur-md p-0.5 transition-all duration-300 hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:outline-none xl:size-[4vw]"
+          className="group flex size-16 items-center justify-center rounded-full bg-gradient-to-r from-amber-400/80 via-orange-400/80 to-yellow-500/80 p-0.5 backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:outline-none xl:size-[4vw]"
           aria-label="Services"
         >
-          <div className="group-hover:bg-white/90 flex h-full w-full items-center justify-center rounded-full bg-white/80 backdrop-blur-sm transition-all duration-300">
+          <div className="flex h-full w-full items-center justify-center rounded-full bg-white/80 backdrop-blur-sm transition-all duration-300 group-hover:bg-white/90">
             <motion.span
               className="text-3xl text-amber-600 xl:text-[2vw]"
               animate={{ y: [0, 8, 0] }}
@@ -164,7 +169,7 @@ export const TitlePage = () => {
             duration: particle.duration,
             repeat: Infinity,
             repeatType: 'reverse',
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
         />
       ))}
@@ -173,7 +178,7 @@ export const TitlePage = () => {
       {Array.from({ length: 8 }).map((_, i) => (
         <motion.div
           key={`glow-${i}`}
-          className="absolute w-2 h-2 rounded-full bg-gradient-to-r from-white to-yellow-50"
+          className="absolute h-2 w-2 rounded-full bg-gradient-to-r from-white to-yellow-50"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
@@ -188,7 +193,7 @@ export const TitlePage = () => {
             duration: 3 + Math.random() * 2,
             repeat: Infinity,
             delay: Math.random() * 2,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
         />
       ))}

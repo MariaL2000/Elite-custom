@@ -23,6 +23,7 @@ import { submitReview } from '@/api/submitReview';
 import { useMutation } from '@tanstack/react-query';
 import { toastPromise } from '../ui/toast-promise';
 import { useData } from '@/context/DataContext';
+import { cn, getColorsForBtn } from '@/lib/utils';
 
 export function ReviewForm() {
   const [rating, setRating] = useState(0);
@@ -47,6 +48,8 @@ export function ReviewForm() {
       }),
   });
   const { colors } = useData();
+  const colorsBtn = getColorsForBtn(colors);
+
   function onSubmit(values: ReviewType) {
     mutate(values, {
       onSuccess: () => {
@@ -184,8 +187,7 @@ export function ReviewForm() {
             <Button
               type="submit"
               disabled={isPending}
-              style={{ background: colors.primary ?? '' }}
-              className="h-[8vh] w-full bg-(--chocolate-martini)/90 text-xl hover:bg-(--chocolate-martini) xl:h-[6vh] xl:text-[1.5vw]"
+              className={cn(colorsBtn, 'h-[8vh] w-full text-xl xl:h-[6vh] xl:text-[1.5vw]')}
             >
               {isPending ? 'Sending...' : 'Send'}
               <motion.span

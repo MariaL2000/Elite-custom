@@ -23,7 +23,7 @@ export const GalleryGrid = ({ images, sectionTitle }: Props) => {
             className="relative w-full break-inside-avoid overflow-hidden rounded-2xl shadow-md transition-all hover:shadow-xl xl:rounded-[1vw]"
           >
             {/* Overlay opcional */}
-            <div className="absolute inset-0 z-10 bg-black/10 opacity-0 transition-opacity duration-300 hover:opacity-100" />
+            <div className="absolute inset-0 bg-black/10 opacity-0 transition-opacity duration-300 hover:opacity-100" />
             <ImageWithErrorHandling
               image={image.image}
               alt={`${sectionTitle} ${index + 1}`}
