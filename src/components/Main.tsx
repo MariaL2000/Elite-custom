@@ -25,7 +25,7 @@ export const Main = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <DataProvider>
-        {isMobile || !location.pathname.endsWith('/home') ? (
+        {isMobile ? (
           <motion.div
             key="main-content"
             initial={{ opacity: 0 }}

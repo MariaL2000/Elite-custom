@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Pause, Play } from 'lucide-react';
 import { BASE_URL } from '@/config';
+import { useLocation } from 'react-router-dom';
 
 interface TextItem {
   id: number;
@@ -17,17 +18,7 @@ export const VideoScrollSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  const location = useLocation();
 
   const textItems: TextItem[] = [
     { id: 1, title: 'First Message', description: 'Discover the beginning of our story.' },
@@ -36,6 +27,15 @@ export const VideoScrollSection = () => {
     { id: 4, title: 'Fourth Message', description: 'Building the future today.' },
     { id: 5, title: 'Fifth Message', description: 'Excellence in every project.' },
   ];
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     if (!isMobile && sectionRef.current) {
@@ -59,6 +59,26 @@ export const VideoScrollSection = () => {
     }
   }, [isMobile, textItems.length]);
 
+  // Fallback por si ningún evento de carga se dispara
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  // Reinicia el video cuando cambia la ruta
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.load();
+      videoRef.current.play().catch(() => {});
+    }
+  }, [location.pathname]);
+
+  const handleVideoLoaded = () => {
+    setIsLoading(false);
+  };
+
   const toggleVideo = () => {
     if (!videoRef.current) return;
 
@@ -67,16 +87,9 @@ export const VideoScrollSection = () => {
     } else {
       videoRef.current.play().catch(error => {
         console.error('Error al reproducir el video:', error);
-        if (typeof videoRef.current?.play === 'function') {
-          videoRef.current.play();
-        }
       });
     }
     setIsPlaying(!isPlaying);
-  };
-
-  const handleVideoLoaded = () => {
-    setIsLoading(false);
   };
 
   return (
@@ -85,7 +98,6 @@ export const VideoScrollSection = () => {
       className="relative hidden w-full shadow-xl lg:block"
       style={{ height: isMobile ? 'auto' : `${textItems.length * 100}vh` }}
     >
-      {/* Video Container */}
       <div className={`sticky top-0 h-screen w-full ${isMobile ? 'relative' : ''}`}>
         {/* Skeleton Loader */}
         {isLoading && (
@@ -96,7 +108,6 @@ export const VideoScrollSection = () => {
 
         {/* Video */}
         <video
-          key={window.location.pathname}
           ref={videoRef}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
             isLoading ? 'opacity-0' : 'opacity-100'
@@ -106,11 +117,13 @@ export const VideoScrollSection = () => {
           muted
           playsInline
           onCanPlay={handleVideoLoaded}
+          onLoadedData={handleVideoLoaded}
+          onLoadedMetadata={handleVideoLoaded}
         >
           <source src={`${BASE_URL}videos/elite.mp4`} type="video/mp4" />
         </video>
 
-        {/* Video Controls */}
+        {/* Controles */}
         {!isLoading && (
           <Button
             variant="outline"
@@ -126,7 +139,7 @@ export const VideoScrollSection = () => {
           </Button>
         )}
 
-        {/* Text content */}
+        {/* Texto */}
         <div className="absolute inset-0 z-10 flex items-center justify-center">
           <div className="container mx-auto px-6 text-center text-white">
             {isMobile ? (
