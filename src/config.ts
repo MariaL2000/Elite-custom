@@ -14,3 +14,4 @@ export const URLS: URLS[] = [
 ];
 
 export const URL_API = 'https://backendelite1.onrender.com/api';
+export const URL_Admin = 'https://backendelite1.onrender.com/admin';

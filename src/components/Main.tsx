@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { Header } from './Header';
 import Footer from './Footer';
 
@@ -10,17 +10,22 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Intro } from './Intro';
 import { useIsMobile } from '@/hooks/useIsMobile';
+import RedirectToAdmin from '@/pages/RedirectToAdmin';
 
 const queryClient = new QueryClient();
 
 export const Main = () => {
   const [endedVideo, setEndedVideo] = useState(false);
+
+  const location = useLocation();
   const isMobile = useIsMobile();
+
+  if (location.pathname.endsWith('/admin')) return <RedirectToAdmin />;
 
   return (
     <QueryClientProvider client={queryClient}>
       <DataProvider>
-        {isMobile ? (
+        {isMobile || !location.pathname.endsWith('/home') ? (
           <motion.div
             key="main-content"
             initial={{ opacity: 0 }}

@@ -19,7 +19,7 @@ import { toastPromise } from '../ui/toast-promise';
 import { submitContact } from '@/api/submitContact';
 import { useMutation } from '@tanstack/react-query';
 import { useData } from '@/context/DataContext';
-import { cn, getColorsForBtn } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 
 export const FormContact = () => {
   const form = useForm<ContactType>({
@@ -43,7 +43,9 @@ export const FormContact = () => {
   });
 
   const { colors } = useData();
-  const colorsBtn = getColorsForBtn(colors);
+  const colorsBtn = `bg-${
+    colors?.primary ? `[${colors.primary}]` : '(--chocolate-martini)'
+  } hover:bg-${colors?.primary ? `[${colors.primary}]` : '(--chocolate-martini)'}/90`;
 
   function onSubmit(values: ContactType) {
     mutate(values, {

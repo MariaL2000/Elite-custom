@@ -29,9 +29,8 @@ const App = () => {
               <Route path={`${BASE_URL}gallery/:section`} element={<GallerySectionPage />} />
             </Route>
             <Route path={`${BASE_URL}review`} element={<ReviewPage />} />
+            <Route path={`${BASE_URL}*`} element={<NotFound />} />
           </Route>
-
-          <Route path={`${BASE_URL}*`} element={<NotFound />} />
         </Routes>
       </div>
     </BrowserRouter>

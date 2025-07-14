@@ -1,14 +1,17 @@
 import { Button } from '@/components/ui/button';
 import { BASE_URL } from '@/config';
 import { useData } from '@/context/DataContext';
-import { cn, getColorsForBtn } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
 
 import { Link } from 'react-router-dom';
 
 export const ButtonGetQuote = () => {
   const { colors } = useData();
-  const colorsBtn = getColorsForBtn(colors);
+  const colorsBtn = `bg-${
+    colors?.primary ? `[${colors.primary}]` : '(--chocolate-martini)'
+  } hover:bg-${colors?.primary ? `[${colors.primary}]` : '(--chocolate-martini)'}/90`;
+
   return (
     <Button
       size="default"
