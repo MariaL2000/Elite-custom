@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { BASE_URL } from '@/config';
 import { useData } from '@/context/DataContext';
-import { cn, hexToRGBA } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useId } from 'react';
@@ -20,9 +20,7 @@ export const ButtonGetQuote = () => {
           .${dynamicClass} {
             background: ${backgroundColor};
           }
-          .${dynamicClass}:hover {
-            background: ${hexToRGBA(backgroundColor, 0.9)};
-          }
+          
         `}
       </style>
 
@@ -30,7 +28,7 @@ export const ButtonGetQuote = () => {
         size="default"
         className={cn(
           dynamicClass,
-          'group focus:ring-opacity-50 relative overflow-hidden px-10 py-6 font-medium text-white shadow-lg transition-all duration-100 hover:shadow-[0_0_15px_-3px_rgba(30,58,138,0.5)] focus:ring-2 focus:ring-blue-500 focus:outline-none xl:rounded-[0.3vw] xl:py-[1vw]'
+          'group focus:ring-opacity-50 relative overflow-hidden px-10 py-6 font-medium text-white shadow-lg transition-all duration-100 hover:opacity-90 hover:shadow-[0_0_15px_-3px_rgba(30,58,138,0.5)] xl:rounded-[0.3vw] xl:py-[1vw]'
         )}
         asChild
       >

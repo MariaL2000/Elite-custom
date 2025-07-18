@@ -14,23 +14,22 @@ export const HomePage = () => {
   return (
     <div className="w-full">
       <TitlePage />
-      <div className="grid gap-8 xl:gap-[5vw]">
-        <CarouselWithPlay />
-        <ServicesSection />
 
-        <VideoScrollSection />
+      <CarouselWithPlay />
+      <ServicesSection />
 
-        <CarouselContainer
-          sliders={4}
-          title=" Insipre by our amazingcountertops and see our materials"
-        />
+      <VideoScrollSection />
 
-        <ResizableSection />
-        <ServiceCardsDrawner />
+      <CarouselContainer
+        sliders={4}
+        title=" Insipre by our amazingcountertops and see our materials"
+      />
 
-        <ScrollGallerySection />
-        <MaterialSelectorSection />
-      </div>
+      <ResizableSection />
+      <ServiceCardsDrawner />
+
+      <ScrollGallerySection />
+      <MaterialSelectorSection />
     </div>
   );
 };

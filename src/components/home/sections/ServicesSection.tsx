@@ -37,15 +37,12 @@ const itemVariants: Variants = {
   },
 };
 
-
-
 const serviceImages = [
   `${BASE_URL}services/kitchen.JPG`,
   `${BASE_URL}services/kitchen2.JPG`,
-  `${BASE_URL}services/fireplace.JPG`, 
+  `${BASE_URL}services/fireplace.JPG`,
   `${BASE_URL}services/bathroom.JPG`,
 ];
-
 
 const fallbackImages = [
   'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&crop=entropy&auto=format&q=85',
@@ -83,7 +80,7 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative mt-18 overflow-hidden bg-(--mocha-mousse)/10 px-4 py-16 backdrop-blur-[10px] transition-all duration-500 md:px-6 md:py-20 xl:px-[2vw] xl:py-[10vh]"
+      className="relative overflow-hidden bg-(--mocha-mousse)/10 px-4 py-16 backdrop-blur-[10px] transition-all duration-500 md:px-6 md:py-20 xl:px-[2vw] xl:py-[10vh]"
     >
       {/* Elementos decorativos de fondo */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -119,7 +116,7 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
-          className="mb-12 text-center text-5xl font-normal tracking-tight xl:mb-[3vw] xl:text-[3.5vw] 2xl:text-[3vw]"
+          className="mb-12 text-center text-5xl font-normal tracking-tight xl:mb-[3vw] xl:text-[3vw]"
           style={{
             fontFamily: 'Satisfy, cursive',
             color: 'var(--sirocco)',
@@ -186,7 +183,7 @@ export function ServicesSection() {
                         filter: 'brightness(1.05) contrast(1.05)',
                       }}
                       transition={{ duration: 0.8, ease: 'easeOut' }}
-                      onError={(e: { currentTarget: { src: string; }; }) => {
+                      onError={(e: { currentTarget: { src: string } }) => {
                         e.currentTarget.src = fallbackImages[index % fallbackImages.length];
                       }}
                     />
@@ -236,7 +233,7 @@ export function ServicesSection() {
                   >
                     <CardHeader className="mb-0.5 p-0">
                       <CardTitle
-                        className="text-lg leading-tight font-bold text-gray-800 transition-all duration-300 group-hover:scale-105 group-hover:text-gray-900 xl:text-[2.3vw] 2xl:text-[1.8vw]"
+                        className="text-xl leading-tight font-bold text-gray-800 transition-all duration-300 group-hover:scale-105 group-hover:text-gray-900 xl:text-[1.4vw]"
                         style={{
                           fontFamily: 'Satisfy, cursive',
                           color: 'var(--sirocco)',
@@ -248,7 +245,7 @@ export function ServicesSection() {
 
                     <CardContent className="flex-1 p-0">
                       <motion.p
-                        className="line-clamp-3 text-sm leading-relaxed text-gray-600 transition-all duration-300 group-hover:text-gray-700 xl:text-[1.2vw] 2xl:text-[1.2vw]"
+                        className="line-clamp-3 text-sm leading-relaxed text-gray-600 transition-all duration-300 group-hover:text-gray-700 xl:text-[1vw]"
                         initial={{ opacity: 0.8 }}
                         whileHover={{ opacity: 1 }}
                       >
@@ -308,5 +305,3 @@ export function ServicesSection() {
     </section>
   );
 }
-
-

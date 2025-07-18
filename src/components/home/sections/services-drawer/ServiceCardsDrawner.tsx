@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { serviceCards } from '@/datas/servicescards';
 import { useDrawerKeyboardClose } from '@/hooks/useDrawerKeyboardClose';
-import { SectionHeader } from './SectionHeader';
 import { ServiceCard } from './ServiceCard';
 import { ServicesDrawer } from './ServiceDrawer';
+import { SeparatorWithColor } from '@/components/SeparatorWithColor';
 
 export const ServiceCardsDrawner = () => {
   const visibleCards = serviceCards.slice(0, 4);
@@ -30,10 +30,21 @@ export const ServiceCardsDrawner = () => {
   return (
     <div className="relative w-full py-16 xl:py-[5vh]" id="services">
       <div className="relative z-10 px-4">
-        <SectionHeader
-          title="Why choose us?"
-          description="Discover how we can transform your spaces with our professional services."
-        />
+        <motion.div
+          initial={{ y: -30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-12 text-center"
+        >
+          <h2 className="mb-4 bg-clip-text text-3xl font-bold md:text-4xl xl:text-[3vw]">
+            Why choose us?
+          </h2>
+          <SeparatorWithColor />
+          <p className="mx-auto xl:max-w-[25vw] xl:text-[1.2vw]">
+            Discover how we can transform your spaces with our professional services.
+          </p>
+        </motion.div>
 
         {/* Contenedor animado */}
         <motion.div

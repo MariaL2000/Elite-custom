@@ -75,9 +75,7 @@ export function ReviewForm() {
                   background: ${backgroundColor};
                   color: white;
                 }
-                .${dynamicClass}:hover {
-                  background: ${hexToRGBA(backgroundColor, 0.9)};
-                }
+                
               `}
       </style>
       <h2 className="mb-6 text-center text-2xl font-bold xl:text-[2vw]">Leave a Review</h2>
@@ -200,7 +198,10 @@ export function ReviewForm() {
             <Button
               type="submit"
               disabled={isPending}
-              className={cn(dynamicClass, 'h-[8vh] w-full text-xl xl:h-[6vh] xl:text-[1.5vw]')}
+              className={cn(
+                dynamicClass,
+                'h-[8vh] w-full text-xl hover:opacity-90 xl:h-[6vh] xl:text-[1.5vw]'
+              )}
             >
               {isPending ? 'Sending...' : 'Send'}
               <motion.span

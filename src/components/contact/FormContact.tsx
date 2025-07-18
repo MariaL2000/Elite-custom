@@ -70,9 +70,7 @@ export const FormContact = () => {
             background: ${backgroundColor};
             color: white;
           }
-          .${dynamicClass}:hover {
-            background: ${hexToRGBA(backgroundColor, 0.9)};
-          }
+        
         `}
       </style>
 
@@ -228,7 +226,7 @@ export const FormContact = () => {
               disabled={isPending}
               className={cn(
                 dynamicClass,
-                'h-[8vh] w-full transition-all duration-200 xl:h-[6vh] xl:text-[1.5vw]'
+                'h-[8vh] w-full transition-all duration-200 hover:opacity-90 xl:h-[6vh] xl:text-[1.5vw]'
               )}
             >
               {isPending ? 'Sending...' : 'Send'}
