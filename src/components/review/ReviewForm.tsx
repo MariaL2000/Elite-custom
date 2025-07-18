@@ -23,7 +23,7 @@ import { submitReview } from '@/api/submitReview';
 import { useMutation } from '@tanstack/react-query';
 import { toastPromise } from '../ui/toast-promise';
 import { useData } from '@/context/DataContext';
-import { cn, hexToRGBA } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 
 export function ReviewForm() {
   const [rating, setRating] = useState(0);

@@ -19,7 +19,7 @@ import { toastPromise } from '../ui/toast-promise';
 import { submitContact } from '@/api/submitContact';
 import { useMutation } from '@tanstack/react-query';
 import { useData } from '@/context/DataContext';
-import { cn, hexToRGBA } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 import { useId } from 'react';
 
 export const FormContact = () => {
