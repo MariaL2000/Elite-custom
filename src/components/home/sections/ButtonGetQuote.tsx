@@ -11,7 +11,7 @@ export const ButtonGetQuote = () => {
   const id = useId();
   const dynamicClass = `btn-dynamic-${id}`;
 
-  const backgroundColor = colors.primary ?? 'var(--chocolate-martini)';
+  const backgroundColor = colors?.primary ?? 'var(--chocolate-martini)';
 
   return (
     <>

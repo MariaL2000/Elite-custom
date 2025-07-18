@@ -71,7 +71,6 @@ export const DataProvider = ({ children }: ProviderProps) => {
     colors: data?.colors ?? {
       primary: null,
       secondary: null,
-      buttons: null,
     },
     loading: isLoading,
     error: error?.message ?? null,

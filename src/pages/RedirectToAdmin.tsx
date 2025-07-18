@@ -7,7 +7,7 @@ const RedirectToAdmin = () => {
   const navigate = useNavigate();
   useEffect(() => {
     setTimeout(() => {
-      window.open(URL_Admin, '_blank', 'nooperer,noreferrer');
+      window.open(URL_Admin, '_blank');
       navigate(-1);
     }, 1500);
   }, []);

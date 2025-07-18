@@ -46,7 +46,7 @@ export const FormContact = () => {
   const { colors } = useData();
   const id = useId();
   const dynamicClass = `btn-submit-${id}`;
-  const backgroundColor = colors.primary ?? 'var(--chocolate-martini)';
+  const backgroundColor = colors?.primary ?? 'var(--chocolate-martini)';
 
   function onSubmit(values: ContactType) {
     mutate(values, {

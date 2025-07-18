@@ -52,5 +52,4 @@ export interface Comparison {
 export interface Colors {
   primary: string | null;
   secondary: string | null;
-  buttons: string | null;
 }

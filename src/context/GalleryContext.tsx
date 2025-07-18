@@ -1,4 +1,3 @@
-// context/GalleryContext.tsx
 import { createContext, useContext } from 'react';
 
 import { GalleryData } from '@/types/gallery.type';
