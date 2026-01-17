@@ -45,11 +45,11 @@ export const TitlePage = () => {
       }}
     >
       {/* Glassmorphism Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-amber-50/30 to-orange-100/20 backdrop-blur-3xl" />
+      <div className="absolute inset-0 bg-linear-to-br from-white/20 via-amber-50/30 to-orange-100/20 backdrop-blur-3xl" />
 
       {/* Floating Glass Orbs */}
       <motion.div
-        className="absolute top-20 left-20 h-30 w-28 rounded-full bg-gradient-to-br from-white/30 to-amber-200/20 backdrop-blur-xl"
+        className="absolute top-20 left-20 h-30 w-28 rounded-full bg-linear-to-br from-white/30 to-amber-200/20 backdrop-blur-xl"
         animate={{
           y: [-20, 20, -20],
           x: [-10, 10, -10],
@@ -63,7 +63,7 @@ export const TitlePage = () => {
       />
 
       <motion.div
-        className="absolute right-16 bottom-32 h-24 w-24 rounded-full bg-gradient-to-br from-orange-200/30 to-amber-300/20 backdrop-blur-xl"
+        className="absolute right-16 bottom-32 h-24 w-24 rounded-full bg-linear-to-br from-orange-200/30 to-amber-300/20 backdrop-blur-xl"
         animate={{
           y: [20, -20, 20],
           x: [10, -10, 10],
@@ -127,7 +127,7 @@ export const TitlePage = () => {
       >
         <a
           href="#services"
-          className="group flex size-16 items-center justify-center rounded-full bg-gradient-to-r from-amber-400/80 via-orange-400/80 to-yellow-500/80 p-0.5 backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:outline-none xl:size-[4vw]"
+          className="group flex size-16 items-center justify-center rounded-full bg-linear-to-r from-amber-400/80 via-orange-400/80 to-yellow-500/80 p-0.5 backdrop-blur-md transition-all duration-300 hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:outline-none xl:size-[4vw]"
           aria-label="Services"
         >
           <div className="flex h-full w-full items-center justify-center rounded-full bg-white/80 backdrop-blur-sm transition-all duration-300 group-hover:bg-white/90">
@@ -178,7 +178,7 @@ export const TitlePage = () => {
       {Array.from({ length: 8 }).map((_, i) => (
         <motion.div
           key={`glow-${i}`}
-          className="absolute h-2 w-2 rounded-full bg-gradient-to-r from-white to-yellow-50"
+          className="absolute h-2 w-2 rounded-full bg-linear-to-r from-white to-yellow-50"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,

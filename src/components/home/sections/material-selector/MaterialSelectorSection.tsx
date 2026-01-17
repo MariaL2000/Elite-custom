@@ -1,6 +1,5 @@
-import { useState, lazy, Suspense } from 'react';
+import { useState, lazy, Suspense, useMemo } from 'react';
 import { motion } from 'framer-motion';
-
 import { Skeleton } from '@/components/ui/skeleton';
 import { useBrowserDetection } from '@/hooks/useBrowserDetection';
 import { useData } from '@/context/DataContext';
@@ -10,9 +9,51 @@ import { SeparatorWithColor } from '@/components/SeparatorWithColor';
 
 const LazyImage = lazy(() => import('@/components/ui/LazyImage'));
 
+/* ===========================
+   Fallbacks con imágenes válidas
+   =========================== */
+const FALLBACK_MATERIALS: Material[] = [
+  {
+    id: 'fallback-1',
+    name: 'Quartz White',
+    image: 'https://firenzastone.com/wp-content/uploads/2021/12/image-6.png',
+    thumbnail: 'https://firenzastone.com/wp-content/uploads/2021/12/image-6.png',
+    description: 'Elegant white quartz countertop with natural patterns.',
+  },
+  {
+    id: 'fallback-2',
+    name: 'Granite Black',
+    image:
+      'https://www.formica.com/-/media/project/formica/global/products/swatch-images/03522/03522-swatch.jpg',
+    thumbnail:
+      'https://www.formica.com/-/media/project/formica/global/products/swatch-images/03522/03522-swatch.jpg',
+    description: 'Sleek black granite perfect for modern kitchens.',
+  },
+  {
+    id: 'fallback-3',
+    name: 'Marble Grey',
+    image:
+      'https://images.thdstatic.com/productImages/ae8d1f1e-66a6-42d8-85a2-a9024e9215c5/svn/wilsonart-laminate-sheets-4925k73504896-a0_600.jpg',
+    thumbnail:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvtoz_ausUYbgkvjitr0Q_GEpSkmOxxWMkRA&s',
+    description: 'Stylish grey marble with subtle veining.',
+  },
+  {
+    id: 'fallback-4',
+    name: 'Quartz Beige',
+    image:
+      'https://images.thdstatic.com/productImages/49e29b8d-9631-4607-8b96-49fe3aab8a15/svn/oro-quartz-etchings-1092-46-hampton-bay-laminate-countertops-srkit161-e1_600.jpg',
+    thumbnail:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnV5bgdaIG4VkPoIcIrHjdbrRxUHdYagHyLg&s',
+    description: 'Warm beige quartz countertop for a cozy look.',
+  },
+];
+
 export const MaterialSelectorSection = () => {
-  const { materials, loading } = useData();
-  const [selectedMaterial, setSelectedMaterial] = useState<Material>(materials[0]);
+  const { materials: apiMaterials, loading } = useData();
+  const [selectedMaterial, setSelectedMaterial] = useState<Material>(
+    apiMaterials[0] ?? FALLBACK_MATERIALS[0]
+  );
   const [loadedImages, setLoadedImages] = useState<Record<string, boolean>>({});
   const { isIOS, isSafari } = useBrowserDetection();
 
@@ -25,12 +66,21 @@ export const MaterialSelectorSection = () => {
     setLoadedImages(prev => ({ ...prev, [id]: true }));
     if (id.startsWith('main-')) {
       const materialId = id.replace('main-', '');
-      const loaded = materials.find(m => m.id === materialId);
+      const loaded = (apiMaterials.length > 0 ? apiMaterials : FALLBACK_MATERIALS).find(
+        m => m.id === materialId
+      );
       if (loaded && loaded.id !== selectedMaterial.id) {
         setSelectedMaterial(loaded);
       }
     }
   };
+
+  // Normalizamos materiales, si API falla → fallback
+  const materials = useMemo(() => {
+    if (apiMaterials.length === 4 && apiMaterials.every(m => m.image && m.image.startsWith('http')))
+      return apiMaterials;
+    return FALLBACK_MATERIALS;
+  }, [apiMaterials]);
 
   return (
     <section className="relative w-full py-12 md:py-16 xl:py-[8vh]" style={safariStyles}>
@@ -86,13 +136,10 @@ export const MaterialSelectorSection = () => {
                     >
                       <Suspense fallback={<Skeleton className="size-full rounded-xl" />}>
                         <LazyImage
-                          src={
-                            material.thumbnail ??
-                            'https://via.placeholder.com/500/cccccc/808080.png'
-                          }
+                          src={material.image ?? FALLBACK_MATERIALS[0].image}
                           alt={material.name}
                           className="h-full w-full object-cover"
-                          onLoad={() => handleImageLoad(`thumb-${material.id}`)}
+                          onLoad={() => handleImageLoad(`main-${material.id}`)}
                           style={safariStyles}
                         />
                       </Suspense>
@@ -115,16 +162,12 @@ export const MaterialSelectorSection = () => {
           </motion.div>
 
           {/* Preview */}
-          {loading ? (
-            <Skeleton className="w-[98%] lg:w-3/4 lg:p-0 xl:w-[60vw]" />
-          ) : (
-            <MaterialPerView
-              safariStyles={safariStyles}
-              selectedMaterial={selectedMaterial}
-              handleImageLoad={handleImageLoad}
-              loadedImages={loadedImages}
-            />
-          )}
+          <MaterialPerView
+            safariStyles={safariStyles}
+            selectedMaterial={selectedMaterial}
+            handleImageLoad={handleImageLoad}
+            loadedImages={loadedImages}
+          />
         </div>
       </div>
     </section>

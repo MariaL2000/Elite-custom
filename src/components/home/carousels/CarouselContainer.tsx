@@ -7,7 +7,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-
 import { SlidesPerView } from '@/types/carousel-type';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useBrowserDetection } from '@/hooks/useBrowserDetection';
@@ -33,20 +32,21 @@ export function CarouselContainer({
     5: 'lg:basis-1/5',
   };
 
-  // Estilos específicos para Safari/iOS
   const carouselStyles: React.CSSProperties = isIOS
-    ? {
-        WebkitBackfaceVisibility: 'hidden',
-        WebkitPerspective: 1000,
-        willChange: 'transform',
-      }
+    ? { WebkitBackfaceVisibility: 'hidden', WebkitPerspective: 1000, willChange: 'transform' }
     : {};
+
+  // Generamos fallback de cards si API falla o datos vacíos
+  const cardsToRender =
+    !loading && second_carousel && second_carousel.length > 0
+      ? second_carousel
+      : Array.from({ length: 9 }, (_, i) => ({ index: i }));
 
   return (
     <div className="relative my-[5%] w-full overflow-hidden py-12" style={carouselStyles}>
       {title && (
         <h1
-          className="my-[2%] bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-center text-3xl font-bold text-transparent xl:text-[2.5vw]"
+          className="my-[2%] bg-linear-to-r from-slate-800 to-slate-600 bg-clip-text text-center text-3xl font-bold text-transparent xl:text-[2.5vw]"
           style={{
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
@@ -58,46 +58,32 @@ export function CarouselContainer({
       )}
 
       <Carousel
-        opts={{
-          loop: true,
-          align: 'center',
-        }}
+        opts={{ loop: true, align: 'center' }}
         className="m-[0_auto] w-[95%] xl:w-[85%]"
         setApi={setApi}
         onMouseDown={() => setIsPending(true)}
       >
         <CarouselContent className={isPending ? 'transition-none' : ''}>
-          {loading
-            ? Array.from({ length: 9 }).map((_, index) => (
-                <CarouselItem
-                  key={`skeleton-${index}`}
-                  className={`basis-full md:basis-1/2 ${slidesPerViewLg[sliders]}`}
-                >
-                  <div className="p-[2%]">
-                    <Card className="overflow-hidden border-0 bg-gradient-to-br from-slate-50 to-slate-100 p-0 shadow-lg">
-                      <CardContent className="aspect-square p-0">
-                        <Skeleton className="size-full" />
-                      </CardContent>
-                    </Card>
-                  </div>
-                </CarouselItem>
-              ))
-            : second_carousel.map(i => (
-                <CarouselItem
-                  key={i.alt}
-                  className={`basis-full md:basis-1/2 ${slidesPerViewLg[sliders]}`}
-                >
-                  <div className="p-[2%]">
-                    <Card className="overflow-hidden border-0 bg-gradient-to-br from-slate-50 to-slate-100 p-0 shadow-lg">
-                      <CardContent className="aspect-square p-0">
-                        <Suspense fallback={<Skeleton className="h-full w-full" />}>
-                          <LazyCardCarousel data={i} isIOS={isIOS} />
-                        </Suspense>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </CarouselItem>
-              ))}
+          {cardsToRender.map((item: any, index: number) => (
+            <CarouselItem
+              key={`card-${index}`}
+              className={`basis-full md:basis-1/2 ${slidesPerViewLg[sliders]}`}
+            >
+              <div className="p-[2%]">
+                <Card className="overflow-hidden border-0 bg-linear-to-br from-slate-50 to-slate-100 p-0 shadow-lg">
+                  <CardContent className="aspect-square p-0">
+                    <Suspense fallback={<Skeleton className="h-full w-full" />}>
+                      <LazyCardCarousel
+                        data={item.url ? item : undefined} // si no hay url → fallback
+                        index={index}
+                        isIOS={isIOS}
+                      />
+                    </Suspense>
+                  </CardContent>
+                </Card>
+              </div>
+            </CarouselItem>
+          ))}
         </CarouselContent>
 
         <CarouselPrevious
